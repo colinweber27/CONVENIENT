@@ -1,0 +1,61 @@
+#pragma once
+
+
+//#include "CAFAna/Vars/TruthVars.h"
+//#include "CAFAna/Vars/NueEnergy2020.h"
+//#include "StandardRecord/Proxy/SRProxy.h"
+#include "CAFAna/Vars/Vars.h"
+#include "CAFAna/Core/Cut.h"
+//#include "CAFAna/Cuts/NumuCuts.h"
+//#include "CAFAna/Cuts/NumuCuts2017.h"
+//#include "CAFAna/Cuts/NumuCuts2018.h"
+//#include "CAFAna/Cuts/TruthCuts.h"
+//#include "CAFAna/Cuts/BeamNueCuts.h"
+namespace ana {
+
+
+  const ana::Var kTrueNeutrinoE ([](const caf::SRProxy * sr){
+      double energy = kTrueE(sr);
+      
+            
+      return energy;
+    });
+
+
+  const Cut kIsFromPiMinusDk ([](const caf::SRProxy* sr)
+  {
+    if(sr->mc.nnu == 0) return false;
+    assert(sr->mc.nnu == 1);					 
+    return (sr->mc.nu[0].beam.tptype == -211 || (sr->mc.nu[0].beam.ptype == -211 && sr->mc.nu[0].beam.tptype == 0));
+  });
+
+  const Cut kIsFromPiPlusDk ([](const caf::SRProxy* sr)
+  {
+    if(sr->mc.nnu == 0) return false;
+    assert(sr->mc.nnu == 1);    
+    return (sr->mc.nu[0].beam.tptype == 211 || (sr->mc.nu[0].beam.ptype == 211 && sr->mc.nu[0].beam.tptype == 0));
+  });
+  
+  const Cut kIsFromKaMinusDk ([](const caf::SRProxy* sr)
+  {
+    if(sr->mc.nnu == 0) return false;
+    assert(sr->mc.nnu == 1);    
+    return (sr->mc.nu[0].beam.tptype == -321  || (sr->mc.nu[0].beam.ptype == -321  && sr->mc.nu[0].beam.tptype == 0));
+  });
+  
+  const Cut kIsFromKaPlusDk ([](const caf::SRProxy* sr)
+  {
+    if(sr->mc.nnu == 0) return false;
+    assert(sr->mc.nnu == 1);    
+    return (sr->mc.nu[0].beam.tptype == 321 || (sr->mc.nu[0].beam.ptype == 321  && sr->mc.nu[0].beam.tptype == 0));
+  });
+  
+  
+  const Cut kIsFromKaLongDk ([](const caf::SRProxy* sr)
+  {
+    if(sr->mc.nnu == 0) return false;
+    assert(sr->mc.nnu == 1);    
+    return (sr->mc.nu[0].beam.tptype == 130 || (sr->mc.nu[0].beam.ptype == 130  && sr->mc.nu[0].beam.tptype == 0));
+  });
+  
+}
