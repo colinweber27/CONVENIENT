@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# Read the fill spreadsheets from doc-8431, included here as CSV files (with 
+# standardized header lines), and prints out lines giving the scintillator blend
+# name, how much scintillator was from each blend in gallons, and how many
+# kilotonnes of scintillator this represents.
+
+csvtool &> /dev/null
+if [ $? -eq 127 ]; then
+  echo You need csvtool, by Richard W.M. Jones, to run this
+  exit 1
+fi
+
+boltworld()
+{
+  while [ $1 ]; do
+    for c in 'Fill 1: Scint. Batch','Fill 1: Amount from 1st Tanker (gal)', \
+             'Fill 1: 2nd Tanker Batch','Fill 1: Amount from 2nd Tanker (gal)',\
+             'Fill 2: Scint. Batch','Fill 2: Amount from 1st Tanker (gal)', \
+             'Fill 2: 2nd Tanker Batch','Fill 2: Amount from 2nd Tanker (gal)',\
+             'Fill 3: Scint. Batch','Fill 3: Amout from 1st Tanker (gal)', \
+             'Fill 3: 2nd Tanker Batch','Fill 3: Amount from 2nd Tanker (gal)', \
+             'Fill 4: Scint. Batch','Fill 4: Amount from 1st Tanker (gal)', \
+             'Fill 4: 2nd Tanker Batch','Fill 4: Amount from 2nd Tanker (gal)'; do
+      csvtool namedcol "$c" -u TAB "$1" | tail -n +2 | \
+        # Some people put in colons and some dashes and a few slashes...
+        sed -e 's/[:/]/-/' |
+        # Some people put in extra dashes
+        sed -e s/^T-/T/ |
+        # Zero vs. the letter 'o'...
+        sed -e s/TO/T0/g |
+        # Some people put in leading zeros (or letter 'o's)
+        sed -e s/T0/T/g |
+        # Extra leading zero
+        sed -e s/B003/B03/ |
+        # Assume B064 was a typo resulting for typing 64 a lot
+        sed -e s/B064/B06/ |
+        # Must be a typo for T64
+        sed -e s/T65/T64/g |
+        # As far as I can tell from doc-11886-v3, there is no blend
+        # T59-B13.  Assign the 2399.4 gallons claimed for it to a semi-arbitrary
+        # similarly named blend
+        sed -e s/T59-B13/T64-B13/ |
+        # Assign fills claimed to be from two batches to the first one named
+        # This affects 6615.3 + 6539.7 + 6532.7 + 6533.4 gallons
+        # (~6% of a full blend each)
+        sed -e s/T59-B06-T64-B07/T59-B06/ \
+            -e s/T64-B04-T59-B04/T64-B04/ \
+            -e s/T64-T59-B06/T64-B06/ \
+            -e s/T64-T59-B10/T64-B10/ |
+        # in Block 16 and Block 24, vertical, the tanker and blend were swapped
+        # in some entries.  In each case, they are all the same blend, so just
+        # fix it here.
+        sed -e s/WT.164.S039/T64-B08/ \
+            -e s/WT.164.S054/T59-B11/
+    done
+    shift
+  done
+}
+
+batches()
+{
+  boltworld $@ | awk '{if(NF == 2) print $1}' | sort | uniq
+}
+
+for b in $(batches $@); do
+  density=$(grep $b densities | awk '{print $2}')
+  if ! [ "$density" ]; then
+    density=?
+  fi
+  boltworld $@ | awk 'BEGIN{density='$density'}{if(NF == 2 && $1 == "'$b'") tot += $2}END{print "'$b'", tot, tot*density*3785.4118e-9}'
+done
