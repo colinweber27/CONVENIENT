@@ -1,0 +1,12 @@
+These data files and scripts compute the mean scintillator density for
+near and far detectors and the masses of each type of scintillator for
+the far detector.
+
+They are not run as part of the build because they require csvtool,
+which is not part of a standard Linux installaton.  The output file of
+'blockreport *.csv' is included as "reportbyblock" which contains lines giving
+the scintillator blend name, how much scintillator was from each blend in
+gallons, and how many kilotonnes of scintillator this represents.
+
+You can run 'summarize' which reads it and prints the final report.  I have
+manually put the result into the composition and GDML files.

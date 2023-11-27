@@ -1,0 +1,7 @@
+# Author: Colin Weber (webe1077@umn.edu)
+# Date: 19 July 2023
+# Purpose: To record the chemical composition of the NOvA ND in GENIE target composition format. These numbers were obtained from running /nova/app/users/colweber/compositions/soup.py for the ND, and then recording only elements and isotopes that make up at least 0.1% of the detector
+# 
+# Command: none. This is just a reference for now.
+
+1000060120[0.660],1000060130[0.007],1000170350[0.122],1000170370[0.039],1000010010[0.108],1000220480[0.024],1000220460[0.003],1000220470[0.002],1000220490[0.002],1000220500[0.002],1000080160[0.030],1000160320[0.001]

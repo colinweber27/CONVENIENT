@@ -1,0 +1,78 @@
+Author: Colin M Weber (webe1077@umn.edu)
+Date: 5 November 2023
+Purpose: To explain how to use Convenience to generate neutrino events
+
+#######################################################
+Introduction
+When simulating neutrino-nucleus interactions in a neutrino event generator, various models are introduced at several different stages in the simulation. An nuclear model determines the initial momenta of all nucleons in the nucleus. Cross section models for different interaction types determine what interaction takes place, and the final state kinematics of the initially produced particles. Other models account for hadronization. Finally, there is a model for final state interactions.
+
+These models should be thought of as tools to allow us to do simulations, first and foremost. The underlying physics is unaware of these models, and continues to work just fine without our having developed them. For this reason, we need to be careful to not let model-dependence creep into our cross section results. Something that can aid against this is comparing results to MC generated with other physics models and generators.
+
+Unfortunately, this is easier said than done. Each generator is unique, doing some things well while lacking in other areas. This makes it difficult to even unify the output file format, let alone dig into the models used to generate events. Each generators takes inputs differently as well, adding another wrinkle to the mess. Even compiling each generator can be a challenge.
+
+To overcome these difficulties, I have developed Convenience. Convenience is best thought of as a program to generate events using different generators with different configurations and tunes. The data it outputs maximizes events/byte by minimizing the data redundancy in the events. (For example, it is redundant to keep the primary lepton's scattering angle if its 3-momentum and identity are also kept.) Convenience also includes a macro for extracting differential cross sections from the generated events. These capabiliies will allow analyzers to compare their results to different models, thereby promoting model-independence.
+##############################################################
+
+##############################################################
+Organization
+See README.txt in the directory /nova/app/users/colweber/Convenience
+##############################################################
+
+##############################################################
+Step-by-step guide for generating events
+So you want to generate some neutrino nucleus interactions using a bunch of different tunes and configurations from a bunch of different generators? You've come to the right place.
+
+First, you should figure out how many events you want and with what generators/tunes/configurations. Not all GENIE tunes are supported, but the most relevant ones for NOvA are. Currently supported tunes are
+	G18_10a_02_11b
+	N18_10j_02_11a
+	AR23_20i_00_000
+If you try to run an unsupported tune, Convenient will exit and return an error. If you would like a new tune added, please message me. Configuations for less familiar generators may be more confusing to add. For examples and documentation, please consult the following sources:
+	NuWro:
+		Convenient/NuWro/20230921params.txt is an example of a parameters file ready to go
+		https://nuwro.github.io/user-guide/getting-started/parameters/ is the section of the NuWro User's Guide describing the different parameters and their use.
+Message me for help in adding new configurations if you get stuck.
+
+If you only want a few events for one of the supported tunes, chances are these events already exist in the Convenient/generator_outputs subdirectory. If you can't find the events in there, double check with me to see if they exist elsewhere.
+
+If you want many events, or events for an unsupported tune or novel generator configuration, please message me. For now, it's easiest if I generate those events and direct you to the output. If, however, you want more control over the process, or your task is too large for my bandwidth, it is not too hard to generate the events yourself.
+	1: I assume if you've gotten this far, you've checked to see if your desired tune/generator configuration exists. If it does, move on. If not, please reread this guide from the top of this section.
+	2: Open the script Convenient/set_run_variables.sh. This is the only script that needs to be modified before generating events.
+	3: Modify the run variables as appropriate. In particular,
+		a: N_EVENTS is where you set the number of events to generate
+		b: HC determines the NuMI horn current polarity. Remember that FHC selects neutrinos, and RHC selects antineutrinos.
+		c: NEUTRINO_PDG is the PDG code for the neutrino flavor you'd like to be incident on the target.
+		d: The path to the text file containing the desired target composition. For more info on Convenient target compositions, please se Convenient/compositions/README.txt.
+		e: RUNS determines the tunes/generators/configurations to use.
+		f: SEED detemines the MC seed to use.
+		g: NUISANCE_SETUP_SHELL is the path to the NUISANCE setup shell. I currently have this set up in my home NOvA directory. If you would like to use a different build, this is where you would point Convenient to it.
+	4. Set the run variables by running "source set_run_variables.sh" from within the Convenient directory: /nova/app/users/colweber/Convenient.
+	5. Run Convenient with the command "source run.sh"
+	6. Outputs will be found in Convenient/generator_outputs. See the README.txt in that folder for info on the organization of the outputs.
+
+What info does CONVENIENT keep?
+	1. Neutrino energy and PDG. Momentum is assumed to be in the z-direction.
+	2. Target PDG
+	3. CC/NC flag
+	4. 4-momenta of all final state particles, which are identified as protons, neutrons, photons, pi+, pi-, pi0, muons, electrons, taus, neutrinos, or other.
+	5. Spectrum used to generate events (for normalization purposes)
+	6. Normalization scale factor calculated by NUISANCE (for normalization purposes) 
+################################################################
+
+################################################################
+Step-by-step guide for running analyses
+So you want to analyze the output (maybe even extract some cross sections??) from a Convenient output? You've come to the right place.
+
+This is done with the xsec_analysis_macro.C file. This file has been heavily-commented, so direct your attention there first to learn how to use it to perform an analysis. The things that will need to be modified for an individual analysis are:
+	1. The data files (starting at Line 37) and list of files.
+	2. Certain thresholds and constants.
+	3. Binning
+	4. Selection of integrated/flux-averaged cross sections and number of differential cross section variables.
+	5. Filling of histograms
+	6. Plotting.
+
+Not included is a place to apply selection cuts. I am currently working on a way to add this functionality. As always, message me with any questions. 
+##############################################################
+
+##############################################################
+Final notes
+Convenient, while currently serviceable, is still being developed. If any bugs are encountered, please message me to get them sorted out.

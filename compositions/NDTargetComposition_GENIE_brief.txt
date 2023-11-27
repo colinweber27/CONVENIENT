@@ -1,0 +1,7 @@
+# Author: Colin Weber (webe1077@umn.edu)
+# Date: 3 August 2023
+# Purpose: To record the chemical composition of the NOvA ND in GENIE target composition format. This file is a briefer version of "NDTargetComposition_GENIE.txt" that includes only the top 3 most abundant elements. It assigns fractions to keep the relative ratios between these elements the same as in the other file.
+# 
+# Command: none. This is just a reference for now.
+
+1000060120[0.7431],1000170350[0.1357],1000010010[0.1212]

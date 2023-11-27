@@ -1,0 +1,168 @@
+################################################################
+#
+# Example input for NuWro neutrino interactions simulation software
+#
+################################################################
+
+# The number of events used to calculate the cross sections: 
+
+number_of_test_events = 2000000
+
+# The number of equally weighted events to be saved:
+
+number_of_events      = 500000
+ 
+# Control the random seed persistence:
+random_seed = 0     // 0 - use time(NULL) as a seed for random number generator
+#random_seed = 1     // 1 - read state from file "random_seed"  or use seed=time(NULL) if file not found
+#random_seed = 12312 // other values - use given number as the seed for the generator
+
+################################################################
+#
+# Beam specification 
+#
+################################################################
+
+# *default* 1 GeV muon neutrinos
+
+# Define the beam by hand:
+# (single flavor, monoenergetic [MeV], lepton PDG)
+beam_type     = 0
+beam_energy   = 1000
+beam_particle = 14
+
+# It is convenient to include one of the predefined beam specifications
+# with the @ char (or modify them as needed):
+#@beam/ANL.txt
+#@beam/ND280.txt
+#@beam/nomad.txt
+#@beam/newMB.txt
+
+################################################################
+#
+# Target specification
+#
+################################################################
+
+# *default* predefined LFG Carbon target "C.txt"
+
+# Define the nucleus by hand:
+#nucleus_p = 6
+#nucleus_n = 6
+
+# Set target_content if target_type == 1 #
+
+# Models for the description of nucleus as a target:
+#nucleus_target = 0 // free target; 
+#nucleus_target = 1 // Fermi gas; 
+nucleus_target = 2 // local Fermi gas; 
+#nucleus_target = 3 // Bodek-Ritchie; 
+#nucleus_target = 4 // "effective" spectral function (carbon or oxygen); 
+#nucleus_target = 5 // deuterium; 
+#nucleus_target = 6 // effective potential
+
+# Historical options to define the Fermi gas:
+#nucleus_E_b         =  34   // [MeV] binding energy 
+#nucleus_kf          = 220   // [MeV] Fermi momentum, used in Fermi gas model and in Pauli blocking
+
+# Enable Pauli blocking:
+pauli_blocking   = 1 // enable (1) or not (0) Pauli blocking
+
+# It is convenient to include one of the predefined target specifications
+# with the @ char (or modify them as needed):
+#@target/proton.txt
+@target/C.txt
+#@target/CH.txt
+#@target/ND280_975.txt
+#@target/proton.txt
+#@target/neutron.txt
+#@target/CH2.txt
+
+################################################################
+#
+# Specify which dynamics channels should be used 
+#
+################################################################
+
+dyn_qel_cc =1      // Quasi elastic charged current
+dyn_qel_nc =1      // Quasi elastic neutral current
+dyn_res_cc =1      // Resonant charged current
+dyn_res_nc =1      // Resonant neutral current
+dyn_dis_cc =1      // Deep inelastic charged current
+dyn_dis_nc =1      // Deep inelastic neutral current
+dyn_coh_cc =1      // Coherent charged current
+dyn_coh_nc =1      // Coherent neutral current
+dyn_mec_cc =1      // Meson exchange charged current
+dyn_mec_nc =1      // Meson exchange neutral current
+dyn_hyp_cc =1      // Quasi elastic hyperon production
+dyn_lep    =0      // Neutrino-electron
+# Standard output of total sigma [cm^2 / nucleon]
+
+dyn_qel_el =1      // (Quasi) elastic electron scattering
+# The output in d sigma / d costheta [cm^2 / nucleon]
+# -> see "Electron scattering parameters"
+
+################################################################
+# Dynamics details and form factor parameters
+# the names of the parameters start with the dynamics prefix:
+# qel, res, dis, coh, mec, hyp, or lep
+################################################################
+
+################################################################
+#   QEL
+################################################################
+
+# Electromagnetic Form factors:
+#qel_vector_ff_set = 1 // dipole, dipole electric form factor G_E^V
+ qel_vector_ff_set = 2 // BBBA05, hep-ex/0602017 BBBA05 for Q2<18 GeV	
+#qel_vector_ff_set = 3 // BBA03, hep-ex/0308005 BBA-2003 for Q2<6 GeV
+#qel_vector_ff_set = 4 // JLab, PHYSICAL REVIEW C, VOLUME 65, 051001(R)
+#qel_vector_ff_set = 5 // Kgraczyk
+#qel_vector_ff_set = 6 // (1990:) parametryzacja JS z old qelcc
+
+# Axial Form factors:
+ qel_axial_ff_set = 1 // dipole,
+#qel_axial_ff_set = 2 // 2-fold parabolic modification of axial FF
+#qel_axial_ff_set = 3 // 3-fold parabolic modification of axial FF
+#qel_axial_ff_set = 4 // 4-fold parabolic modification of axial FF
+
+# Strangeness content:
+#qel_strange=0      // don't use the strangenes
+qel_strange = 1    // use the strangenes in the axial ff
+qel_strangeEM = 0  // dont use the strangenes in the vector ff
+delta_s = 0
+
+# Axial mass:
+qel_cc_axial_mass = 1030   // [MeV] axial mass
+qel_nc_axial_mass = 1030   // [MeV] axial mass
+qel_s_axial_mass  = 1030   // [MeV] axial mass used in the strange dipole ff
+
+################################################################
+# Use the values below to recower the old nc behaviour
+################################################################
+#qel_strange     = 1     // use the strangeness corrections in the axial factors
+#qel_strangeEM   = 1     // use the strangeness corrections in the vector factors
+#delta_s         =-0.21  // 
+#qel_s_axial_mass= 1012  //[MeV] axial mass used in the strange dipole ff
+#################################################################
+
+# Neutrino flux and nucleon proper time corrections:
+flux_correction = 0     // no flux correction
+#flux_correction = 1
+
+# For certain nuclei (C12, O16, Ar40, Ca40, Fe56)
+# it is possible to use the spectral function model
+# instead of the Fermi gas model in the quasielastic events;
+# For other nuclei the parameter is ignored
+ 
+sf_method = 0 // don't use spectral function
+#sf_method = 1 // use grid spectral function: (C12, O16, Ar40, Fe56)
+#sf_method = 2 // use factorized spectral function: (O16, Ar40, Ca40)
+
+sf_fsi = 1      # FSI correction for SF (0 - disabled, 1 - enabled)
+sf_coulomb = 1  # Coulomb correction for SF (0 - disabled, 1 - enabled)
+# PB method used for SF:
+#     0 - average Fermi momentum
+#     1 - local Fermi momentum
+#     2 - nucleon momentum distribution given by spectral function
+sf_pb = 1
