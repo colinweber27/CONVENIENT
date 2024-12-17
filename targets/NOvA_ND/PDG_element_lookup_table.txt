@@ -1,0 +1,30 @@
+# Author: Colin Weber (webe1077@umn.edu)
+# Date: 25 April 2024
+# Purpose: This is a lookup table to go from a PDG code to an element. It contains all elements in the ND present at the 0.01% level or above, plus CH and H2O, which are useful for simulating events with NEUT.
+# 
+# Command: none. This is just a reference for now.
+# PDG	Element
+1000060120	C12
+1000060130	C13
+1000170350	Cl35
+1000170370	Cl37
+1000010010	H1
+1000220480	Ti48
+1000220460	Ti46
+1000220470	Ti47
+1000220490	Ti49
+1000220500	Ti50
+1000080180	O18
+1000080160	O16
+1000501200	Sn120
+1000501180	Sn118
+1000501160	Sn116
+1000501190	Sn119
+1000501170	Sn117
+1000501240	Sn124
+1000501220	Sn122
+1000160320	S32
+1000200400	Ca40
+1000070140	N14
+1000060121	CH
+1000080162	H2O

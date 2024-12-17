@@ -1,0 +1,7 @@
+# Author: Colin Weber (webe1077@umn.edu)
+# Date: 2 April 2024
+# Purpose: To record the chemical composition of Carbon 12 in GENIE format.
+# 
+# Command: none. This is just a reference for now.
+
+1000060120[1.0]

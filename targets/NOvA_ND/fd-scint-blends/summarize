@@ -1,0 +1,78 @@
+#!/bin/bash
+
+fiberdensity=1.0457
+fiberfrac=0.0006
+correction60to69=0.9964
+
+echo FD:
+cat reportbyblock | awk '\
+{
+  if($1 == "T64-B01" || $1 == "T59-B01")
+    masslow += $3;
+  else
+    masshigh += $3;
+  vol += $2;
+  mass += $3
+}
+END{
+  fiberdensity = '$fiberdensity';
+  fiberfrac = '$fiberfrac';
+  correction60to69 = '$correction60to69';
+  Mgal2cc = 3785.4118e-9;
+  scintdensity = $3/$2/Mgal2cc * correction60to69;
+  scintsoupdensity = (1-fiberfrac) * scintdensity + fiberfrac * fiberdensity;
+
+  printf("mean density of scint+fiber at 69F: %.4f g/cm3\n", scintsoupdensity);
+  print "low-light mass ", masslow " kt";
+  print "high-light mass", masshigh " kt";
+  print "total volume " vol/1e6 " Mgal";
+  print "total mass     ", mass " kt"
+}
+'
+
+echo
+
+echo ND:
+cat densities | awk '
+{
+  if($1 == "T64-B13")
+    density25 = $2;
+  else if($1 == "T59-B12"){
+    density24 = $2;
+  }
+  else if($1 == "T64-B12"){
+    density23 = $2;
+  }
+}
+END{
+  # Use the information in the NOTES AND CHANGES on doc-11906-v4.  Not in the
+  # actual document!  Obviously these are only round numbers, but they are the
+  # best I have been able to find.
+  density60 =(1 * density23 + 4.5 * density24 + 1.5 * density25)/ \
+             (1             + 4.5             + 1.5);
+
+  printf("Blend densities: #23: %.4f, #24: %.4f, #25: %.4f\n",
+         density23, density24, density25);
+
+  correction60to69 = '$correction60to69';
+  temperature = 64;
+  correction60toactual = (1 - (1-correction60to69)*(temperature - 60)/(69 - 60));
+  scintdensity = density60*correction60toactual;
+  fiberdensity = '$fiberdensity';
+  fiberfrac = '$fiberfrac';
+  scintsoupdensity = (1-fiberfrac) * scintdensity + fiberfrac * fiberdensity;
+  printf("Estimated ND scint+fiber density at %.1fF %.4f g/cm3\n", temperature,
+        scintsoupdensity);
+
+  # Variance of a two point distribution, treating blends 23 and 24
+  # as the same (since, well within errors, they are the same)
+  variance = 5.5/7. * 1.5/7.;
+  error = sqrt(variance);
+  gccerror = error * (density24 - density25)*correction60toactual;
+
+  printf("But which blend is in the fiducial volume?  I do not know.\n");
+  printf("Assume that it could be all of any three blends and take\n");
+  printf("A *gaussian* error of %.4f g/cm3 (%.2f%%)\n",
+         gccerror, gccerror/scintdensity*100);
+}
+'
