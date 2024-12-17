@@ -51,16 +51,16 @@ If you want many events, or events for an unsupported tune or novel generator co
 1. I assume if you've gotten this far, you've checked to see if your desired tune/generator configuration exists. If it does, move on. If not, please reread this guide from the top of this section.
 2. Open the script `Convenient/set_run_variables.sh`. This is the only script that needs to be modified before generating events.
 3. Modify the run variables as appropriate. In particular,
-   a. `N_EVENTS` is where you set the number of events to generate
-   b. `HC` determines the NuMI horn current polarity. Remember that FHC selects neutrinos, and RHC selects antineutrinos.
-   c. `FLUXES` determines the flux to use. Options are any folder in the directory `Convenient/flux/NuMI/$HC`. This may be a comma-separated list of fluxes to use in consecutive runs of Convenient.
+  a. `N_EVENTS` is where you set the number of events to generate
+  b. `HC` determines the NuMI horn current polarity. Remember that FHC selects neutrinos, and RHC selects antineutrinos.
+  c. `FLUXES` determines the flux to use. Options are any folder in the directory `Convenient/flux/NuMI/$HC`. This may be a comma-separated list of fluxes to use in consecutive runs of Convenient.
    d. `FLUX_FILE_NAMES` is a comma-separated list of flux files to use in consecutive runs of Convenient. The *i*th flux file in the list must be located in the *i*th directory in the `FLUXES` list.
-   e. `FLUX_HISTOS` is a comma-separated list of histograms containing the actual neutrino fluxes to use as input. The *i*th `FLUX_HISTO` entry must be within the ith flux file name in `FLUX_FILE_NAMES`.
+  e. `FLUX_HISTOS` is a comma-separated list of histograms containing the actual neutrino fluxes to use as input. The *i*th `FLUX_HISTO` entry must be within the ith flux file name in `FLUX_FILE_NAMES`.
    f. `NEUTRINO_PDG` is the PDG code for the neutrino flavor you'd like to be incident on the target.
-   g. `GIBUU_CC_NC` is either "CC" or "NC" and is only used when generating GiBUU events.
+  g. `GIBUU_CC_NC` is either "CC" or "NC" and is only used when generating GiBUU events.
    h. `TARGETS` is the path to the text file containing the desired target composition. For more info on Convenient target compositions, please see `Convenient/targets/README.md`.
-   i. `RUNS` determines the tunes/generators/configurations to use. It may be a comma-separated list, where each item is a tune/generator/configuration string to use in consecutive Convenient runs.
-   j. `SEED` detemines the MC seed to use. It may be a comma-separated list, where each item is a seed to use in consecutive Convenient runs.
+  i. `RUNS` determines the tunes/generators/configurations to use. It may be a comma-separated list, where each item is a tune/generator/configuration string to use in consecutive Convenient runs.
+  j. `SEED` detemines the MC seed to use. It may be a comma-separated list, where each item is a seed to use in consecutive Convenient runs.
 4. Set the run variables by running `source set_run_variables.sh` from within the root Convenient directory.
 5. Run Convenient with the command `source run.sh	.
 6. Outputs will be found in `/exp/nova/data/users/$USER/ConvenientOutputs[_NOvA]`.
