@@ -1,6 +1,0 @@
-[submodule "neut"]
-	path = neut
-	url = https://github.com/neut-devel/neut.git
-[submodule "nuwro"]
-	path = nuwro
-	url = https://github.com/NuWro/nuwro.git
