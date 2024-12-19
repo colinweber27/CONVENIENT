@@ -9,7 +9,10 @@
 #!/bin/bash
 
 # Build GENIE. Don't need to do if novasoft is set up
-# ./build_genie_gpvm.sh
+if [ -z "$NOVA_RELEASE" ];
+then
+	./build_genie_gpvm.sh
+fi
 
 ./build_nuwro_gpvm.sh
 
