@@ -16,12 +16,12 @@ fi
 
 ./build_nuwro_gpvm.sh
 
-./build_neut_gpvm.sh
+# ./build_neut_gpvm.sh
 
-./build_gibuu_gpvm.sh
+# ./build_gibuu_gpvm.sh
 
-./build_nuisance_GENIEv3_04_00_nuwro_neut_gpvm.sh
+# ./build_nuisance_GENIEv3_04_00_nuwro_neut_gpvm.sh
 
-./build_nuisance_GENIEv3_00_06_nuwro_neut_gpvm.sh
+# ./build_nuisance_GENIEv3_00_06_nuwro_neut_gpvm.sh
 
-./build_nuisance_GENIEv2_12_10_nuwro_neut_gpvm.sh
+# ./build_nuisance_GENIEv2_12_10_nuwro_neut_gpvm.sh
