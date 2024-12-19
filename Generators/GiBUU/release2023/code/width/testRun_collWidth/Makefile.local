@@ -1,3 +1,0 @@
-SUBDIREXCL :=
-FILEEXCL := 
-EXEFILE := testInMediumWidth.f90 testInMediumWidth_rho.f90

@@ -1,7 +1,0 @@
-! jobcard for rebinHistMC.f90
-
-&rebinHist
-  filename = "DileptonMass.dat"
-  nPoints = 4
-/ 
- 

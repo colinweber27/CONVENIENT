@@ -1,3 +1,0 @@
-SUBDIREXCL := 
-FILEEXCL := test_pi0eta.f90
-EXEFILE := test_pi0eta.f90

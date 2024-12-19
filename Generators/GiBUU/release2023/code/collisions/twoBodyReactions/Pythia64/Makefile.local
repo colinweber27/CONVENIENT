@@ -1,2 +1,0 @@
-SUBDIREXCL :=
-FILEEXCL := pyr.f pdfset.f structm.f structp.f

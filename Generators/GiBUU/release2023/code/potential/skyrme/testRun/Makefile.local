@@ -1,3 +1,0 @@
-SUBDIREXCL :=
-FILEEXCL :=
-EXEFILE:= skyrmePotential.f90 test_E_A.f90 plot_E_A.f90

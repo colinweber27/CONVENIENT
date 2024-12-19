@@ -1,3 +1,0 @@
-SUBDIREXCL := 
-FILEEXCL :=
-EXEFILE :=test_vrel.f90 test.f90

@@ -1,1 +1,0 @@
-/exp/nova/app/users/colweber/Convenient/Generators/GiBUU/release2023/code/init/lepton/formfactors_ResProd/helicityAmplitudes.f90

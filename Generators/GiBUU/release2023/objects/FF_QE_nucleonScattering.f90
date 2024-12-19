@@ -1,1 +1,0 @@
-/exp/nova/app/users/colweber/Convenient/Generators/GiBUU/release2023/code/init/lepton/formfactors_QE_nucleon/FF_QE_nucleonScattering.f90

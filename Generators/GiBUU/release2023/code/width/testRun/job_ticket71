@@ -1,9 +1,0 @@
-!*************************************************** -*- fortran -*-
-
-$input
-      path_To_Input = '~/buuinput'
-$end
-
-$initRandom
-      SEED=45678                ! Seed for the random number
-$end
