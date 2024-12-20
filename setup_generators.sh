@@ -19,10 +19,7 @@ then
 fi
 
 # NuWro
-export PYTHIA6=$PYTHIA6_LIBRARY
-export NUWRO=$CONVENIENT_GEN_DIR/nuwro
-export LD_LIBRARY_PATH=$CONVENIENT_GEN_BUILD_DIR/pythia6:$NUWRO/lib:$NUWRO/bin:$LD_LIBRARY_PATH
-export PATH=$NUWRO/bin:$PATH
+source $CONVENIENT_GEN_BUILD_DIR/nuwro_env.sh
 
 # NEUT
 source $CONVENIENT_GEN_DIR/neut/build/Linux/setup.sh

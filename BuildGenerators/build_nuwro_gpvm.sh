@@ -25,7 +25,7 @@ echo "Setting NuWro environment variables..."
 THIS_DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Export variables needed for running NuWro.
-export NUWROBASE="$(dirname $THIS_DIRECTORY)"/Generators/nuwro
+export NUWROBASE=$CONVENIENT_GEN_DIR/Generators/nuwro
 export PYTHIA6=$PYTHIA6_LIBRARY
 export NUWRO=$NUWROBASE
 export LD_LIBRARY_PATH=$CONVENIENT_GEN_BUILD_DIR/pythia6:$NUWRO/lib:$NUWRO/bin:$LD_LIBRARY_PATH
