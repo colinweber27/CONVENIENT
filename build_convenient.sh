@@ -9,4 +9,4 @@ cd BuildGenerators
 
 source build_generators_gpvm.sh
 
-cd ../
+cd $CONVENIENT_DIR
