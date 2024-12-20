@@ -14,7 +14,7 @@ then
 	./build_genie_gpvm.sh
 fi
 
-./build_nuwro_gpvm.sh
+source build_nuwro_gpvm.sh
 
 # ./build_neut_gpvm.sh
 
