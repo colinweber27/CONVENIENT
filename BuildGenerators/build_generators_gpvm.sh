@@ -19,7 +19,7 @@ then
 	source build_nuwro_gpvm.sh
 fi
 
-if [[ $neut_opt == "OFF" ]]
+if [[ $neut_opt == "ON" ]]
 then
 	source build_neut_gpvm.sh --USERNAME $github_username --TOKEN $github_NEUT_access_token
 fi

@@ -22,7 +22,7 @@ fi
 source $CONVENIENT_GEN_BUILD_DIR/nuwro_env.sh
 
 # NEUT
-source $CONVENIENT_GEN_DIR/neut/build/Linux/setup.sh
+source $CONVENIENT_GEN_BUILD_DIR/neut_env.sh
 
 # GiBUU
 export GiBUU=$CONVENIENT_DIR/GiBUU/GiBUU.x
