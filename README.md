@@ -10,14 +10,14 @@ To overcome these difficulties, I have developed Convenient. Convenient is best 
 # Setup
 ### Only needs to be done if you want to generate events
 CONVENIENT can be set up with the following commands:
-'''
+```
 git clone -b unbuilt-dev https://github.com/colinweber27/CONVENIENT.git
-'''
+```
 This command will ask you for your GitHub username that is associated with the Convenient repository. It will then prompt you to enter a personal access token.
-'''
+```
 cd CONVENIENT
 source build_convenient.sh
-'''
+```
 This command will ask you a series of questions about which generators you want to enable. Each prompt should be answered with either "ON" or "OFF". GENIE is enabled by default. If you want to enable NEUT, you will also be prompted to enter your GitHub username that is associated with NEUT, in addition to another personal access token. NUISANCE is set up automatically based on the generators enabled.
 
 # Step-by-step guide for generating events
