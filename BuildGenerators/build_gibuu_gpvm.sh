@@ -47,7 +47,6 @@ cd release
 make
 
 # Move the executable to Convenient/GiBUU
-mkdir -p $CONVENIENT_DIR/GiBUU
 mv testRun/GiBUU.x $CONVENIENT_DIR/GiBUU/GiBUU.x
 
 # Cd back into this directory and source the GiBUU environment.
