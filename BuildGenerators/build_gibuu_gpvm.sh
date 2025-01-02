@@ -20,7 +20,7 @@ echo "Setting GiBUU environment variables..."
 
 export GiBUU=$CONVENIENT_DIR/GiBUU/GiBUU.x
 
-export GiBUU_BUU_INPUT=$CONVENIENT_GENERATOR_DIR/GiBUU/buuinput
+export GiBUU_BUU_INPUT=$CONVENIENT_GEN_DIR/GiBUU/buuinput
 
 export GiBUU_VERSION=2023
 EOF
@@ -49,14 +49,6 @@ make
 # Move the executable to Convenient/GiBUU
 mkdir -p $CONVENIENT_DIR/GiBUU
 mv testRun/GiBUU.x $CONVENIENT_DIR/GiBUU/GiBUU.x
-
-# Export variables that are necessary for setting up GiBUU properly. These 
-# are not needed after GiBUU has been built.
-export GiBUU=$CONVENIENT_DIR/GiBUU/GiBUU.x
-
-export GiBUU_BUU_INPUT=$CONVENIENT_GENERATOR_DIR/GiBUU/buuinput
-
-export GiBUU_VERSION=2023
 
 # Cd back into this directory and source the GiBUU environment.
 cd $CONVENIENT_GEN_BUILD_DIR

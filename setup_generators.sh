@@ -25,9 +25,7 @@ source $CONVENIENT_GEN_BUILD_DIR/nuwro_env.sh
 source $CONVENIENT_GEN_BUILD_DIR/neut_env.sh
 
 # GiBUU
-export GiBUU=$CONVENIENT_DIR/GiBUU/GiBUU.x
-export GiBUU_BUU_INPUT=$CONVENIENT_GEN_DIR/GiBUU/buuinput
-export GiBUU_VERSION=2023
+source $CONVENIENT_GEN_BUILD_DIR/gibuu_env.sh
 
 # NUISANCE
 source $CONVENIENT_GEN_DIR/nuisance_GENIEv3_04_00_nuwro_neut/build/Linux/setup.sh
