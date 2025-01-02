@@ -27,13 +27,16 @@ THIS_DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Set the NUISANCE base directory and source the setup.sh script within the
 # base directory.
-export NUISANCEBASE="$(dirname $THIS_DIRECTORY)"/Generators/nuisance_GENIEv3_04_00_nuwro_neut
+export NUISANCEBASE=$CONVENIENT_GEN_DIR/nuisance_GENIEv3_04_00_nuwro_neut
 source $NUISANCEBASE/build/Linux/setup.sh
 EOF
 }
 
 # Ensure all the generators are set up.
 source $CONVENIENT_DIR/setup_generators.sh
+setup genie v3_04_00 -q e20:inclxx:prof
+setup genie_xsec v3_04_00 -q G2111a00000:e1000:k250
+setup genie_phyopt v3_04_00 -q dkcharmtau
 
 # Set the NUISANCE directory variable.
 export NUISANCE_DIR=$CONVENIENT_GEN_DIR/nuisance_GENIEv3_04_00_nuwro_neut
@@ -44,6 +47,9 @@ git clone https://github.com/NUISANCEMC/nuisance.git $NUISANCE_DIR
 # Write the environment script above, and cd into the NUISANCE directory.
 write_nuisance_GENIEv3_04_00_nuwro_neut_env_script
 cd $NUISANCE_DIR
+
+# Slightly adjust the GENIE environment variable
+GENIE=${GENIE%\/*}
 
 # Make the build directory, cd into it, and use cmake to write the install 
 # script.

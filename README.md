@@ -19,6 +19,10 @@ cd CONVENIENT
 source build_convenient.sh
 ```
 This command will ask you a series of questions about which generators you want to enable. Each prompt should be answered with either "ON" or "OFF". GENIE is enabled by default. If you want to enable NEUT, you will also be prompted to enter your GitHub username that is associated with NEUT, in addition to another personal access token. NUISANCE is set up automatically based on the generators enabled.
+```
+source setup_convenient.sh
+```
+This last command should be run each time Convenient is used from a new shell.
 
 # Step-by-step guide for generating events
 So you want to generate some neutrino nucleus interactions using a bunch of different tunes and configurations from a bunch of different generators? You've come to the right place.
