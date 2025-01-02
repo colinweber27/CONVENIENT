@@ -11,17 +11,26 @@
 # Build GENIE. Don't need to do if novasoft is set up
 if [ -z "$NOVA_RELEASE" ];
 then
-	./build_genie_gpvm.sh
+	source build_genie_gpvm.sh
 fi
 
-source build_nuwro_gpvm.sh
+if [[ $nuwro_opt == "ON" ]]
+then
+	source build_nuwro_gpvm.sh
+fi
 
-# ./build_neut_gpvm.sh
+if [[ $neut_opt == "OFF" ]]
+then
+	source build_neut_gpvm.sh --USERNAME $github_username --TOKEN $github_NEUT_access_token
+fi
 
-# ./build_gibuu_gpvm.sh
+if [[ $gibuu_opt == "ON" ]] 
+then
+	source build_gibuu_gpvm.sh
+fi
 
-# ./build_nuisance_GENIEv3_04_00_nuwro_neut_gpvm.sh
+source build_nuisance_GENIEv3_04_00_nuwro_neut_gpvm.sh --NuWro $nuwro_opt --NEUT $neut_opt
 
-# ./build_nuisance_GENIEv3_00_06_nuwro_neut_gpvm.sh
+source build_nuisance_GENIEv3_00_06_nuwro_neut_gpvm.sh --NuWro $nuwro_opt --NEUT $neut_opt
 
-# ./build_nuisance_GENIEv2_12_10_nuwro_neut_gpvm.sh
+source build_nuisance_GENIEv2_12_10_nuwro_neut_gpvm.sh --NuWro $nuwro_opt --NEUT $neut_opt
