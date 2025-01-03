@@ -50,8 +50,8 @@ CEVCT-MPV 2
 CEVCT-PV  0. 200.
 C
 EVCT-MPV 3
-EVCT-FILENM  '/exp/nova/app/users/colweber/Convenient/NEUT/beam_energies/flux_NuMI_RHC_DeriveFlux50MeVwidth_ppfx_numubar.root.numubar.root'
-EVCT-HISTNM  'numubar'
+EVCT-FILENM 'beam_energies/flux_NuMI_RHC_DeriveFlux50MeVwidth_ppfx_numubar.root.numubar.root'
+EVCT-HISTNM 'numubar'
 EVCT-INMEV 0
 C
 C

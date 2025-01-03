@@ -61,7 +61,7 @@
 	fi
 
 	# Assign the variable
-	neut_flux_file=$neut_root_beam_filepath
+	neut_flux_file=${neut_root_beam_filepath/"$PWD/"/}
 
 	# Modify the line holding the flux file variable by replacing the 
 	# current value with the new one
@@ -69,14 +69,14 @@
 	# use @ to be the delimiter (sed can work with any delimiter). We also 
 	# enclose the sed argument in double quotes, allowing us to include 
 	# single quotes in the replacement string.
-	sed -i "s@^EVCT-FILENM  .*@EVCT-FILENM  '"${neut_flux_file}"'@" $2
+	sed -i "s@^EVCT-FILENM .*@EVCT-FILENM  '"${neut_flux_file}"'@" $2
 
 # Set the flux histogram
 	# The histogram has already been read in as part of setting the flux
 	
 	# Modify the line holding the flus histogram variable by replacing the 
 	# current value with the new one
-	sed -i "s/^EVCT-HISTNM  .*/EVCT-HISTNM  '"${neut_original_flux_histo}"'/" $2
+	sed -i "s/^EVCT-HISTNM .*/EVCT-HISTNM  '"${neut_original_flux_histo}"'/" $2
 
 # Ensure the histograms are read in the correct units. The variable 
 # NEUT_INMEV is set in set_neut_variables.sh
