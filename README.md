@@ -11,7 +11,7 @@ To overcome these difficulties, I have developed Convenient. Convenient is best 
 ### Only needs to be done if you want to generate events
 CONVENIENT can be set up with the following commands:
 ```
-git clone -b unbuilt-dev https://github.com/colinweber27/CONVENIENT.git
+git clone -b unbuilt https://github.com/colinweber27/CONVENIENT.git
 ```
 This command will ask you for your GitHub username that is associated with the Convenient repository. It will then prompt you to enter a personal access token.
 ```
