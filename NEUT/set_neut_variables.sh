@@ -29,7 +29,7 @@ export NEUT_MPV=3
 # it, then export the variable RANFILE which should point to the random 
 # number file.
 touch random.txt # Create the file
-echo    -1290784521  387739155  23874124  39827  $seed >> random.txt 
+echo    -1290784521  387739155  23874124  39827  $2 >> random.txt 
 	# Direct the seed to the file. This is copied from the NEUT random 
 	# number file neut/src/neutgeo/random.tbl, but we're substituting the 
 	# last number for the seed.

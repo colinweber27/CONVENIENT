@@ -61,7 +61,7 @@
 	fi
 
 	# Assign the variable
-	neut_flux_file=$neut_root_beam_filepath
+	neut_flux_file=${neut_root_beam_filepath/"$PWD/"/}
 
 	# Modify the line holding the flux file variable by replacing the 
 	# current value with the new one

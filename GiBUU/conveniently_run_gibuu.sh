@@ -12,6 +12,8 @@
 # Read the inputs
 gibuu_config=$2
 gibuu_flux_file=$4
+gibuu_flux=${gibuu_flux_file%\/*}
+gibuu_flux=${gibuu_flux##*\/}
 gibuu_flux_histo=$6
 gibuu_seed=$8
 genie_target=${10}
@@ -134,6 +136,7 @@ else
 		# Convenient file, and run Convenient
 		convenient_elemental_output=${raw_gibuu_file/raw/convenient_output}
 		convenient_elemental_output=${convenient_elemental_output/dat/root}
+		convenient_elemental_output=GiBUU:$convenient_elemental_output
 		root -q "make_convenient_from_gibuu.C(\"${raw_gibuu_file}\", \"${gibuu_dat_flux_file}\", \"${NEUTRINO_PDG}\", \"${GIBUU_CC_NC}\", \"${protons}\", \"${nucleons}\", \"${convenient_elemental_output}\", \"1\")"
 		unweighted_convenient_outputs+="$convenient_elemental_output"
 		unweighted_convenient_outputs+=$'\n'
@@ -200,6 +203,9 @@ then
 		outdir=$CONVENIENT_OUTPUT_DIR/$filepath
 		mkdir -p $outdir
 		mv $unweighted_convenient_file $outdir/$unweighted_convenient_file
+		# Add to data list and write a .txt file
+		bash $CONVENIENT_DIR/documentation_generation_scripts/add_to_data_list.sh -g GiBUU -t $gibuu_config -f $unweighted_convenient_file --flux $gibuu_flux --nova_switch 0
+		bash $CONVENIENT_DIR/documentation_generation_scripts/create_output_txt_file.sh -l $outdir,$unweighted_convenient_file -n $N_EVENTS -h $HC -p $NEUTRINO_PDG -f $gibuu_flux_file,$gibuu_flux_histo -t $target -d $DATE -v $GiBUU_VERSION --seed $gibuu_seed	
 	done <<< $unweighted_convenient_outputs
 
 	# Reset the filepath

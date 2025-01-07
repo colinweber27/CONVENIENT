@@ -12,6 +12,8 @@
 # Read the inputs
 neut_config=$2
 neut_flux_file=$4
+neut_flux=${neut_flux_file%\/*}
+neut_flux=${neut_flux##*\/}
 neut_flux_histo=$6
 neut_seed=$8
 genie_target=${10}
@@ -200,6 +202,10 @@ then
 		outdir=$CONVENIENT_OUTPUT_DIR/$filepath
 		mkdir -p $outdir
 		mv $unweighted_convenient_file $outdir/$unweighted_convenient_file
+		# Add to data list and write a .txt file
+		bash $CONVENIENT_DIR/documentation_generation_scripts/add_to_data_list.sh -g NEUT -t $neut_config -f $unweighted_convenient_file --flux $neut_flux --nova_switch 0
+		bash $CONVENIENT_DIR/documentation_generation_scripts/create_output_txt_file.sh -l $outdir,$unweighted_convenient_file -n $N_EVENTS -h $HC -p $NEUTRINO_PDG -f $neut_flux_file,$neut_flux_histo -t $target -d $DATE -v $NEUT_VERSION --seed $neut_seed
+
 	done <<< $unweighted_convenient_outputs
 
 	# Reset the filepath
