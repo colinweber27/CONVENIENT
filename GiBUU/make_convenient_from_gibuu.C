@@ -298,7 +298,7 @@ void make_convenient_from_gibuu(
   	float E_nu;
 	int PDG_nu;
   	tree->Branch("Enu", &E_nu);
-	tree->Granch("PDGnu", &PDG_nu);
+	tree->Branch("PDGnu", &PDG_nu);
 
   	// Initialize the object that will hold the PDG code of the hit nucleus, 
   	// and point a branch to it.
