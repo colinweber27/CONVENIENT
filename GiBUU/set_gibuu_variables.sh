@@ -9,7 +9,7 @@ echo "Setting GiBUU variables..."
 
 # Set global parameters. These are included here because they don't change, 
 # regardless of other run parameters.
-export GiBUU_VERSION=R2025
+export GiBUU_VERSION=R2023_P3
 
 # The rest of the parameters ensures GiBUU will run as expected.
 # The parameters nuXsectionMode and nuExp tell GiBUU to use an input 
