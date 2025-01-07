@@ -22,7 +22,7 @@ export GiBUU=$CONVENIENT_DIR/GiBUU/GiBUU.x
 
 export GiBUU_BUU_INPUT=$CONVENIENT_GEN_DIR/GiBUU/buuinput
 
-export GiBUU_VERSION=2023
+export GiBUU_VERSION=2025
 EOF
 }
 
@@ -36,11 +36,11 @@ mkdir -p $GiBUU_DIR
 cd $GiBUU_DIR
 
 # Download and unpack GiBUU.
-wget --content-disposition https://gibuu.hepforge.org/downloads?f=release2023.tar.gz
-wget --content-disposition https://gibuu.hepforge.org/downloads?f=buuinput2023.tar.gz
+wget --content-disposition https://gibuu.hepforge.org/downloads?f=release2025.tar.gz
+wget --content-disposition https://gibuu.hepforge.org/downloads?f=buuinput2025.tar.gz
 
-tar -xzvf buuinput2023.tar.gz
-tar -xzvf release2023.tar.gz
+tar -xzvf buuinput2025.tar.gz
+tar -xzvf release2025.tar.gz
 
 # Cd into the release directory to build, then run make
 cd release
