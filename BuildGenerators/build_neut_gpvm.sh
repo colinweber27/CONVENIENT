@@ -7,7 +7,21 @@
 # open-source and is only available to those who are members of the private 
 # neut-devel organization on GitHub. I emailed Luke Pickering for access.
 
-# Command: ./build_neut_gpvm.sh
+# Command: source build_neut_gpvm.sh \
+#	[--USERNAME github_username] [--TOKEN github_NEUT_access_token]
+
+# Parameters
+#	USERNAME: The GitHub username associated with neut_dev
+#	TOKEN: A personal access token associated with USERNAME
+
+# Exports
+#	NEUT_DIR: The directory containing the source code for NEUT
+
+# Sources
+#	neut_env.sh: the environment variables necessary for running NEUT
+
+# Outputs
+#	neut_env.sh: the environment variables necessary for running NEUT
 
 #!/bin/bash
 

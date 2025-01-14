@@ -3,7 +3,17 @@
 # Purpose: To build GiBUU within Convenient. This file is written in the 
 # style of build_genie_gpvm.sh.
 
-# Command ./build_gibuu_gpvm.sh
+# Command source build_gibuu_gpvm.sh
+
+# Exports
+#	GiBUU_DIR:	the directory containing the GiBUU source code
+
+# Sources
+#	gibuu_env.sh: the environment variables necessary for running GiBUU
+
+# Outputs
+#	gibuu_env.sh: the environment variables necessary for running GiBUU
+
 
 #!/bin/bash
 

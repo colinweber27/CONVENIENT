@@ -3,7 +3,25 @@
 # Purpose: To build NuWro within Convenient. This file is written in the 
 # style of build_genie_gpvm.sh.
 
-# Command ./build_nuwro_gpvm.sh
+# Command source build_nuwro_gpvm.sh
+
+# Exports
+#	NUWRO_DIR: 			The directory containing the source code for NuWro
+#	PATH: 				Adds $ROOTSYS/bin to PATH. Needed for NuWro to be 
+#						built.
+#	LD_LIBRARY_PATH: 	Adds $ROOTSYS/lib tp :D_LIBRARY_PATH. Needed for 
+#						NuWro to be built
+# 	PYTHIA6: 			Tells NuWro where to look for Pythia6. This location 
+#						is set by setup_nova
+#	LIBRARY_PATH:		Adds $PYTHIA6 to LIBRARY_PATH. Needed for NuWro to 
+#						be built
+
+# Sources
+#	nuwro_env.sh: environment variables necessary for running NuWro.
+
+# Outputs
+#	nuwro_env.sh: environment variables necessary for running NuWro.
+
 
 #!/bin/bash
 
