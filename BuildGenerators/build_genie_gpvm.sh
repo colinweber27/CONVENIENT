@@ -9,8 +9,25 @@
 # using this script, but instead uses the GENIE available in novasoft. As 
 # such, this is very much a work in progress.
 
-# Command: ./build_genie_gpvm.sh \
-#	[-v version] [-R release]
+# Command: source build_genie_gpvm.sh \
+#	[-b branch_name] [-R release]
+
+# Parameters
+#	branch_name: 	an arbitrary name for the new local GENIE branch created 
+#					by this script
+#	release:		The GENIE release to checkout. Options can be found at
+#					https://github.com/GENIE-MC/Generator/tags
+
+# Exports
+#	GENIE_DIR: the root GENIE directory in CONVENIENT/Generators
+
+# Sources
+#	genie_env.sh: environment variables needed for running GENIE
+#	Generators/genie/Generator/do_configure.sh: runs GENIE's config function
+
+# Outputs
+#	genie_env.sh: environment variables needed for running GENIE
+#	Generators/genie/Generator/do_configure.sh: runs GENIE's config function
 
 
 #!/bin/bash
@@ -26,16 +43,10 @@ source $CONVENIENT_DIR/build/global_vars.sh
 
 echo "Setting GENIE environment variables..."
 
-# Finds the directory where this script is located. This method isn't
-# foolproof. See https://stackoverflow.com/a/246128/4081973 if you need
-# something more robust for edge cases (e.g., you're calling the script using
-# symlinks).
-THIS_DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 # Export all variables needed to run GENIE. Most of these are the locations 
 # of executables for different dependencies. The last two add GENIE to 
 # PATH.
-export GENIEBASE="$(dirname $THIS_DIRECTORY)"/Generators/genie
+export GENIEBASE=$CONVENIENT_GEN_DIR/genie
 export GENIE=$GENIEBASE/Generator
 export PYTHIA6=$PYTHIA_FQ_DIR/lib
 export LHAPDF5_INC=$LHAPDF_INC
@@ -53,7 +64,7 @@ cat > ./do_configure.sh << 'EOF'
 #!/bin/bash
 
 # Source the environment variables using the previously written script.
-source ../../../build/BuildGenerators/genie_env.sh
+source $CONVENIENT_GEN_BUILD_DIR/genie_env.sh
 
 # Config
 ./configure \
