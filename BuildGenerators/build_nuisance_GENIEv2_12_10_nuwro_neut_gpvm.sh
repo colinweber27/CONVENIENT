@@ -8,7 +8,7 @@
 
 # Write a script holding all the environment variables, such that sourcing 
 # this script properly sets up the NUISANCE environment.
-write_nuisance_GENIEv2_12_10_script() {
+write_nuisance_GENIEv2_12_10_env_script() {
 cat > ./nuisance_GENIEv2_12_10_env.sh << 'EOF'
 #!/bin/bash
 
