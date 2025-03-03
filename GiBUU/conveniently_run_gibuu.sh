@@ -186,7 +186,7 @@ then
 	while IFS= read -r unweighted_convenient_file
 	do
 		# Get the PDG from the filename
-		pdg_from_filename=${unweighted_convenient_file/$filename/}
+		pdg_from_filename=${unweighted_convenient_file/GiBUU:$filename/}
 		pdg_from_filename=${pdg_from_filename/.convenient_output.root./}
 		pdg_from_filename=${pdg_from_filename/.root/}
 

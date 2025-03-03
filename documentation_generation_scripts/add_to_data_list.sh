@@ -78,7 +78,12 @@ place_alphabetically() {
 				then
 					string_line=$(($l0 + 1))
 				else
-					string_line=$l1
+					if [[ $str_type == "file" ]]
+					then
+						string_line=$((l1 - 1))
+					else
+						string_line=$l1
+					fi
 				fi
 				last_line=$l1
 				after=false
@@ -133,12 +138,11 @@ place_alphabetically() {
 				then
 					last_line=$l1
 					after=false
-					continue
 				# If we're not at the end of the list, get the line of the 
 				# next item
 				else
 					next_item=${array[$((i+1))]}
-					last_line="$(sed -n "$string_line","$l1"p $output | grep -w -x -n "$next_item" | cut -d : -f 1)"
+					last_line="$(sed -n "$l0","$l1"p $output | grep -w -x -n "$next_item" | cut -d : -f 1)"
 					last_line=$(($last_line - 1 + $l0))
 					after=false
 				fi
@@ -163,7 +167,7 @@ generator_tune_string=$generator:$tune_params
 flux_string="_Flux:$HC$flux_folder"
 if [ $generator == "GiBUU" ];
 then
-	flavor_string="__$FLAVOR""$GiBUU_CC_NC""_only"
+	flavor_string="__$FLAVOR""$GIBUU_CC_NC""_only"
 else
 	flavor_string="__$FLAVOR""_only"
 fi
@@ -175,18 +179,18 @@ file_string="____$datalist_filename"
 # applied.
 if [ $ND_switch -eq 1 ];
 then
-	output_file=ConvenientOutputs_NOvAList.txt
+	output_file=$CONVENIENT_DIR/ConvenientOutputs_NOvAList.txt
 else
-	output_file=ConvenientOutputsList.txt
+	output_file=$CONVENIENT_DIR/ConvenientOutputsList.txt
 	# In this case, also get the element from the filename
 	pdg_from_filename=${datalist_filename##*\.root\.}
 	pdg_from_filename=${pdg_from_filename/\.root/}
 	target=$(awk -v key=${pdg_from_filename} '$1==key { print $2 }' ${CONVENIENT_TAR_DIR}/NOvA_ND/PDG_element_lookup_table.txt)
-	target_string="___$target"
+	target_string="___Target:$target"
 fi
 
 # Get the number of lines in the output file
-n_lines=$(wc -l $output_file)
+n_lines=$(wc -l < $output_file)
 
 # Place each line accordingly
 # Generator:tune line
@@ -207,7 +211,7 @@ flavor_limit_line=$(echo "$flavor_output" | awk '{print $2}')
 # Target line if necessary
 if [ $ND_switch -eq 0 ]
 then
-	target_output=$(place_alphabetically target $target_string $flavor_line $flavor_limit_line $output_file)
+	target_output=$(place_alphabetically "target" $target_string $flavor_line $flavor_limit_line $output_file)
 	flavor_line=$(echo "$target_output" | awk '{print $1}')
 	flavor_limit_line=$(echo "$target_output" | awk '{print $2}')
 fi
@@ -241,7 +245,7 @@ then
 	# Insert the new flavor at the appropriate line
 	sed -i "$num_string_line i $num_string" \
 		$output_file
-	last_num_line=$(($last_num_line + 2))
+	last_num_line=$(($last_num_line + 1))
 # If we already have numbers in the list, we just add the two together.
 else
 	# Get the old number
@@ -267,7 +271,6 @@ else
 	done
 	num_string="___${num:0:1}.${num:1}e$digits"
 	sed -i "$num_string_line s/.*/$num_string/" $output_file
-	last_num_line=$(($last_num_line + 2))
 fi
 
 # Finally, add the files themselves alphabetically

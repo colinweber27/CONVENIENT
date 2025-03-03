@@ -315,11 +315,14 @@ ____GENIE:N18_10j_02_11a-resfixfix.2.RHC.2m.numubar.convenient_output.root
 GiBUU:Defaultparams.job
 _Flux:FHCDeriveFlux50MeVwidth_ppfx
 __numuCC_only
-___1.e6
-____GiBUU:Defaultparams.job.2.FHC.250000.numuCC.convenient_output.root
+___1.75e6
 ____GiBUU:Defaultparams.job.3.FHC.250000.numuCC.convenient_output.root
 ____GiBUU:Defaultparams.job.4.FHC.250000.numuCC.convenient_output.root
 ____GiBUU:Defaultparams.job.5.FHC.250000.numuCC.convenient_output.root
+____GiBUU:Defaultparams.job.6.FHC.250000.numuCC.convenient_output.root
+____GiBUU:Defaultparams.job.7.FHC.250000.numuCC.convenient_output.root
+____GiBUU:Defaultparams.job.8.FHC.250000.numuCC.convenient_output.root
+____GiBUU:Defaultparams.job.9.FHC.250000.numuCC.convenient_output.root
 
 _Flux:RHCDeriveFlux50MeVwidth_ppfx
 __numubarCC_only
