@@ -30,8 +30,11 @@
 #include "TParticlePDG.h"
 #include "TDatabasePDG.h"
 #include "TVector3.h"
+#include "TColor.h"
 
 // C++ includes
+#include <cmath>
+#include <math.h>
 #include <vector>
 #include <iostream>
 #include <tuple>
@@ -203,14 +206,17 @@ void xsec_analysis_macro() {
 	// The following line does not need to be changed.
 	int n_gens = sizeof(file_list) / sizeof(file_list[0]);
 
-	// This section does not need to be changed
+	// This section does need to be changed
 	// Initialize a vector to push the generated xsec histograms to.
 	// Since all ROOT histogram classes are derived from TH1, we initialize 
 	// the vector to hold TH1*.
 	// We also set the Add Directory option to be false so that each new 
 	// pointer points to a unique histogram.
 	TH1::AddDirectory(kFALSE);
-	TH3* histo_vec[n_gens];
+	std::vector<std::tuple<TH1D*, std::string>> 1D_PiTheta_histo_vec;
+	std::vector<std::tuple<TH1D*, std::string>> 1D_Enu_histo_vec;
+	std::vector<std::tuple<TH2D*, std::string>> 2D_histo_vec;
+	std::vector<std::tuple<TH3D*, std::string>> 3D_histo_vec;
 
 	// This section, Set Binning, is very analysis-dependent and may have 
 	// to be heavily modified.
@@ -232,37 +238,61 @@ void xsec_analysis_macro() {
 	// This example demonstrates how to set the data binning for a triple-
 	// differential analysis in which we want variable binning and the bin 
 	// edges are known from a previous analysis.
-	float PiTheta_binning[] = {-1.0, 0.5, 0.74, 0.80, 0.85, 0.88, 0.91, \
-		0.94, 0.96, 0.98, 0.99, 1.0};
-	double Enu_binning[] = {-10.0, 0.0, 0.50, 0.75, 1.0, 1.25, 1.50, 1.75, \
-		2.0, 2.50, 3.0, 4.0, 120.0};
-	float Eavail_binning[] = {0.0, 0.10, 0.30, 0.60, 1.0, 2.0, 120.0};
-	int PiTheta_nbins = sizeof(PiTheta_binning) / \
-		sizeof(PiTheta_binning[0]) - 1;
-	int Enu_nbins = sizeof(Enu_binning)/sizeof(Enu_binning[0]) - 1;
-	int Eavail_nbins = sizeof(Eavail_binning)/sizeof(Eavail_binning[0]) - 1;
+	std::vector<float> PiTheta_binning = {-1.0, 0.5, 0.74, 0.80, 0.85, \
+		0.88, 0.91, 0.94, 0.96, 0.98, 0.99, 1.0};
+	std::vector<double> Enu_binning = {-10.0, 0.0, 0.50, 0.75, 1.0, 1.25, \
+		1.50, 1.75, 2.0, 2.50, 3.0, 4.0, 120.0};
+	std::vector<float> Eavail_binning = {0.0, 0.10, 0.30, 0.60, 1.0, 2.0, \
+		120.0};
+	int PiTheta_nbins = PiTheta_binning.size();
+	int Enu_nbins = Enu_binning.size();
+	int Eavail_nbins = Eavail_binning.size();
 	// It is also often useful to have the ranges we will plot within, since 
 	// we will often not plot the overflow bins.
-	const float PiTheta_range[2] = {0.5, 1.0};
-	const float Enu_range[2] = {0.0, 4.0};
-	const float Eavail_range[2] = {0.0, 2.0};
+	float PiTheta_range[2] = {0.5, 1.0};
+	double Enu_range[2] = {0.0, 4.0};
+	float Eavail_range[2] = {0.0, 2.0};
 
 	// Loop over the MC files and fill the histograms.
 	for(int gen_index = 0; gen_index < n_gen; gen_index++) {
-		std::vector<std::tuple<const std::string, TFile*, double>> gen_file_list = file_list[gen_index];
+		// Get the vector of files for a generator
+		std::vector<std::tuple<std::string, TFile*, double>> gen_file_list = file_list[gen_index];
+		// Get the generator
 		std::string alias = std::get<0>(gen_file_list[0]);
-		// Initialize a histogram to hold the cross section
-		// Ex: 3D differetial
-		// TH3D* h3 = new TH3D(("h3" + alias).c_str(), \
-			"E_{#nu}, leading #pi^{+} angle, E_ xsec", Enu_nbins, \
-			Enu_binning, PiTheta_nbins, PiTheta_binning, Eavail_nbins, \
-			Eavail_binning);
-
-		// Loop over the files in the generator file list
+		// Get the number of files for that generator
 		int n_files = gen_file_list.size();
+		// Initialize objects to hold the file and histograms from each file
+		TFile* files[n_files];
+		TH1D* h1_PiTheta_tmp[n_files];
+		TH1D* h1_Enu_tmp[n_files];
+		TH2D* h2_tmp[n_files];
+		TH3D* h3_tmp[n_files];
+
+		// Initialize each histogram in the array
+		for(int i = 0; i < n_files; i++) {
+			h1_PiTheta_tmp[i] = new TH1D(\
+				Form("h1_%s_PiTheta_%i", alias.c_str(), i), \
+				Form("%s_PiTheta_%i", alias.c_str(), i), PiTheta_nbins, \
+				&PiTheta_binning[0]);
+			h1_Enu_tmp[i] = new TH1D(\
+				Form("h1_%s_Enu_%i", alias.c_str(), i), \
+				Form("%s_Enu_%i", alias.c_str(), i), Enu_nbins, \
+				&Enu_binning[0]);
+			h2_tmp[i] = new TH2D(\
+				Form("h2_%s_%i", alias.c_str(), i), \
+				Form("h2_%s_%i", alias.c_str(), i), Enu_nbins, \
+				&Enu_binning[0], PiTheta_nbins, &PiTheta_binning[0]);
+			h3_tmp[i] = new TH3D(\
+				Form("h3_%s_%i", alias.c_str(), i), \
+				Form("h3_%s_%i", alias.c_str(), i), Enu_nbins, \
+				&Enu_binning[0], PiTheta_nbins, &PiTheta_binning[0], \
+				Eavail_nbins, &Eavail_binning[0]);
+		}
+		
+	// Loop over the files in the generator file list
 	for(int file_index = 0; file_index < n_files; file_index++) {
 		// Get the file and file alias. Don't change this.
-		TFile* file = std::get<1>(gen_file_list[file_index]);
+		files[file_index] = std::get<1>(gen_file_list[file_index]);
 
 		// Declare a TTreeReader to help read the tree. We get the file from 
 		// the pair using the .second function. Don't change this.
@@ -327,6 +357,22 @@ void xsec_analysis_macro() {
 				"GenScaleFactor");
 			TTreeReaderValue<double> event_weight(reader, \
 				"EventWeight");
+
+			// Convenient keeps info on the underlying interaction type. For 
+			// GENIE, NuWro, and NEUT, this info is copied from NUISANCE and 
+			// stored in the branch "NEUT_int_type". For GiBUU, we keep the 
+			// original GiBUU code and store it in the branch "Mode". The 
+			// GiBUU code dictionary is at 
+			// https://gibuu.hepforge.org/trac/wiki/LesHouches. 
+			std::string int_type_tree_name;
+			if(alias.substr(0, 5) == "GiBUU") {
+				int_type_tree_name = "Mode"; 
+			}
+			else {
+				int_type_tree_name = "NEUT_int_type";
+			}
+			TTreeReaderValue<int> int_type(reader, \
+				int_type_tree_name.c_str());	
 
 		// The rest of this macro is broken down into a section for single-, 
 		// double-, and triple-differential cross section calculations. 
@@ -401,23 +447,31 @@ void xsec_analysis_macro() {
 				if(*n_pips > 0) {
 					float pip_E = pips[0][0];
 					if(phaseSpaceCut(pip_E)) {	
-						h1->Fill(calcTheta(pips[0], \
+						h1_PiTheta_tmp[file_index]->Fill(calcTheta(pips[0], \
 							*genscalefactor * *event_weight * \
 							file_scale_factor);
-					}
-				}
-			}
-		} // Move on to the next file
-		// Divide by bin width
-		for(int i = 1; i <= h1->GetXaxis()->GetNbins(); i++) {
-			h1->SetBinContent(i, h1->GetBinContent(i) / \
-			h1->GetXaxis()->GetBinWidth(i));
-		}
+					} // Brace for satisfying phase space cut
+				} // Brace for satisfying n pion > 0
+			} // Brace for satisfying numuCC
+		} // Brace for looping through events
+	} // Brace for looping through files
+	// Sum up all the histograms in the histo vector
+	TH1D* h1_PiTheta = new TH1D(\
+		Form("h1_%s_PiTheta", alias.c_str()), \
+		Form("%s_PiTheta", alias.c_str()), PiTheta_nbins, \
+		&PiTheta_binning[0])
+	for(int i = 0; i < n_files; i++) {
+		h1_PiTheta->Add(h1_PiTheta_tmp[i]);
+	}
+	// Divide by bin width
+	for(int i = 1; i <= h1_PiTheta->GetXaxis()->GetNbins(); i++) {
+		h1_PiTheta->SetBinContent(i, h1_PiTheta->GetBinContent(i) / \
+		h1_PiTheta->GetXaxis()->GetBinWidth(i));
+	}
 
-		// Append histogram to the vector
-		histo_vec[file_index] = h1;
-		} // Move on to the next generator
-	}*/
+	// Append histogram to the vector
+	1D_PiTheta_histo_vec.push_back(std::make_tuple(h1_PiTheta, alias));
+	} // Brace for generator loop */
 
 		// Single differential, flux-averaged cross section in Enu //
 		
@@ -451,49 +505,55 @@ void xsec_analysis_macro() {
 				if(*n_pips > 0) {
 					float pip_E = pips[0][0];
 					if(phaseSpaceCut(pip_E)) {	
-						h1->Fill(*nu_in_E, \
+						h1_Enu_tmp[file_index]->Fill(*nu_in_E, \
 							*genscalefactor * *event_weight * \
 							file_scale_factor);
-					}
-				}
-			}
-		} // Move on to the next file
-		// Divide out flux on a bin-by-bin basis
-		// 1. Extract flux from the CONVENIENT output (the "generator 
-		// flux"), rename, and get nbins
-		TH1D* gen_flux = (TH1D*) file.second->Get("FlatTree_FLUX");
-		gen_flux->SetName("generator_flux" + alias);
-		int gen_flux_nbins = gen_flux->GetNbinsX();
+					} // Brace for phase space cut
+				} // Brace for n_pi > 0 cut
+			} // Brace for numuCC cut
+		} // Brace for event loop
+	} Brace for file loop within a generator
+	// Sum up all the histograms in the histo vector
+	TH1D* h1_Enu = new TH1D(\
+		("h1" + alias + "_Enu").c_str(), (alias + "_Enu").c_str(), \
+		Enu_nbins, &Enu_binning[0]);
+	for(int i = 0; i < n_files; i++) {
+		h1_Enu->Add(h1_Enu_tmp[i]);
+	}
+	// Divide out flux on a bin-by-bin basis
+	// 1. Extract flux from the CONVENIENT output (the "generator 
+	// flux"), rename, and get nbins
+	TH1D* gen_flux = (TH1D*) files[0]->Get("FlatTree_FLUX");
+	gen_flux->SetName(Form("generator_flux_%s", alias.c_str()));
+	int gen_flux_nbins = gen_flux->GetNbinsX();
 
-		// 2. Calculate the integrated generator flux, and scale the 
-		// histogram by the integrated generator flux. 
-		double gen_flux_int = gen_flux->Integral();
-		h1->Scale(gen_flux_int);
+	// 2. Calculate the integrated generator flux, and scale the 
+	// histogram by the integrated generator flux. 
+	double gen_flux_int = gen_flux->Integral();
+	h1_Enu->Scale(gen_flux_int);
 
-		// 3. Get the "signal flux". This is the generator flux rebinned 
-		// according to the Enu binning.
-		TH1D* sig_flux = new TH1D("sig_flux_" + alias, "sig_flux", \
-			Enu_nbins, Enu_binning);
-		for(int i = 1; i <= ge_flux_nbins; i++) {
-			sig_flux->Fill(gen_flux->GetBinCenter(i), \
-				gen_flux->GetBinContent(i));
-		}
+	// 3. Get the "signal flux". This is the generator flux rebinned 
+	// according to the Enu binning.
+	TH1D* sig_flux = new TH1D("sig_flux_" + alias, "sig_flux", \
+		Enu_nbins, &Enu_binning[0]);
+	for(int i = 1; i <= gen_flux_nbins; i++) {
+		sig_flux->Fill(gen_flux->GetBinCenter(i), \
+			gen_flux->GetBinContent(i));
+	}
 		
-		// 4. Divide out flux on a bin-by-bin basis
-		h1->Divide(sig_flux);
+	// 4. Divide out flux on a bin-by-bin basis
+	h1_Enu->Divide(sig_flux);
 
-		// 5. For single differential cross sections in Enu, we also 
-		// typically divide by the neutrino energy
-		for(int i = 1; i <= h1->GetXaxis()->GetNbins(); i++) {
-			h1->SetBinContent(i, h1->GetBinContent(i) / \
-			h1->GetXaxis()->GetBinCenter(i));
-		}
+	// 5. For single differential cross sections in Enu, we also 
+	// typically divide by the neutrino energy
+	for(int i = 1; i <= h1_Enu->GetXaxis()->GetNbins(); i++) {
+		h1_Enu->SetBinContent(i, h1_Enu->GetBinContent(i) / \
+			h1_Enu->GetXaxis()->GetBinCenter(i));
+	}
 
-		// Append histogram to the vector
-		histo_vec[file_index] = h1;
-		} // Move on to the next generator
-	}*/
-
+	// Append histogram to the vector
+	1D_Enu_histo_vec.push_back(std::make_tuple(h1_Enu, alias));
+	} // Move on to the next generator */
 		
 		// Double-differential, flux-averaged cross sections //
 	
@@ -527,67 +587,75 @@ void xsec_analysis_macro() {
 					float pip_E = pips[0][0];
 					if(phaseSpaceCut(pip_E)) {
 						float PiTheta = calcTheta(pips[0]);		
-						h2->Fill(*nu_in_E, PiTheta, \
+						h2_tmp[file_index]->Fill(*nu_in_E, PiTheta, \
 							*genscalefactor * *event_weight * \
 							file_scale_factor);
-					}
-				}
-			}
-		} // Move on to the next file
-		// Divide out flux on a bin-by-bin basis along the Enu axis
-		// 1. Extract flux from the CONVENIENT output (the "generator 
-		// flux"), rename, and get nbins
-		TH1D* gen_flux = (TH1D*) file.second->Get("FlatTree_FLUX");
-		gen_flux->SetName("generator_flux" + file.first);
-		int gen_flux_nbins = gen_flux->GetNbinsX();
+					} // Brace for phase space cut
+				} // Brace for n_pi > 0
+			} // Brace for numuCC
+		} // Brace for event loop
+	} Brace for looping over files
 
-		// 2. Calculate the integrated generator flux, and scale the 
-		// histogram by the integrated generator flux. 
-		double gen_flux_int = gen_flux->Integral();
-		h2->Scale(gen_flux_int);
-
-		// 3. Get the "signal flux". This is the generator flux rebinned 
-		// according to the Enu binning.
-		TH1D* sig_flux = new TH1D("sig_flux", "sig_flux", Enu_nbins, \
-			Enu_binning);
-		for(int i = 1; i <= gen_flux_nbins; i++) {
-			sig_flux->Fill(gen_flux->GetBinCenter(i), \
-				gen_flux->GetBinContent(i));
-		}
+	// Sum up all the histograms in the histo vector
+	TH2D* h2 = new TH2D(\
+		Form("h2_%s", alias.c_str()), Form("h2_%s", alias.c_str()), \
+		Enu_nbins, &Enu_binning[0], PiTheta_nbins, &PiTheta_binning[0]);
+	for(int i = 0; i < n_files; i++) {
+		h2->Add(h2_tmp[i]);
+	}
 		
-		// 4. Divide out flux on a bin-by-bin basis
-		for(int i = 1; i <= h2->GetXaxis()->GetNbins(); i++) {
-			float sig_flux_bin_content = sig_flux->GetBinContent(i);
-			for(int j = 1; j <= h2->GetYaxis()->GetNbins(); j++) {
-				h2->SetBinContent(i, j, h2->GetBinContent(i, j) / \
+	// Divide out flux on a bin-by-bin basis along the Enu axis
+	// 1. Extract flux from the CONVENIENT output (the "generator 
+	// flux"), rename, and get nbins
+	TH1D* gen_flux = (TH1D*) files[0]->Get("FlatTree_FLUX");
+	gen_flux->SetName(Form("generator_flux_%s", alias.c_str()));
+	int gen_flux_nbins = gen_flux->GetNbinsX();
+
+	// 2. Calculate the integrated generator flux, and scale the 
+	// histogram by the integrated generator flux. 
+	double gen_flux_int = gen_flux->Integral();
+	h2->Scale(gen_flux_int);
+
+	// 3. Get the "signal flux". This is the generator flux rebinned 
+	// according to the Enu binning.
+	TH1D* sig_flux = new TH1D("sig_flux", "sig_flux", Enu_nbins, \
+		&Enu_binning[0]);
+	for(int i = 1; i <= gen_flux_nbins; i++) {
+		sig_flux->Fill(gen_flux->GetBinCenter(i), \
+			gen_flux->GetBinContent(i));
+	}
+		
+	// 4. Divide out flux on a bin-by-bin basis
+	for(int i = 1; i <= h2->GetXaxis()->GetNbins(); i++) {
+		float sig_flux_bin_content = sig_flux->GetBinContent(i);
+		for(int j = 1; j <= h2->GetYaxis()->GetNbins(); j++) {
+			h2->SetBinContent(i, j, h2->GetBinContent(i, j) / \
 				sig_flux_bin_content);
-			}
 		}
+	}
 
-		// 5. This is typically where we would scale by the neutrino energy, 
-		// but since this is a double-differential measurement we will 
-		// instead divide all bins by their bin areas, and not divide by 
-		// energy. The result this example will give is therefore 
-		// unconventional. Moreover, the variables used would never be 
-		// paired together (Enu isn't even measured directly, for one). 
-		// Nevertheless, they illustrate how to use Convenient well. 
+	// 5. This is typically where we would scale by the neutrino energy, 
+	// but since this is a double-differential measurement we will 
+	// instead divide all bins by their bin areas, and not divide by 
+	// energy. The result this example will give is therefore 
+	// unconventional. Moreover, the variables used would never be 
+	// paired together (Enu isn't even measured directly, for one). 
+	// Nevertheless, they illustrate how to use Convenient well. 
 
-		// Divide histograms by their bin widths to get differential cross 
-		// sections
-		for(int i = 1; i <= h2->GetXaxis()->GetNbins(); i++) {
-			for(int j = 1; j <= h2->GetYaxis()->GetNbins(); j++) {
-				h2->SetBinContent(i, j, h2->GetBinContent(i, j) / \
-				h2->GetXaxis()->GetBinWidth(i) / \
-				h2->GetYaxis()->GetBinWidth(j));
-			}
+	// Divide histograms by their bin widths to get differential cross 
+	// sections
+	for(int i = 1; i <= h2->GetXaxis()->GetNbins(); i++) {
+		for(int j = 1; j <= h2->GetYaxis()->GetNbins(); j++) {
+			h2->SetBinContent(i, j, h2->GetBinContent(i, j) / \
+			h2->GetXaxis()->GetBinWidth(i) / \
+			h2->GetYaxis()->GetBinWidth(j));
 		}
+	}
 
 		// Append the histogram to the vector
-		histo_vec[file] = h2;
-		} // Move on to the next generator
-	}*/
-
-		
+	h2_histo_vec.push_back(std::make_tuple(h2, alias));
+	} // Move on to the next generator */
+			
 		// Triple-differential, flux-averaged cross sections //
 
 		// Assumes we have delcared a histogram h3
@@ -674,70 +742,80 @@ void xsec_analysis_macro() {
 								others[i][1], others[i][2], others[i][3]};
 							Eav += addtoEavail(particle, others[i][4]);
 						}							
-						h3->Fill(*nu_in_E, PiTheta, Eav, \
+						h3_tmp[file_index]->Fill(*nu_in_E, PiTheta, Eav, \
 							*genscalefactor * *event_weight * \
 							file_scale_factor);
-					}
-				}
-			}
-		} // Move on to the next file
-		// Divide out flux on a bin-by-bin basis along the Enu axis
-		// 1. Extract flux from the CONVENIENT output (the "generator 
-		// flux"), rename, and get nbins
-		TH1D* gen_flux = (TH1D*) file.second->Get("FlatTree_FLUX");
-		gen_flux->SetName("generator_flux" + file.first);
-		int gen_flux_nbins = gen_flux->GetNbinsX();
+					} // Brace for phase space cut
+				} // Brace for n_pi < 0 cut
+			} // Brace for numuCC cut
+		} // Brace for looping over events
+	} // Brace for looping over files
+	// Sum up all the histograms in the histo vector
+	TH3D* h3 = new TH3D(\
+		Form("h3_%s_%i", alias.c_str(), i), \
+		Form("h3_%s_%i", alias.c_str(), i), Enu_nbins, \
+		&Enu_binning[0], PiTheta_nbins, &PiTheta_binning[0], \
+		Eavail_nbins, &Eavail_binning[0]);
+	for(int i = 0; i < n_files; i++) {
+		h3->Add(h3_tmp[i]);
+	}
 
-		// 2. Calculate the integrated generator flux, and scale the 
-		// histogram by the integrated generator flux. 
-		double gen_flux_int = gen_flux->Integral();
-		h2->Scale(gen_flux_int);
+	// Divide out flux on a bin-by-bin basis along the Enu axis
+	// 1. Extract flux from the CONVENIENT output (the "generator 
+	// flux"), rename, and get nbins
+	TH1D* gen_flux = (TH1D*) files[0]->Get("FlatTree_FLUX");
+	gen_flux->SetName(Form("generator_flux_%s", alias.c_str()));
+	int gen_flux_nbins = gen_flux->GetNbinsX();
 
-		// 3. Get the "signal flux". This is the generator flux rebinned 
-		// according to the Enu binning.
-		TH1D* sig_flux = new TH1D("sig_flux", "sig_flux", Enu_nbins, \
-			Enu_binning);
-		for(int i = 1; i <= ge_flux_nbins; i++) {
-			sig_flux->Fill(gen_flux->GetBinCenter(i), \
-				gen_flux->GetBinContent(i));
-		}
+	// 2. Calculate the integrated generator flux, and scale the 
+	// histogram by the integrated generator flux. 
+	double gen_flux_int = gen_flux->Integral();
+	h3->Scale(gen_flux_int);
+
+	// 3. Get the "signal flux". This is the generator flux rebinned 
+	// according to the Enu binning.
+	TH1D* sig_flux = new TH1D("sig_flux", "sig_flux", Enu_nbins, \
+		&Enu_binning[0]);
+	for(int i = 1; i <= gen_flux_nbins; i++) {
+		sig_flux->Fill(gen_flux->GetBinCenter(i), \
+			gen_flux->GetBinContent(i));
+	}
 		
-		// 4. Divide out flux on a bin-by-bin basis
-		for(int i = 1; i <= h3->GetXaxis()->GetNbins(); i++) {
-			float sig_flux_bin_content = sig_flux->GetBinContent(i);
-			for(int j = 1; j <= h3->GetYaxis()->GetNbins(); j++) {
-				for(int k = 1; k <= h3->GetZaxis()->GetNbins(); k++) {
-					h3->SetBinContent(i, j, k, h3->GetBinContent(i, j, k) / \
-					sig_flux_bin_content);
-				}
+	// 4. Divide out flux on a bin-by-bin basis
+	for(int i = 1; i <= h3->GetXaxis()->GetNbins(); i++) {
+		float sig_flux_bin_content = sig_flux->GetBinContent(i);
+		for(int j = 1; j <= h3->GetYaxis()->GetNbins(); j++) {
+			for(int k = 1; k <= h3->GetZaxis()->GetNbins(); k++) {
+				h3->SetBinContent(i, j, k, h3->GetBinContent(i, j, k) / \
+				sig_flux_bin_content);
 			}
 		}
+	}
 
-		// 5. This is typically where we would scale by the neutrino energy, 
-		// but since this is a double-differential measurement we will 
-		// instead divide all bins by their bin areas, and not divide by 
-		// energy. The result this example will give is therefore 
-		// unconventional. Moreover, the variables used would never be 
-		// paired together (Enu isn't even measured directly, for one). 
-		// Nevertheless, they illustrate how to use Convenient well. 
+	// 5. This is typically where we would scale by the neutrino energy, 
+	// but since this is a double-differential measurement we will 
+	// instead divide all bins by their bin areas, and not divide by 
+	// energy. The result this example will give is therefore 
+	// unconventional. Moreover, the variables used would never be 
+	// paired together (Enu isn't even measured directly, for one). 
+	// Nevertheless, they illustrate how to use Convenient well. 
 
-		// Divide histograms by their bin widths to get differential cross 
-		// sections
-		for(int i = 1; i <= h3->GetXaxis()->GetNbins(); i++) {
-			for(int j = 1; j <= h3->GetYaxis()->GetNbins(); j++) {
-				for(int k = 1; k <= h3->GetZaxis()->GetNbins(); k++) {
-					h3->SetBinContent(i, j, k, h3->GetBinContent(i, j, k) / \
-					h3->GetXaxis()->GetBinWidth(i) / \
-					h3->GetYaxis()->GetBinWidth(j) / \
-					h3->GetZaxis()->GetBinWidth(k));
-				}
+	// Divide histograms by their bin widths to get differential cross 
+	// sections
+	for(int i = 1; i <= h3->GetXaxis()->GetNbins(); i++) {
+		for(int j = 1; j <= h3->GetYaxis()->GetNbins(); j++) {
+			for(int k = 1; k <= h3->GetZaxis()->GetNbins(); k++) {
+				h3->SetBinContent(i, j, k, h3->GetBinContent(i, j, k) / \
+				h3->GetXaxis()->GetBinWidth(i) / \
+				h3->GetYaxis()->GetBinWidth(j) / \
+				h3->GetZaxis()->GetBinWidth(k));
 			}
 		}
+	}
 
-		// Append the histogram to the vector
-		histo_vec[file_index] = h3;
-		} // Move on to the next generator
-	}*/
+	// Append the histogram to the vector
+	h3_histo_vec.push_back(std::make_tuple(h3, alias));
+	} // Move on to the next generator */
 
 	// Xsec Visualization
 
