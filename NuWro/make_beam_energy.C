@@ -25,7 +25,7 @@
 // path to the ROOT flux file, and a string that is the histogram in the 
 // file that contains the energy spectrum.
 void make_beam_energy(std::string flux_file_str, \
-	std::string flux_histo_string)
+	std::string flux_histo_string, std::string output_filename)
 {
 	// Read in the flux file
 	TFile* flux_file = new TFile(flux_file_str.c_str());
@@ -62,19 +62,8 @@ void make_beam_energy(std::string flux_file_str, \
 		beam_energy += " ";
 	}
 
-	// Create a new file that contains the beam_energy
-	// Construct the file name by replacing the backslashes in the flux file 
-	// string with underscores so that we can match the new file to its 
-	// origin.
-	std::replace(flux_file_str.begin(), flux_file_str.end(), '/', '_');
-	// Construct the full path of the new file
-	std::string cwd(get_current_dir_name());
-	std::string full_beam_energy_path = cwd + "/" + \
-		"NuWro/beam_energies/" + flux_file_str + "." + \
-		flux_histo_string + ".txt";
-
 	// Create the new file
-	std::ofstream new_file(full_beam_energy_path.c_str());
+	std::ofstream new_file(output_filename.c_str());
 
 	// Write the beam energy to the file
 	new_file << beam_energy;

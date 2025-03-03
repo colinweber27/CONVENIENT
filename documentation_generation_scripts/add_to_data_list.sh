@@ -37,7 +37,7 @@ place_alphabetically() {
 	# by spaces
 	if [[ $str_type == "gen_tune" ]]
 	then
-		list="$(sed -n "$l0","$l1"p $output | grep -v '^_')"
+		list="$(sed -n "$l0","$l1"p $output | grep -v -e '^_' -e '^$')"
 	elif [[ $str_type == "flux" ]]
 	then
 		list="$(sed -n "$l0","$l1"p $output | grep "_Flux:")"
@@ -77,15 +77,18 @@ place_alphabetically() {
 				if [ $i -eq 0 ];
 				then
 					string_line=$(($l0 + 1))
+					last_line=$l1
 				else
 					if [[ $str_type == "file" ]]
 					then
 						string_line=$((l1 - 1))
-					else
+						last_line=$l1
+					elif [[ $str_type == "gen_tune" ]]
+					then
 						string_line=$l1
+						last_line=$string_line
 					fi
 				fi
-				last_line=$l1
 				after=false
 				continue # Break
 			fi
@@ -186,6 +189,12 @@ else
 	pdg_from_filename=${datalist_filename##*\.root\.}
 	pdg_from_filename=${pdg_from_filename/\.root/}
 	target=$(awk -v key=${pdg_from_filename} '$1==key { print $2 }' ${CONVENIENT_TAR_DIR}/NOvA_ND/PDG_element_lookup_table.txt)
+	if [ -z "$target" ]
+	then
+		target_from_filename=${datalist_filename/.convenient_output.root/}
+		target_from_filename=${target_from_filename##*\.}
+		target=$target_from_filename
+	fi
 	target_string="___Target:$target"
 fi
 
