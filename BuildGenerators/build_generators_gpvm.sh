@@ -15,6 +15,8 @@
 #	build_nuisance_GENIEv2_12_10_nuwro_neut_gpvm.sh:
 #		Builds nuisance against GENIE v3_04_00, with options for building 
 #		NuWro and NEUT as well.
+#	add_to_root_macropath.sh:
+#		Adds necessary directories to ROOT MacroPath
 
 # Optional sources:
 # Options activated by quering the variables NOVA_RELEASE, nuwro_opt, 
@@ -55,3 +57,5 @@ source build_nuisance_GENIEv3_04_00_nuwro_neut_gpvm.sh --NuWro $nuwro_opt --NEUT
 source build_nuisance_GENIEv3_00_06_nuwro_neut_gpvm.sh --NuWro $nuwro_opt --NEUT $neut_opt
 
 source build_nuisance_GENIEv2_12_10_nuwro_neut_gpvm.sh --NuWro $nuwro_opt --NEUT $neut_opt
+
+source add_to_root_macropath.sh

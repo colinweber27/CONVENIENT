@@ -24,7 +24,7 @@
 	# Check if the beam energy has already been created. If not, create it.
 	if [ ! -f "$nuwro_beam_filepath" ];
 	then
-		root -q "make_beam_energy.C(\"${10}\", \"${12}\")"
+		root -q "make_beam_energy.C(\"${10}\", \"${12}\", \"${nuwro_beam_filepath}\")"
 	fi
 
 	# Read in the beam energy content
