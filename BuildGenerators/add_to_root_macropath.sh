@@ -11,10 +11,20 @@ directories_list="$CONVENIENT_DIR $CONVENIENT_DIR/GiBUU $CONVENIENT_DIR/NEUT $CO
 read -a directories_array <<< $directories_list
 
 # First check that we have the file. If not, make it and add to it
-if [ -z ~/.rootrc ];
+if [ ! -f ~/.rootrc ];
 then
 	touch ~/.rootrc
-	sed -i "1 i Unix.*.Root.MacroPath: $directories_list"
+	macro_path_line="Unix.*.Root.MacroPath: "
+	for ((a=0; a<${#directories_array[@]}; a++))
+	do
+		if [[ $a == "0" ]]
+		then
+			macro_path_line+="${directories_array[$a]}"
+		else
+			macro_path_line+=":${directories_array[$a]}"
+		fi
+	done
+	echo "$macro_path_line" > ~/.rootrc
 else
 	# Get list of directories we do have
 	n_lines=$(wc -l < ~/.rootrc)
