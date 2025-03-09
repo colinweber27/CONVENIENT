@@ -168,26 +168,25 @@ do
 	then
 		$GiBUU < $2 
 		mv FinalEvents.dat $gibuu_elemental_outputs
+		# GiBUU gives us a crazy number of output files, so we need to delete 
+		# as we go.
+		rm DensTab_target.dat
+		rm diff*
+		rm Event*
+		rm GiBUU_*
+		rm main.run
+		rm mass*
+		rm Multiplicity*
+		rm neutrino*
+		rm NucleonVacuumMass.dat
+		rm OutChannels*
+		rm PYR.RG
+		rm ReAdjust*
+		rm reconstruction*
+		rm sigma*
 	else
 		continue
-	fi
-
-	# GiBUU gives us a crazy number of output files, so we need to delete as 
-	# we go.
-	rm DensTab_target.dat
-	rm diff*
-	rm Event*
-	rm GiBUU_*
-	rm main.run
-	rm mass*
-	rm Multiplicity*
-	rm neutrino*
-	rm NucleonVacuumMass.dat
-	rm OutChannels*
-	rm PYR.RG
-	rm ReAdjust*
-	rm reconstruction*
-	rm sigma*
+	fi	
 done
 
 # Return IFS to its original value
