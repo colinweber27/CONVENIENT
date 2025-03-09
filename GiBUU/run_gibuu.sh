@@ -66,8 +66,7 @@
 	sed -i 's/^       nuXsectionMode .*/       nuXsectionMode   = '"${nuXsectionMode}"' ! 16: EXP_dSigmaMC/' $2
 	sed -i 's/^        nuExp .*/        nuExp           = '"${nuExp}"'  ! new, own flux. Must be in buuinput as .dat file/' $2
 
-# Set the flux file. Note that NEUT can't handle neutrinos of less than 100 
-# MeV, so we must recreate the flux with the flux zeroed in that range.
+# Set the flux file. 
 	# Read in from the input
 	gibuu_flux_file=${12}
 
@@ -168,26 +167,25 @@ do
 	then
 		$GiBUU < $2 
 		mv FinalEvents.dat $gibuu_elemental_outputs
+		# GiBUU gives us a crazy number of output files, so we need to delete 
+		# as we go.
+		rm DensTab_target.dat
+		rm diff*
+		rm Event*
+		rm GiBUU_*
+		rm main.run
+		rm mass*
+		rm Multiplicity*
+		rm neutrino*
+		rm NucleonVacuumMass.dat
+		rm OutChannels*
+		rm PYR.RG
+		rm ReAdjust*
+		rm reconstruction*
+		rm sigma*
 	else
 		continue
-	fi
-
-	# GiBUU gives us a crazy number of output files, so we need to delete as 
-	# we go.
-	rm DensTab_target.dat
-	rm diff*
-	rm Event*
-	rm GiBUU_*
-	rm main.run
-	rm mass*
-	rm Multiplicity*
-	rm neutrino*
-	rm NucleonVacuumMass.dat
-	rm OutChannels*
-	rm PYR.RG
-	rm ReAdjust*
-	rm reconstruction*
-	rm sigma*
+	fi	
 done
 
 # Return IFS to its original value
