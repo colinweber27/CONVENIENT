@@ -54,10 +54,10 @@
 	then
 		# Translate the original flux file to a .txt file, zeroing the 
 		# relevant bins in the process
-		root -q "NEUT/make_beam_energy_txt.C(\"$neut_original_flux_file\", \"$neut_original_flux_histo\", \"$neut_txt_beam_filepath\")"
+		root -q "make_beam_energy_txt.C(\"$neut_original_flux_file\", \"$neut_original_flux_histo\", \"$neut_txt_beam_filepath\")"
 
 		# Translate the .txt file to a .root file
-		root -q "NEUT/make_flux_hist_root.C(\"$neut_txt_beam_filepath\", \"$neut_root_beam_filepath\", \"$neut_original_flux_histo\")"
+		root -q "make_flux_hist_root.C(\"$neut_txt_beam_filepath\", \"$neut_root_beam_filepath\", \"$neut_original_flux_histo\")"
 	fi
 
 	# Assign the variable
