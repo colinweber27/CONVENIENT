@@ -2,7 +2,15 @@ GiBUU:Defaultparams.job
 _Flux:FHCDeriveFlux50MeVwidth_ppfx
 __numuCC_only
 ___Target:C12
-___1.25e6
+___3.25e6
+____GiBUU:Defaultparams.job.10.FHC.250000.numuCC.convenient_output.root.1000060120.root
+____GiBUU:Defaultparams.job.11.FHC.250000.numuCC.convenient_output.root.1000060120.root
+____GiBUU:Defaultparams.job.12.FHC.250000.numuCC.convenient_output.root.1000060120.root
+____GiBUU:Defaultparams.job.13.FHC.250000.numuCC.convenient_output.root.1000060120.root
+____GiBUU:Defaultparams.job.14.FHC.250000.numuCC.convenient_output.root.1000060120.root
+____GiBUU:Defaultparams.job.15.FHC.250000.numuCC.convenient_output.root.1000060120.root
+____GiBUU:Defaultparams.job.16.FHC.250000.numuCC.convenient_output.root.1000060120.root
+____GiBUU:Defaultparams.job.17.FHC.250000.numuCC.convenient_output.root.1000060120.root
 ____GiBUU:Defaultparams.job.2.FHC.250000.numuCC.convenient_output.root.1000060120.root
 ____GiBUU:Defaultparams.job.3.FHC.250000.numuCC.convenient_output.root.1000060120.root
 ____GiBUU:Defaultparams.job.4.FHC.250000.numuCC.convenient_output.root.1000060120.root
@@ -10,7 +18,15 @@ ____GiBUU:Defaultparams.job.5.FHC.250000.numuCC.convenient_output.root.100006012
 ____GiBUU:Defaultparams.job.9.FHC.250000.numuCC.convenient_output.root.1000060120.root
 
 ___Target:C13
-___1.25e6
+___3.25e6
+____GiBUU:Defaultparams.job.10.FHC.250000.numuCC.convenient_output.root.1000060130.root
+____GiBUU:Defaultparams.job.11.FHC.250000.numuCC.convenient_output.root.1000060130.root
+____GiBUU:Defaultparams.job.12.FHC.250000.numuCC.convenient_output.root.1000060130.root
+____GiBUU:Defaultparams.job.13.FHC.250000.numuCC.convenient_output.root.1000060130.root
+____GiBUU:Defaultparams.job.14.FHC.250000.numuCC.convenient_output.root.1000060130.root
+____GiBUU:Defaultparams.job.15.FHC.250000.numuCC.convenient_output.root.1000060130.root
+____GiBUU:Defaultparams.job.16.FHC.250000.numuCC.convenient_output.root.1000060130.root
+____GiBUU:Defaultparams.job.17.FHC.250000.numuCC.convenient_output.root.1000060130.root
 ____GiBUU:Defaultparams.job.2.FHC.250000.numuCC.convenient_output.root.1000060130.root
 ____GiBUU:Defaultparams.job.3.FHC.250000.numuCC.convenient_output.root.1000060130.root
 ____GiBUU:Defaultparams.job.4.FHC.250000.numuCC.convenient_output.root.1000060130.root
@@ -18,7 +34,15 @@ ____GiBUU:Defaultparams.job.5.FHC.250000.numuCC.convenient_output.root.100006013
 ____GiBUU:Defaultparams.job.9.FHC.250000.numuCC.convenient_output.root.1000060130.root
 
 ___Target:Cl35
-___1.25e6
+___3.25e6
+____GiBUU:Defaultparams.job.10.FHC.250000.numuCC.convenient_output.root.1000170350.root
+____GiBUU:Defaultparams.job.11.FHC.250000.numuCC.convenient_output.root.1000170350.root
+____GiBUU:Defaultparams.job.12.FHC.250000.numuCC.convenient_output.root.1000170350.root
+____GiBUU:Defaultparams.job.13.FHC.250000.numuCC.convenient_output.root.1000170350.root
+____GiBUU:Defaultparams.job.14.FHC.250000.numuCC.convenient_output.root.1000170350.root
+____GiBUU:Defaultparams.job.15.FHC.250000.numuCC.convenient_output.root.1000170350.root
+____GiBUU:Defaultparams.job.16.FHC.250000.numuCC.convenient_output.root.1000170350.root
+____GiBUU:Defaultparams.job.17.FHC.250000.numuCC.convenient_output.root.1000170350.root
 ____GiBUU:Defaultparams.job.2.FHC.250000.numuCC.convenient_output.root.1000170350.root
 ____GiBUU:Defaultparams.job.3.FHC.250000.numuCC.convenient_output.root.1000170350.root
 ____GiBUU:Defaultparams.job.4.FHC.250000.numuCC.convenient_output.root.1000170350.root
@@ -26,7 +50,15 @@ ____GiBUU:Defaultparams.job.5.FHC.250000.numuCC.convenient_output.root.100017035
 ____GiBUU:Defaultparams.job.9.FHC.250000.numuCC.convenient_output.root.1000170350.root
 
 ___Target:Cl37
-___1.25e6
+___3.25e6
+____GiBUU:Defaultparams.job.10.FHC.250000.numuCC.convenient_output.root.1000170370.root
+____GiBUU:Defaultparams.job.11.FHC.250000.numuCC.convenient_output.root.1000170370.root
+____GiBUU:Defaultparams.job.12.FHC.250000.numuCC.convenient_output.root.1000170370.root
+____GiBUU:Defaultparams.job.13.FHC.250000.numuCC.convenient_output.root.1000170370.root
+____GiBUU:Defaultparams.job.14.FHC.250000.numuCC.convenient_output.root.1000170370.root
+____GiBUU:Defaultparams.job.15.FHC.250000.numuCC.convenient_output.root.1000170370.root
+____GiBUU:Defaultparams.job.16.FHC.250000.numuCC.convenient_output.root.1000170370.root
+____GiBUU:Defaultparams.job.17.FHC.250000.numuCC.convenient_output.root.1000170370.root
 ____GiBUU:Defaultparams.job.2.FHC.250000.numuCC.convenient_output.root.1000170370.root
 ____GiBUU:Defaultparams.job.3.FHC.250000.numuCC.convenient_output.root.1000170370.root
 ____GiBUU:Defaultparams.job.4.FHC.250000.numuCC.convenient_output.root.1000170370.root
@@ -34,21 +66,45 @@ ____GiBUU:Defaultparams.job.5.FHC.250000.numuCC.convenient_output.root.100017037
 ____GiBUU:Defaultparams.job.9.FHC.250000.numuCC.convenient_output.root.1000170370.root
 
 ___Target:H1
-___1.e6
+___3.e6
+____GiBUU:Defaultparams.job.10.FHC.250000.numuCC.convenient_output.root.1000010010.root
+____GiBUU:Defaultparams.job.11.FHC.250000.numuCC.convenient_output.root.1000010010.root
+____GiBUU:Defaultparams.job.12.FHC.250000.numuCC.convenient_output.root.1000010010.root
+____GiBUU:Defaultparams.job.13.FHC.250000.numuCC.convenient_output.root.1000010010.root
+____GiBUU:Defaultparams.job.14.FHC.250000.numuCC.convenient_output.root.1000010010.root
+____GiBUU:Defaultparams.job.15.FHC.250000.numuCC.convenient_output.root.1000010010.root
+____GiBUU:Defaultparams.job.16.FHC.250000.numuCC.convenient_output.root.1000010010.root
+____GiBUU:Defaultparams.job.17.FHC.250000.numuCC.convenient_output.root.1000010010.root
 ____GiBUU:Defaultparams.job.3.FHC.250000.numuCC.convenient_output.root.1000010010.root
 ____GiBUU:Defaultparams.job.4.FHC.250000.numuCC.convenient_output.root.1000010010.root
 ____GiBUU:Defaultparams.job.5.FHC.250000.numuCC.convenient_output.root.1000010010.root
 ____GiBUU:Defaultparams.job.9.FHC.250000.numuCC.convenient_output.root.1000010010.root
 
 ___Target:O16
-___1.e6
+___3.e6
+____GiBUU:Defaultparams.job.10.FHC.250000.numuCC.convenient_output.root.1000080160.root
+____GiBUU:Defaultparams.job.11.FHC.250000.numuCC.convenient_output.root.1000080160.root
+____GiBUU:Defaultparams.job.12.FHC.250000.numuCC.convenient_output.root.1000080160.root
+____GiBUU:Defaultparams.job.13.FHC.250000.numuCC.convenient_output.root.1000080160.root
+____GiBUU:Defaultparams.job.14.FHC.250000.numuCC.convenient_output.root.1000080160.root
+____GiBUU:Defaultparams.job.15.FHC.250000.numuCC.convenient_output.root.1000080160.root
+____GiBUU:Defaultparams.job.16.FHC.250000.numuCC.convenient_output.root.1000080160.root
+____GiBUU:Defaultparams.job.17.FHC.250000.numuCC.convenient_output.root.1000080160.root
 ____GiBUU:Defaultparams.job.3.FHC.250000.numuCC.convenient_output.root.1000080160.root
 ____GiBUU:Defaultparams.job.4.FHC.250000.numuCC.convenient_output.root.1000080160.root
 ____GiBUU:Defaultparams.job.5.FHC.250000.numuCC.convenient_output.root.1000080160.root
 ____GiBUU:Defaultparams.job.9.FHC.250000.numuCC.convenient_output.root.1000080160.root
 
 ___Target:Ti48
-___1.e6
+___3.e6
+____GiBUU:Defaultparams.job.10.FHC.250000.numuCC.convenient_output.root.1000220480.root
+____GiBUU:Defaultparams.job.11.FHC.250000.numuCC.convenient_output.root.1000220480.root
+____GiBUU:Defaultparams.job.12.FHC.250000.numuCC.convenient_output.root.1000220480.root
+____GiBUU:Defaultparams.job.13.FHC.250000.numuCC.convenient_output.root.1000220480.root
+____GiBUU:Defaultparams.job.14.FHC.250000.numuCC.convenient_output.root.1000220480.root
+____GiBUU:Defaultparams.job.15.FHC.250000.numuCC.convenient_output.root.1000220480.root
+____GiBUU:Defaultparams.job.16.FHC.250000.numuCC.convenient_output.root.1000220480.root
+____GiBUU:Defaultparams.job.17.FHC.250000.numuCC.convenient_output.root.1000220480.root
 ____GiBUU:Defaultparams.job.3.FHC.250000.numuCC.convenient_output.root.1000220480.root
 ____GiBUU:Defaultparams.job.4.FHC.250000.numuCC.convenient_output.root.1000220480.root
 ____GiBUU:Defaultparams.job.5.FHC.250000.numuCC.convenient_output.root.1000220480.root
