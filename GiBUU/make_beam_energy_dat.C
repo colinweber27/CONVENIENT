@@ -5,7 +5,7 @@
 //
 // GiBUU beam energy format is left edge[tab] value\n, where each new line is 
 // a new bin.
-// Command: root -q "GiBUU/make_beam_energy_dat.C(
+// Command: root -q "make_beam_energy_dat.C(
 // 		\"flux file\", \"flux histo\", \"output name.dat\")"
 // where flux file is the path to the ROOT flux file containing the energy 
 // spectrum, and flux histo is the name of the energy spectrum in the flux 
