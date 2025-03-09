@@ -7,7 +7,7 @@
 // beam energy, E1 is the maximum beam energy, and ai are the heights of the 
 // bins. The bins need not be normalized.
 
-// Command: root -q "NuWro/make_beam_energy.C(\"flux file\", \"flux histo\")"
+// Command: root -q "make_beam_energy.C(\"flux file\", \"flux histo\")"
 // where flux file is the path to the ROOT flux file containing the energy 
 // spectrum, and flux histo is the name of the energy spectrum in the flux 
 // file.
