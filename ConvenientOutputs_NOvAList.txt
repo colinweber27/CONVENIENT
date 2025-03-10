@@ -233,13 +233,17 @@ ____GENIE:G18_10a_02_11b.2.RHC.1m.numubar.convenient_output.root
 GENIE:G18_10j_00_000
 _Flux:FHCDeriveFlux50MeVwidth_ppfx
 __numu_only
-___6.e6
+___1.e7
+____GENIE:G18_10j_00_000.10.FHC.1m.numu.convenient_output.root
+____GENIE:G18_10j_00_000.11.FHC.1m.numu.convenient_output.root
 ____GENIE:G18_10j_00_000.2.FHC.1m.numu.convenient_output.root
 ____GENIE:G18_10j_00_000.3.FHC.1m.numu.convenient_output.root
 ____GENIE:G18_10j_00_000.4.FHC.1m.numu.convenient_output.root
 ____GENIE:G18_10j_00_000.5.FHC.1m.numu.convenient_output.root
 ____GENIE:G18_10j_00_000.6.FHC.1m.numu.convenient_output.root
 ____GENIE:G18_10j_00_000.7.FHC.1m.numu.convenient_output.root
+____GENIE:G18_10j_00_000.8.FHC.1m.numu.convenient_output.root
+____GENIE:G18_10j_00_000.9.FHC.1m.numu.convenient_output.root
 
 _Flux:RHCDeriveFlux50MeVwidth_ppfx
 __numubar_only
