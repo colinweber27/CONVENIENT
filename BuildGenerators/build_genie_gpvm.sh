@@ -13,21 +13,28 @@
 #	[-b branch_name] [-R release]
 
 # Parameters
-#	branch_name: 	an arbitrary name for the new local GENIE branch created 
-#					by this script
-#	release:		The GENIE release to checkout. Options can be found at
-#					https://github.com/GENIE-MC/Generator/tags
+#	branch_name 	
+#		An arbitrary name for the new local GENIE branch created by this 
+#		script
+#	release		
+#		The GENIE release to checkout. Options can be found at 
+#		https://github.com/GENIE-MC/Generator/tags
 
 # Exports
-#	GENIE_DIR: the root GENIE directory in CONVENIENT/Generators
+#	GENIE_DIR
+#		The root GENIE directory in CONVENIENT/Generators
 
 # Sources
-#	genie_env.sh: environment variables needed for running GENIE
-#	Generators/genie/Generator/do_configure.sh: runs GENIE's config function
+#	genie_env.sh: 
+# 		Environment variables needed for running GENIE
+#	Generators/genie/Generator/do_configure.sh 
+#		Runs GENIE's config function
 
 # Outputs
-#	genie_env.sh: environment variables needed for running GENIE
-#	Generators/genie/Generator/do_configure.sh: runs GENIE's config function
+#	genie_env.sh
+#		Environment variables needed for running GENIE
+#	Generators/genie/Generator/do_configure.sh
+#		Runs GENIE's config function
 
 
 #!/bin/bash
@@ -36,6 +43,37 @@
 # appropriate environment variables when sourcing after the build.
 write_genie_env_script() {
 cat > ./genie_env.sh << 'EOF'
+# Purpose: to source the environemnt variables necessary for running GENIE 
+# within CONVENIENT. Assumes GENIE has been built independently of other 
+# software.
+
+# Command: source genie_env.sh
+
+# Exports
+# 	GENIEBASE
+#		The top-level GENIE directory, within which all the different 
+#		products are installed.
+#	GENIE
+#		The directory containing the generator product
+#	PYTHIA6
+#		The directory containing a build of Pythia6, which GENIE uses for 
+#		hadronization.
+# 	LHAPDF5_INC
+#		Directory containing build of LHAPDF, which manages parton 
+#		distribution functions.
+# 	LHAPDF5_LIB
+#		Directory containing actual PDFs used by LHAPDF
+#	XSECSPLINEDIR
+#		Directory containing xsec splines used by GENIE
+#	PATH
+#		Adds directory containing GENIE executable to PATH
+#	LD_LIBRARY_PATH
+#		Adds directory containing GENIE libraries to the library path
+
+# Sources
+#	$CONVENIENT_DIR/global_vars.sh
+#		Environment variables that name different CONVENIENT directories
+
 #!/bin/bash
 
 # Set up the UPS products needed to build and use GENIE

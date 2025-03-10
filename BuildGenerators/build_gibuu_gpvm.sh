@@ -6,13 +6,16 @@
 # Command source build_gibuu_gpvm.sh
 
 # Exports
-#	GiBUU_DIR:	the directory containing the GiBUU source code
+#	GiBUU_DIR
+#		The directory containing the GiBUU source code
 
 # Sources
-#	gibuu_env.sh: the environment variables necessary for running GiBUU
+#	gibuu_env.sh
+#		The environment variables necessary for running GiBUU
 
 # Outputs
-#	gibuu_env.sh: the environment variables necessary for running GiBUU
+#	gibuu_env.sh
+#		The environment variables necessary for running GiBUU
 
 
 #!/bin/bash
@@ -21,6 +24,24 @@
 # variables for running GiBUU.
 write_gibuu_env_script() {
 cat > ./gibuu_env.sh << 'EOF'
+# Purpose: to source the environment variables necessary for running GiBUU 
+# within CONVENIENT
+
+# Command: source gibuu_env.sh
+
+# Exports
+#	GiBUU: The location of the GiBUU executable
+#	GiBUU_BUU_INPUT: The location of the BUU module
+#	GiBUU_VERSION
+#		The version of GiBUU this version of CONVENIENT is built with. This 
+#		version is noted in the output .txt file accompanying each 
+#		CONVENIENT output. It must be updated manually if new versions of 
+#		GiBUU are used.
+
+# Sources
+#	$CONVENIENT_DIR/global_vars.sh
+#		Environment variables that name different CONVENIENT directories
+
 #!/bin/bash
 
 # Set up the UPS products needed to build and use GiBUU
