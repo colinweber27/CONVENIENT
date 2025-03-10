@@ -6,6 +6,43 @@
 #	[--config GENIE_tune] [--flux_file flux file]
 #	[--flux_histo flux histo] [--seed seed] [--target target]
 
+# Parameters
+#	GENIE_tune
+#		The GENIE tune to run with. Available tunes can be seen at 
+#		https://hep.ph.liv.ac.uk/~costasa/genie/tunes.html, although note 
+#		that not all tunes will have splines generated. NOvA-maintained xsec 
+#		splines for different GENIE versions and tunes can be found at 
+#		/cvmfs/nova.opensciencegrid.org/externals/genie_xsec.
+#	flux_file: the ROOT file containing the 1D flux histogram to use as input
+#	flux_histo: the 1D histogram within the flux_file containing the flux
+#	seed: the MC seed to use
+#	target
+#		A .txt file containing the target information in GENIE format. 
+#		Examples are in the directory CONVENIENT/targets
+
+# Exports
+#	PRODUCTS (optional)
+#		If running with the G21_11a_00_000 tune, this export adds a new 
+#		location to the environment variable PRODUCTS that points GENIE to a 
+#		build that is new enough to accomodate this tune.
+
+# Sources
+#	set_gevgen_variables.sh
+#		Script that sets variables necessary for running GENIE's gevgen 
+#		command. These include the min and max neutrino energies to 
+#		consider, the message level, and the path to the full set of xsec 
+#		splines.
+#	$CONVENIENT_NUISANCE_DIR/set_nuisance_variables.sh
+#		Script that sets variables necessary for running NUISANCE on the 
+#		GENIE output. $CONVENIENT_NUISANCE_DIR is set according to the 
+#		version of GENIE that was used to generate the events.
+
+# Outputs
+#	$nuisance_output_dir/$filepath/$filename_nuisance
+#		The NUISANCE file created from the GENIE output
+#	$convenient_output_dir/$filepath/$filename_convenient
+#		The CONVENIENT file created from the NUISANCE output
+
 # She-bang!
 #!/bin/bash
 

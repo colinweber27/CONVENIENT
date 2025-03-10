@@ -3,6 +3,13 @@
 # Purpose: To automatically add necessary CONVENIENT directories to user's 
 # ROOT MacroPath
 
+# Command: bash add_to_root_macropath.sh
+
+# Outputs
+#	~/.rootrc : Home directory file containing variables and functions that 
+#	ROOT sources upon starting. This file is created if it doesn't already 
+#	exist.
+
 # She-bang!
 #!/bin/bash
 

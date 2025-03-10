@@ -12,6 +12,13 @@
 # 	[-d date in yyyymmddhhmmss format] [-v genereator version]
 # 	[--seed MC seed]
 
+# Outputs
+#	file
+#		a .txt file decribing how the associated CONVENIENT file was made. 
+#		It's located in the same directory as the CONVENIENT file and has 
+#		the same file name, except the extension is changed from .root to 
+#		.txt
+
 # She-bang!
 #!/bin/bash
 

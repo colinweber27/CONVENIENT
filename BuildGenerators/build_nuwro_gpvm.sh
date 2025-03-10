@@ -6,15 +6,17 @@
 # Command source build_nuwro_gpvm.sh
 
 # Exports
-#	NUWRO_DIR: 			The directory containing the source code for NuWro
-#	PATH: 				Adds $ROOTSYS/bin to PATH. Needed for NuWro to be 
-#						built.
-#	LD_LIBRARY_PATH: 	Adds $ROOTSYS/lib tp :D_LIBRARY_PATH. Needed for 
-#						NuWro to be built
-# 	PYTHIA6: 			Tells NuWro where to look for Pythia6. This location 
-#						is set by setup_nova
-#	LIBRARY_PATH:		Adds $PYTHIA6 to LIBRARY_PATH. Needed for NuWro to 
-#						be built
+#	NUWRO_DIR
+#		The directory containing the source code for NuWro
+#	PATH
+#		Adds $ROOTSYS/bin to PATH. Needed for NuWro to be built.
+#	LD_LIBRARY_PATH
+#		Adds $ROOTSYS/lib tp :D_LIBRARY_PATH. Needed for NuWro to be built
+# 	PYTHIA6
+#		Tells NuWro where to look for Pythia6. This location is set by \
+#		setup_nova
+#	LIBRARY_PATH
+#		Adds $PYTHIA6 to LIBRARY_PATH. Needed for NuWro to be built
 
 # Sources
 #	nuwro_env.sh: environment variables necessary for running NuWro.
@@ -29,6 +31,25 @@
 # variables for running NuWro.
 write_nuwro_env_script() {
 cat > ./nuwro_env.sh << 'EOF'
+# Purpose: to source the environment variables necessary for running NuWro
+# within CONVENIENT
+
+# Command: source nuwro_env.sh
+
+# Exports
+#	NUWROBASE: the directory containing the NuWro build
+#	PYTHIA6
+#		The directory containing the PYTHIA6 build, which NuWro uses for 
+#		hadronization
+#	NUWRO: Same, as NUWROBASE, except this is the variable NuWro looks for
+#	LD_LIBRARY_PATH
+#		Adds directory containing NuWro libraries to the library path
+#	PATH: Adds directory containing NuWro executable to PATH
+
+# Sources
+#	$CONVENIENT_DIR/global_vars.sh
+#		Environment variables that name different CONVENIENT directories
+
 #!/bin/bash
 
 # Set up the UPS products needed to build and use NuWro
