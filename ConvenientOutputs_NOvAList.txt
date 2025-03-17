@@ -324,7 +324,7 @@ ____GENIE:N18_10j_02_11a-resfixfix.2.RHC.2m.numubar.convenient_output.root
 GiBUU:Defaultparams.job
 _Flux:FHCDeriveFlux50MeVwidth_ppfx
 __numuCC_only
-___3.75e6
+___6.e6
 ____GiBUU:Defaultparams.job.10.FHC.250000.numuCC.convenient_output.root
 ____GiBUU:Defaultparams.job.11.FHC.250000.numuCC.convenient_output.root
 ____GiBUU:Defaultparams.job.12.FHC.250000.numuCC.convenient_output.root
@@ -333,6 +333,15 @@ ____GiBUU:Defaultparams.job.14.FHC.250000.numuCC.convenient_output.root
 ____GiBUU:Defaultparams.job.15.FHC.250000.numuCC.convenient_output.root
 ____GiBUU:Defaultparams.job.16.FHC.250000.numuCC.convenient_output.root
 ____GiBUU:Defaultparams.job.17.FHC.250000.numuCC.convenient_output.root
+____GiBUU:Defaultparams.job.18.FHC.250000.numuCC.convenient_output.root
+____GiBUU:Defaultparams.job.19.FHC.250000.numuCC.convenient_output.root
+____GiBUU:Defaultparams.job.20.FHC.250000.numuCC.convenient_output.root
+____GiBUU:Defaultparams.job.21.FHC.250000.numuCC.convenient_output.root
+____GiBUU:Defaultparams.job.22.FHC.250000.numuCC.convenient_output.root
+____GiBUU:Defaultparams.job.23.FHC.250000.numuCC.convenient_output.root
+____GiBUU:Defaultparams.job.24.FHC.250000.numuCC.convenient_output.root
+____GiBUU:Defaultparams.job.25.FHC.250000.numuCC.convenient_output.root
+____GiBUU:Defaultparams.job.27.FHC.250000.numuCC.convenient_output.root
 ____GiBUU:Defaultparams.job.3.FHC.250000.numuCC.convenient_output.root
 ____GiBUU:Defaultparams.job.4.FHC.250000.numuCC.convenient_output.root
 ____GiBUU:Defaultparams.job.5.FHC.250000.numuCC.convenient_output.root
