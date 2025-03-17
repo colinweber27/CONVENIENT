@@ -5,6 +5,11 @@
 
 # Command: source set_gevgen_variables.sh
 
+# Exports
+#	E_MIN, E_MAX: The neutrino energies limits of the flux
+#	MSGLVL: The .xml file to use to determine how much output text to produce
+#	GENIE_XSEC_FILE: The file containing the GENIE xsec splines.
+
 echo "Setting variables for gevgen..." # Remind us what's going on
 
 ## Set relevant gevgen global parameters ##

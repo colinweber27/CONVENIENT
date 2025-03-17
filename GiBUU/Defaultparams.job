@@ -46,7 +46,7 @@
 ! file: code/init/neutrino/initNeutrino.f90
 
 &neutrino_induced
-       process_ID       = -2 ! 2:CC, 3:NC, -2:antiCC, -3:antiNC
+       process_ID       =  2 ! 2:CC, 3:NC, -2:antiCC, -3:antiNC
        flavor_ID        =  2 ! 1:electron, 2:muon, 3:tau
 !
 !       for calculations with given, fixed neutrino energy
@@ -81,7 +81,7 @@
                              ! energies must be linear and equidistant
                              ! name of the flux file is given in the next line: 
 !       FileNameFlux = '/afs/cern.ch/work/u/umosel/GiBUU/buuinput/neutrino/MINERvA_MEflux.dat'
-        FileNameFlux = '/exp/nova/app/users/colweber/Convenient/GiBUU/beam_energies/flux_NuMI_RHC_DeriveFlux50MeVwidth_ppfx_numubar.root.numubar.dat'
+        FileNameFlux = '/exp/nova/app/users/colweber/Convenient/GiBUU/beam_energies/flux_NuMI_FHC_DeriveFlux50MeVwidth_ppfx_numu.root.numu.dat'
                              ! for nuExp=99
                              ! this is an example for the MINERvA medium energy
                              ! flux, but any other flux could be inserted here
@@ -102,8 +102,8 @@
 
 ! file: code/density/nucleus.f90
 &target
-	Z=1				!
-	A=1				!
+	Z=8				!
+	A=16				!
 	densitySwitch_Static=2          ! 0: density=0.0, 1: Wood-Saxon by Lenske, 2 : NPA 554, 3: Wood-Saxon by Lenske, different neutron and proton radii,
 					! 5: density distribution is a sphere with density according to the input value of "fermiMomentum_input".
 !	fermiMomentum_input=0.225       ! Input value of the fermi momentum for densitySwitch_static=5.
@@ -130,13 +130,13 @@
 ! the number of generated events is proportional (but not equal, because some "events" can be in prohibited phase space)
 ! to target A * numEnsembles * num_runs_SameEnergy
 &input
-	numEnsembles=-2              ! for C12 you can use 4000, for heavier nuclei should be lower; decrease it if there are problems with memory,
+	numEnsembles=4000              ! for C12 you can use 4000, for heavier nuclei should be lower; decrease it if there are problems with memory,
 	eventtype=5                    ! 5=neutrino, 200=simple transport of a given particle
 	numTimeSteps=120               ! the distance numTimeSteps*delta_T (100*0.2=20 fm in this example) should significantly exceed the radius of the target nucleus
 	delta_T=0.2		       ! timestep for FSI trajectories
 	fullensemble=.true.
 	localEnsemble=.true.
-	num_runs_SameEnergy=50       ! (100) increase these if you want to increase statistics (= number of generated events)
+	num_runs_SameEnergy=3       ! (100) increase these if you want to increase statistics (= number of generated events)
 	num_Energies=1                 ! for nuXsectionMode=6 or 16 keep this 1
 
 	printParticleVectors=.false.
@@ -454,5 +454,5 @@ $nl_specificEvent
 
 ! file: code/numerics/random.f90
 &initRandom
-      Seed = 2             ! seed for the random number
+      Seed = 27             ! seed for the random number
 /
