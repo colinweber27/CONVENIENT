@@ -3,6 +3,33 @@
 // Date: 11 January  2024
 // Purpose: To read in GiBUU FinalEvent.dat files and save in CONVENIENT 
 // format.
+//
+// Command: root -q "make_convenient_from_gibuu.C(\"raw_gibuu_file\", \"gibuu_dat_flux_file\", \"NEUTRINO_PDG\", \"GIBUU_CC_NC\", \"protons\", \"nucleons\", \"filename_convenient\", \"weight\")"
+
+// Parameters
+// 	raw_gibuu_file
+// 		The raw GiBUU output file to process. The file must be in 
+// 		Les-Houches format, the details of which can be found on 
+// 		https://gibuu.hepforge.org/trac/wiki/LesHouches.
+// 	gibuu_dat_flux_file
+// 		The flux file that was used to generate the GiBUU events.
+// 	NEUTRINO_PDG
+// 		The neutrino flavor used to generate the GiBUU events, in PDG format
+// 	GIBUU_CC_NC
+// 		Whether the events generated were 'CC' or 'NC'. Must be one of those 
+// 		two options.
+// 	protons
+// 		The number of protons in the target nucleus ('Z')
+// 	nucleons
+// 		The number of nucleons in the target nucleus ('A')
+// 	filename_convenient
+// 		The output filename. Must contain the suffix .root
+// 	weight
+// 		The weight to apply to all the events
+
+// Outputs
+// 	fOut
+// 		The output CONVENIENT file
 
 // Includes
 // ROOT includes

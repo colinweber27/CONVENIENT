@@ -5,10 +5,25 @@
 
 # Command: source global_vars.sh
 
+# Exports
+#	OUTPUT_DIR: the path to the user's data directory
+#	CONVENIENT_GEN_DIR: the path to the directory in which all the generators will be built
+#	CONVENIENT_GEN_BUILD_DIR
+#	CONVENIENT_FLUX_DIR
+#	CONVENIENT_TAR_DIR
+#	CONVENIENT_NUISANCE_DIR
+#	CONVENIENT_NOvA_OUTPUT_DIR
+#	CONVENIENT_NUISANCE_NOvA_OUTPUT_DIR
+#	CONVENIENT_OUTPUT_DIR
+#	CONVENIENT_NUISANCE_OUTPUT_DIR
+
+# Sources
+#	/grid/fermiapp/products/larsoft/setups (optional)
+
 #!/bin/bash
 
 # Global variables
-export OUTPUT_DIR=/exp/nova/data/users/$USER
+export OUTPUT_DIR=/exp/${HOSTNAME:0:4}/data/users/$USER
 export CONVENIENT_GEN_DIR=$CONVENIENT_DIR/Generators
 export CONVENIENT_GEN_BUILD_DIR=$CONVENIENT_DIR/BuildGenerators
 export CONVENIENT_FLUX_DIR=$CONVENIENT_DIR/flux

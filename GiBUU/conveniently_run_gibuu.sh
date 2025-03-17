@@ -6,6 +6,34 @@
 #	[--config GiBUU jobcard] [--flux_file flux file]
 #	[--flux_histo flux histo] [--seed seed] [--target target]
 
+# Parameters
+#	config
+#		The .job file that sets the GiBUU configuration. One example is at 
+#		https://gibuu.hepforge.org/trac/wiki/jobcards/T2K_0pi_water.
+#	flux_file: the ROOT file containing the 1D flux histogram to use as input
+#	flux_histo: the 1D histogram within the flux_file containing the flux
+#	seed: the MC seed to use
+#	target
+#		A .txt file containing the target information in GENIE format. 
+#		Examples are in the directory CONVENIENT/targets	
+
+# Sources
+#	set_gibuu_variables.sh
+#		Script that sets variables necessary for running GiBUU
+
+# Outputs
+#	$OUTPUT_DIR/RawGibuu/$filepath/$raw_gibuu_file
+#		An unweighted GiBUU output file corresponding to interactions with a 
+#		single element. One of these is created per element in the target.
+#	$convenient_output_dir/$filepath/$unweighted_convenient_file
+#		A CONVENIENT file created from the raw GiBUU file for a specific 
+# 		element. One of these is made per element in the input.
+#	$convenient_output_dir/$filepath/$filename_convenient (optional)
+#		The CONVENIENT output file, which includes all of the elements in 
+#		the original detector with weights. Only created if running with a 
+#		detector with multiple elements.
+
+
 # She-bang!
 #!/bin/bash
 
@@ -44,7 +72,7 @@ filename_raw=$filename.raw.root
 # Format is
 	# -f input flux file
 	# -h histogram to use in input flux file
-source set_gibuu_variables.sh -f $gibuu_flux_file -f $gibuu_flux_histo
+source set_gibuu_variables.sh -f $gibuu_flux_file -h $gibuu_flux_histo
 
 # Tell us what tune we're on
 echo "Generating and processing GiBUU w/ params $params..."

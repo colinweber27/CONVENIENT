@@ -7,7 +7,7 @@
 #	[--flux_histo flux histo] [--seed seed] [--target target]
 
 # Parameters
-#	GENIE_tune
+#	config
 #		The GENIE tune to run with. Available tunes can be seen at 
 #		https://hep.ph.liv.ac.uk/~costasa/genie/tunes.html, although note 
 #		that not all tunes will have splines generated. NOvA-maintained xsec 

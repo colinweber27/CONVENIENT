@@ -1,6 +1,9 @@
 # Author: Colin M Weber (webe1077@umn.edu)
 # Date: 3 June 2024
-# Purpose: To generate events with GiBUU
+# Purpose: To generate events with GiBUU. This script primarily takes the 
+# inputs and uses them to automatically modify the appropriate lines in the 
+# GiBUU job card. The modified job card is then sent to GiBUU to generate 
+# events.
 
 # Command: bash run_gibuu.sh
 #	[-i GiBUU job card]
@@ -9,6 +12,35 @@
 #	[--flux_file flux file] [--flux_histo flux_histo] 
 #	[-t target composition file in GENIE format]
 # 	[--seed MC seed]
+
+# Parameters
+#	-i
+#		The .job file that sets the GiBUU configuration. One example is at 
+#		https://gibuu.hepforge.org/trac/wiki/jobcards/T2K_0pi_water.
+#	-o
+# 		The output GiBUU file name. If the target is a mixutre of elements, 
+#		then one output is created per element in the mixture, and the 
+#		output filenames have the particle information appended.
+# 	-n
+#		The approximate number of events to generate
+#	-p
+#		The neutrino flavor to use in event generation, as a PDG code
+#	-c
+#		Whether to generate CC or NC events
+#	--flux_file
+#		The ROOT file containing the 1D flux histogram to use as input
+#	--flux_histo
+#		The 1D histogram within the flux_file containing the flux
+#	-t
+#		A .txt file containing the target information in GENIE format.
+#		Examples are in the directory CONVENIENT/targets.
+#	--seed
+#		The MC seed to use
+
+# Outputs
+#	$gibuu_elemental_outputs
+#		The GiBUU output file in Les-Houche format. One of these is created 
+#		for each element in the target.
 
 # She-bang!
 #!/bin/bash

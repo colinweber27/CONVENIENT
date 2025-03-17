@@ -3,14 +3,26 @@
 // Purpose: To read in a ROOT file with a neutrino flux and output a text 
 // file with the spectrum translated into GiBUU beam energy format.
 //
-// GiBUU beam energy format is left edge[tab] value\n, where each new line is 
-// a new bin.
-// Command: root -q "make_beam_energy_dat.C(
-// 		\"flux file\", \"flux histo\", \"output name.dat\")"
-// where flux file is the path to the ROOT flux file containing the energy 
-// spectrum, and flux histo is the name of the energy spectrum in the flux 
-// file.
+// GiBUU beam energy format is left edge[tab] value\n, where each new line 
+// is a new bin.
 
+// Command: root -q "make_beam_energy_dat.C(
+// 		\"flux_file\", \"flux_histo\", \"output_name.dat\")"
+
+// Parameters
+// 	flux_file
+// 		The path to the ROOT file containing the neutrino flux as a 1D 
+// 		histogram.
+// 	flux_hist
+// 		The name of the neutrino flux in flux_file.
+// 	output_name.dat
+// 		The name of the output file. Must end in .dat.
+
+// Outputs
+// 	new_file
+// 		The output file containing a neutrino flux in the format readable by 
+// 		GiBUU.
+ 
 // Includes
 // C++ includes
 #include <string>
@@ -20,9 +32,6 @@
 #include <TFile.h>
 #include <TH1D.h>
 
-// Define the function. It takes two required inputs: a string that is the 
-// path to the ROOT flux file, and a string that is the histogram in the 
-// file that contains the energy spectrum.
 void make_beam_energy_dat(std::string flux_file_str, \
 	std::string flux_histo_string, std::string output) {
 	// Read in the flux file
