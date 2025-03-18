@@ -7,18 +7,34 @@
 
 # Exports
 #	OUTPUT_DIR: the path to the user's data directory
-#	CONVENIENT_GEN_DIR: the path to the directory in which all the generators will be built
+#	CONVENIENT_GEN_DIR
+#		The path to the directory in which all the generators will be built.
 #	CONVENIENT_GEN_BUILD_DIR
+#		The path to the directory that contains all the build scripts.
 #	CONVENIENT_FLUX_DIR
+#		The path to the directory that contains all the fluxes
 #	CONVENIENT_TAR_DIR
+#		The path to the directory that contains all the targets
 #	CONVENIENT_NUISANCE_DIR
+#		The path to the directory that contains all the scripts that run 
+#		NUISANCE.
 #	CONVENIENT_NOvA_OUTPUT_DIR
+#		The path to the directory where all of the CONVENIENT files made 
+#		with the NOvA target are stored.
 #	CONVENIENT_NUISANCE_NOvA_OUTPUT_DIR
+#		The path to the directory where all of the NUISANCE files made with 
+#		the NOvA target are stored.
 #	CONVENIENT_OUTPUT_DIR
+#		The path to the directory where all of the CONVENIENT files made 
+#		with a single element are stored.
 #	CONVENIENT_NUISANCE_OUTPUT_DIR
+#		The path to the directory where all of the NUISANCE files made with 
+#		a single element are stored.
 
 # Sources
 #	/grid/fermiapp/products/larsoft/setups (optional)
+#		If novasoft is not set up, source the UPS setup command so that all 
+#		dependencies can also be set up.
 
 #!/bin/bash
 
