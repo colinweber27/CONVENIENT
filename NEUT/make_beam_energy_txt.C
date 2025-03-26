@@ -7,10 +7,24 @@
 // NEUT beam energy format is left edge[tab] value\n, where each new line is 
 // a new bin.
 // Command: root -q "make_beam_energy_txt.C(
-// 		\"flux file\", \"flux histo\", \"output filename\")"
-// where flux file is the path to the ROOT flux file containing the energy 
-// spectrum, and flux histo is the name of the energy spectrum in the flux 
-// file.
+// 		\"flux_file_str\", \"flux_histo_string\", \"output\")"
+
+// Parameters
+// 	flux_file_str
+// 		The path to the ROOT file containing the neutrino flux as a 1D 
+// 		histogram.
+// 	flux_histo_str
+// 		The name of the neutrino flux in flux_file.
+// 	output
+// 		The name of the output file. Must end in .txt
+
+// Outputs
+// 	new_file
+// 		The output file containing a neutrino flux w/ all bins below 100 MeV 
+// 		set to 0. The .txt file is formatted to be readable by 
+// 		make_flux_hist_root.C in this directory. That macro turns the .txt 
+// 		file into a ROOT file containing the flux as a histogram. The ROOT 
+// 		file is what's eventually passed to NEUT.
 
 // Includes
 // C++ includes

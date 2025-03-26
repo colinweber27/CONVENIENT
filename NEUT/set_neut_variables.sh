@@ -5,6 +5,32 @@
 # Command: source set_neut_variables.sh
 #	[-s seed]
 
+# Parameters
+#	-s : The MC seed to use
+
+# Exports
+#	NEUT_VERSION
+#		The version of NEUT built in CONVENIENT. This variable is 
+#		automatically set when building CONVENIENT.
+#	NEUT_NUISANCE_SETUP_SHELL
+#		The path to a NUISANCE setup script for a version that has been 
+#		built w/ NEUT compatibility.
+#	NEUT_INMEV
+#		Must be one of {0, 1}. If 0, the input flux histogram is assumed to 
+#		be in GeV. If 1, the input flux histogram is in units of MeV.
+#	NEUT_RAND (defaults to 0)
+#		If 0, NEUT wll use $RANFILE to seed the MC simulation. $RANFILE is 
+#		created as a part of this script.
+#	NEUT_MPV (defaults to 3)
+#		If 3, NEUT will look for a .root file as flux input
+#	RANFILE
+#		A string pointing to the random number file for NEUT to use as MC 
+#		seed.
+
+# Outputs
+#	random.txt
+#		A file seeding NEUT's MC generator.
+
 # Let us know what's going on
 echo "Setting NEUT variables..." 
 

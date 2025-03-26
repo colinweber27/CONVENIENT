@@ -6,6 +6,36 @@
 #	[--config NEUT jobcard] [--flux_file flux file]
 #	[--flux_histo flux histo] [--seed seed] [--target target]
 
+# Parameters
+#	config
+#		The .card file that sets the NEUT configuration. One example is on 
+#		GitHub at neut-devel/neut/src/generators/nuclsmpl/neut.card
+#	flux_file: the ROOT file containing the 1D flux histogram to use as input
+#	flux_histo: the 1D histogram within the flux_file containing the flux
+#	seed: the MC seed to use
+#	target
+#		A .txt file containing the target information in GENIE format.
+#		Examples are in the directory CONVENIENT/targets
+
+# Sources
+#	set_neut_variables.sh
+#		Script that sets variables necessary for running NEUT
+#	$CONVENIENT_NUISANCE_DIR/set_nuisance_variables.sh
+#		Script that sets variables necessary for running NUISANCE
+
+# Outputs
+#	$CONVENIENT_NUISANCE_OUTPUT_DIR/$filepath/$nuisance_neut_file
+#		The NUISANCE output file(s). One of these is created for each 
+#		element in the target
+#	$CONVENIENT_OUTPUT_DIR/$filepath/$unweighted_filename_convenient
+#		A CONVENIENT file created from the NUISANCE file for a specific 
+#		element. One of these is mde for each element in the output.
+#	$convenient_output_dir/$filepath/$filename_convenient (optional)
+#		The CONVENIENT output file, which includes all of the elements in 
+#		the original detector with weights. Only created if running with a 
+#		detector with multiple elements.
+
+
 # She-bang!
 #!/bin/bash
 
