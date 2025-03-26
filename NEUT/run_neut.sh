@@ -8,6 +8,31 @@
 # 	[-p neutrino pdg] [--flux_file flux file]
 # 	[--flux_histo flux_histo] [-t target composition file in GENIE format]
 
+# Parameters
+#	-i
+#		The .card file that sets the NEUT configuration. One example is on 
+#		GitHub at neut-devel/neut/src/generators/nuclsmpl/neut.card
+#	-o
+# 		The output NEUT file name. If the target is a mixutre of elements, 
+#		then one output is created per element in the mixture, and the 
+#		output filenames have the particle information appended.
+# 	-n
+#		The approximate number of events to generate
+#	-p
+#		The neutrino flavor to use in event generation, as a PDG code
+#	--flux_file
+#		The ROOT file containing the 1D flux histogram to use as input
+#	--flux_histo
+#		The 1D histogram within the flux_file containing the flux
+#	-t
+#		A .txt file containing the target information in GENIE format.
+#		Examples are in the directory CONVENIENT/targets.
+
+# Outputs
+#	$neut_elemental_outputs
+#		The NEUT output file. One of these is created for each element in 
+#		the target.
+
 # She-bang!
 #!/bin/bash
 
@@ -127,8 +152,8 @@ do
 
 	### Generate NEUT events by inputting the card file that has just been 
 	### modified and specifying the name of the output file.
-	neut_nova_elemental_outputs=$4.${part%[*}.root
-	neutroot2 $2 $neut_nova_elemental_outputs
+	neut_elemental_outputs=$4.${part%[*}.root
+	neutroot2 $2 $neut_elemental_outputs
 done
 
 # Return IFS to its original value

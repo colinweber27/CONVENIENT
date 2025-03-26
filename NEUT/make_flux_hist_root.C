@@ -5,6 +5,24 @@
 // Purpose: To read in a .txt file for a NEUT flux and convert it to a 
 // histogram in a .root file.
 
+// Command: root -q "make_flux_hist_root.C(
+// 		\"fluxfile\", \"outfile\", \"outhisto\")"
+
+// Parameters
+// 	fluxfile
+// 		The .txt file containing a neutrino flux in the format 
+// 		left edge[tab] value\n, where each new line is a new bin.
+// 	outfile
+// 		The name of the output file. Must end in .root.
+// 	outhisto
+// 		The name of the output histogram. This is typically set to be the 
+// 		neutrino flavor, i.e. numu, nuebar, etc.
+
+// Outputs
+// fFlux : TFile*
+// 		A file named by "outfile" containing a 1D histogram of the flux from 
+// 		"fluxfile" named "outhisto".
+
 // Includes
 // ROOT includes
 #include "TCanvas.h"
