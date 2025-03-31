@@ -4,6 +4,19 @@
 // macro does no reweighting, so it assumes that the event weight has 
 // already been set appropriately.
 
+// Command: root -q "make_convenient_from_convenient.C(\"input\", \"outname\")"
+
+// Parameters
+// 	input : str, defaults to ""
+// 		A space-separated list of CONVENIENT files to be combined into a 
+// 		single file.
+// 	outname : str, defaults to "convenient_output.root"
+// 		The name of the output file. Must end in ".root"
+
+// Outputs
+// 	new_file : TFile*
+// 		CONVENIENT file containing the combined files.
+
 // Includes
 // ROOT includes
 #include "TString.h"

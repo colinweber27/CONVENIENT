@@ -4,6 +4,12 @@
 
 # Command: source set_nuisance_variables.sh
 
+# Exports
+# -------
+#	NUISFLAT_FORMAT (defaults to "GenericVectors")
+#		A string telling NUISANCE the output format. CONVENIENT assumes 
+#		GenericVectors is used.
+
 echo "Setting variables for nuisance..." # Remind us what's going on
 
 ## Set relevant NUISANCE global parameters ##

@@ -14,9 +14,8 @@ Reads in files made with the Nu structure and flattens that structure.
 # `make_convenient_from_convenient_reweight.C`
 Reweights all events in an input convenient file using the input weight. The weights are accounted in the branch `EventWeight`. 
 
-
 # `make_convenient_from_nuisance.C`
-Macro to read a NUISANCE output and create the corresponding Convenient output. This is the macro that pares down the NUISANCE output to a minimal set of variables neeeded for xsec analyses. 
+Macro to read a NUISANCE output and create the corresponding Convenient output. This is the macro that pares down the NUISANCE output to a minimal set of variables neeeded for xsec analyses. Also takes a weight as an input, allowing for reweighting.
 
 # `run_*_nuisance.sh`
 Runs NUISANCE on an event file created by the generator in the wildcard.

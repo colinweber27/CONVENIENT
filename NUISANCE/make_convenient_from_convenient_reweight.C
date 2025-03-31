@@ -3,6 +3,21 @@
 // Purpose: To read in a Convenient file and output the same file but 
 // reweighted
 
+// Command: root -q "make_convenient_from_convenient_reweight.C(\"input\", \"outname\", \"str_reweight\")"
+
+// Parameters
+// 	input : str, defaults to ""
+// 		The CONVENIENT file to be reweighted.
+// 	outname : str, defaults to "convenient_output.root"
+// 		The name of the output file. Must end in ".root"
+// 	str_reweight : str, defaults to 1.0
+// 		The weight to apply to the events in the file.
+
+// Outputs
+// 	newfile2 : TFile*
+// 		CONVENIENT file containing the events from the input but reweighted 
+// 		by a constant given by str_reweight.
+
 // Includes
 // ROOT includes
 #include "TTree.h" // For working with trees
