@@ -83,7 +83,7 @@ If you want many events, or events for an unsupported tune or novel generator co
 6. Outputs will be found in `/exp/nova/data/users/$USER/ConvenientOutputs[_NOvA]`.
 
 ## What info does CONVENIENT keep?
-1. Neutrino energy (`float NuIn.E_in`) and PDG (`int NuIn.Flavor`). Momentum is assumed to be in the z-direction.
+1. Neutrino energy (`float Enu_true`) and PDG (`int PDGnu`). Momentum is assumed to be in the z-direction.
 2. Target PDG (`int target_PDG`).
 3. CC/NC flag (bool flagCC / bool flagNC).
 4. NEUT Interaction type code (int NEUT_int_type).
