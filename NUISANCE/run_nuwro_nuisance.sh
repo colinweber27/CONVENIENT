@@ -9,6 +9,31 @@
 # Note: this is only for a beam with a single neutrino flavor, as indicated 
 # by the 1 at the end of the -F parameter string.
 
+# Parameters
+# ----------
+#	-i
+#		The name of the input NuWro file.
+#	-F
+#		A comma-separated string of 4 items. The first item names the path 
+#		to the flux file used to create the input NuWro file. The second 
+#		item names the histogram within the flux file that contains the flux 
+#		used. The third component is the PDG code of the neutrinos in the 
+#		input file. The fourth item tells NUISANCE that the input file was 
+#		created using a single neutrino flavor.
+#	-o
+#		The name of the output file. Must end in ".root"
+
+# Sources
+# -------
+#	$NUWRO_NUISANCE_SETUP_SHELL
+#		The setup script corresponding to the version of NUISANCE that is 
+#		built against NuWro.
+
+# Outputs
+# -------
+#	-o
+#		The NUISANCE file created from the input NuWro file.
+
 # Build NUISANCE
 echo "Building NUISANCE..."
 source $NUWRO_NUISANCE_SETUP_SHELL

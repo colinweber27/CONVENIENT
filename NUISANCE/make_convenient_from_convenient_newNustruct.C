@@ -3,6 +3,19 @@
 // Purpose: To read in a Convenient file and output the same file but with a 
 // flattened neutrino structure.
 
+// Command: root -q "make_convenient_from_convenient_newNustruct.C(\"input\", \"outname\")"
+
+// Parameters
+// 	input : str, defaults to ""
+// 		A CONVENIENT file with the neutrino data structure
+// 	outname : str, defaults to "convenient_output.root"
+// 		The name of the output file. Must end in ".root"
+
+// Outputs
+// 	newfile2 : TFile*
+// 		CONVENIENT file identical to the one before but without the neutrino 
+// 		data structure.
+
 // Includes
 // ROOT includes
 #include "TTree.h" // For working with trees

@@ -4,6 +4,22 @@
 // (convenient_output.root) that includes only a minimal set of variables 
 // needed for xsec analyses.
 
+// Command: root -q "make_convenient_from_nuisance.C(\"input\", \"outname\", \"element_abundance_weight\")"
+
+// Parameters
+// 	input : str, defaults to ""
+// 		The NUISANCE file to be turned into a CONVENIENT file
+// 	outname : str, defaults to "convenient_output.root"
+// 		The name of the output file. Must end in ".root"
+// 	element_abundance_weight : double, defaults to 1
+// 		A weight that contributes to the "event_weight". Effectively, this 
+// 		allows us to reweight events by some constant while simultaneously 
+// 		turning the NUISANCE file into a CONVENIENT file.
+
+// Outputs
+// 	new_file : TFile*
+// 		The output CONVENIENT file created from the input NUISANCE file
+
 // Includes
 // ROOT includes
 #include "TTree.h" // For working with trees

@@ -6,7 +6,30 @@
 # Command: bash run_nuwro_nuisance.sh
 # [-i input file name]
 # [-f flux file] [-h flux histogram]
-# [-o output file name]
+
+# Parameters
+# ----------
+#	-i
+#		The input filename. Must refer to a NEUT output file.
+#	-f
+#		The path to a ROOT file containing a 1D histogram named by the -h 
+#		parameter to use as the neutrino flux.
+#	-h
+#		The name of the histogram in the flux file to use as the neutrino 
+#		flux.
+#	-o
+#		The name of the output file. Must end in ".root"
+
+# Sources
+# -------
+#	$NEUT_NUISANCE_SETUP_SHELL
+#		The NUISANCE setup script compatible with NEUT
+
+# Outputs
+# -------
+#	nuisflat_output
+#		The NUISANCE output file. One is created for each element in the 
+#		target.
 
 # Build NUISANCE
 echo "Building NUISANCE..."

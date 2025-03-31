@@ -5,18 +5,35 @@
 # Command: bash run_genie_nuisance.sh
 #	[-i input file name] [-f flux file,flux histo] 
 #	[-t target composition in GENIE format] [-o output file name]
+#	[-n NUISANCE setup shell]
 # 
 # Parameters
 # ----------
-#	flux file,flux histo
+#	-i
+#		The input filename. Must refer to a GENIE output in GHEP format
+#	-f 
 #		A comma-separated pair of strings. The first string names the 
-#		relative path (assuming Convenient as root directory) to the flux 
-#		file used to create the input NUISANCE file. The second string names 
-#		the histogram within the flux file that contains the flux used.  
-#
-#	target composition in GENIE format
-#		The relative path (assuming Convenient as root director) to the file 
-#		containing the target composition, in GENIE format.
+#		path to the flux file used to create the input GENIE file. The 
+#		second string names the histogram within the flux file that contains 
+#		the flux used.  
+#	-t
+#		The path to a file containing a target composition in GENIE format.
+#	-o
+#		The name of the output file. Must end in ".root".
+#	-n
+#		The NUISANCE setup script to run. Ensures that the version of 
+#		NUISANCE set up is compatible with the generator used to make the 
+#		input file.
+
+# Sources
+# -------
+#	-n
+#		The NUISANCE setup script.
+
+# Outputs
+# -------
+#	-o
+#		The NUISANCE file created from the input GENIE file.
 
 
 # Build NUISANCE
