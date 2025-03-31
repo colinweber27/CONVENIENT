@@ -176,7 +176,7 @@ else
 		weighted_convenient_outputs+="$convenient_weighted_output "
 	done <<< $(ls $filename_raw.*)
 	# Combine all the weighted files into one file
-	root -q "make_convenient_from_convenient.C(\"${weighted_convenient_outputs}\", \"${filename_convenient}\")"
+	root -q "${CONVENIENT_NUISANCE_DIR}/make_convenient_from_convenient.C(\"${weighted_convenient_outputs}\", \"${filename_convenient}\")"
 fi
 
 # Move the output files to the folders matching the program that 
