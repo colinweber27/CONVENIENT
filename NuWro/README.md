@@ -21,8 +21,8 @@ Reads in a .txt file containing a detector composition in GENIE format, and outp
 Macro for translating a ROOT histogram containing the flux into a .txt file properly formatted for NuWro. The NuWro format is of the form "`left_edge` `right_edge` `bin1_height` `bin2_height`...", where `bin1_height` is the first bin height of the histogram read in as input. The histograms do not have to be normalized.
 
 # `run_nuwro.sh`
-Runs NuWro from within Convenient. Is called by `Convenient/NuWro/conveniently_run_nuwro.sh`
+Runs NuWro from within Convenient. Is called by `CONVENIENT/NuWro/conveniently_run_nuwro.sh`
 
 # `set_nuwro_variables.sh`
-Sets variables for running NuWro from within Convenient.
+Sets variables for running NuWro from within CONVENIENT.
 

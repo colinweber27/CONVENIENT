@@ -7,10 +7,23 @@
 // beam energy, E1 is the maximum beam energy, and ai are the heights of the 
 // bins. The bins need not be normalized.
 
-// Command: root -q "make_beam_energy.C(\"flux file\", \"flux histo\")"
-// where flux file is the path to the ROOT flux file containing the energy 
-// spectrum, and flux histo is the name of the energy spectrum in the flux 
-// file.
+// Command: root -q "make_beam_energy.C(\"flux file\", \"flux histo\", \"output_filename\")"
+
+// Parameters
+// ----------
+// 		flux file
+// 			The path to a ROOT file containing a 1D histogram to use as the 
+// 			neutrino flux
+//
+// 		flux histo
+// 			The name of the 1D histo in flux file to use as the neutrino flux//
+// 		output_filename
+// 			The name of the output file. Must end in .txt
+
+// Outputs
+// -------
+// 		new_file
+// 			A .txt file containing the input 1D histogram in NuWro format
 
 // Includes
 // C++ includes
