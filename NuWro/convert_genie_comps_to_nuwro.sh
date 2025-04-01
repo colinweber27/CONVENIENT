@@ -9,12 +9,30 @@
 # is the number of protons in a given nucleus in the target, # neutrons is 
 # the number of neutrons in that same nucleus, and # nuclei is the number of # that nucleus in the target.
 
-# Command: bash convert_genie_comps_to_nuwro.sh -i input file -p 4 -o output file name
+# Command: bash convert_genie_comps_to_nuwro.sh 
+#	[-i input file] [-p 4] [-o output file name]
 # Note that all options must be set. The option -p is for the GENIE 
 # precision, which we define to be the number of decimal places used in the 
 # fractions for the GENIE target composition.
-# This function is implemented in run_nuwro.sh, but in that case is modified 
-# to pipe the output to the appropriate params.txt file.
+# This function is implemented, but not called, in run_nuwro.sh, but in that 
+# case is modified to pipe the output to the appropriate params.txt file. 
+
+# Parameters
+# ----------
+#	-i
+#		The input file, which should create a line of text of a target 
+#		composition in GENIE format.
+#
+# 	-p
+#		The precision of the GENIE file, defined as the number of decimal 
+#		places used in the fractions for the GENIE target composition.
+#
+#	-o
+#		The name of the output file. Should end in .txt.
+
+# Outputs
+# -------
+#	A .txt file w/ the input target in NuWro format.
 
 # She-bang!
 #!/bin/bash

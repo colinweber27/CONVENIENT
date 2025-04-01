@@ -7,7 +7,22 @@
 # useful format.
 
 # Command: source run.sh
-# Note that in novasoft, source must be the command we use to execute the shell script because this allows us to setup the different versions of GENIE with UPS.
+# Note that in novasoft, source must be the command we use to execute the 
+# shell script because this allows us to setup the different versions of 
+# GENIE with UPS.
+
+# Sources
+# -------
+#	conveniently_run_*.sh
+#		This script parses the generator configurations set by "RUNS" in 
+#		CONVENIENT/set_run_variables.sh to determine which generators to run 
+#		for a given CONVENIENT run. This script then runs the appropriate 
+#		generators with the "conveniently_run_*.sh scripts. The * is one of 
+#		{GENIE, NuWro, NEUT, GiBUU}.
+
+# Outputs
+# -------
+#	A set of CONVENIENT files depending on the run variables, with a .txt file corresponding to each CONVENIENT file describing how the file was created. 
 
 # She-bang!
 #!/bin/bash
@@ -87,7 +102,8 @@ lengths=(${#config_array[@]} ${#flux_array[@]} ${#flux_file_name_array[@]} ${#fl
 for i in "${lengths[@]:1}"; do
 	if [ "$i" != "${lengths[0]}" ]; then
 		echo "Not all lists of inputs have the same length."
-		echo "Ensure that all comma-separated lists in 'set_run_variables.sh' \n have the same number of elements."
+		echo "Ensure that all comma-separated lists in 'set_run_variables.sh'"
+		echo "have the same number of elements."
 		exit 1
 	fi
 done

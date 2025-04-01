@@ -9,6 +9,39 @@
 # 	[--flux_histo flux histo] [-t target composition file in GENIE format] 
 #	[--seed MC seed]
 
+# Parameters
+# ----------
+#	-o
+#		The name of the output file
+#
+#	-i 
+#		The name of the input NuWro parameters file to use
+#
+#	-n
+#		The number of events to generate
+#
+#	-p
+#		The PDG code of the neutrino to use in event generation
+#
+#	--flux_file
+#		The name of the file containing a 1D histogram to use as the 
+#		neutrino flux
+#
+#	--flux_histo
+#		The name of the histogram within flux_file to use as the neutrino 
+#		flux
+#
+#	-t
+#		The target composition, in GENIE format
+#
+#	--seed
+#		The MC seed to input to NuWro
+
+# Outputs
+# -------
+#	-o
+#		The output NuWro file
+
 # She-bang!
 #!/bin/bash
 

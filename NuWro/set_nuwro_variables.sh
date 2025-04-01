@@ -4,6 +4,15 @@
 
 # Command: source set_nuwro_variables.sh
 
+# Exports
+# -------
+#	NUWRO_VERSION
+#		The version of NuWro that's being run. This is set when building 
+#		CONVENIENT.
+#
+#	NUWRO_NUISANCE_SETUO_SHELL
+#		The path to a NUISANCE setup shell that was built against NuWro.
+
 # Let us know what's going on
 echo "Setting NuWro variables..." 
 
