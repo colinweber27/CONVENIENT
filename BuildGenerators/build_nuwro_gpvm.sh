@@ -3,7 +3,12 @@
 # Purpose: To build NuWro within Convenient. This file is written in the 
 # style of build_genie_gpvm.sh.
 
-# Command source build_nuwro_gpvm.sh
+# Command source build_nuwro_gpvm.sh \
+#	[--VERSION NuWro_version]
+
+# Parameters
+#	--VERSION
+#		The NuWro version to checkout and build
 
 # Exports
 #	NUWRO_DIR
@@ -83,7 +88,7 @@ git clone https://github.com/NuWro/nuwro.git $NUWRO_DIR
 write_nuwro_env_script
 
 # Cd into the Nuwro directory
-cd $NUWRO_DIR
+cd $NUWRO_DIR; git checkout $2
 
 # Export variables that are necessary for setting up NuWro properly. These 
 # are not needed after NuWro has been built.
@@ -94,6 +99,9 @@ export LIBRARY_PATH=${LIBRARY_PATH}:${PYTHIA6}
 
 # Make (build) NuWro.
 make
+
+# Transfer the version to NuWro/set_nuwro_variables.sh
+sed -i "s/^export NUWRO_VERSION=.*/export NUWRO_VERSION='"${2}"'/" $CONVENIENT_DIR/NuWro/set_nuwro_variables.sh
 
 # Cd back into this directory and source the NuWro environment.
 cd $CONVENIENT_GEN_BUILD_DIR
