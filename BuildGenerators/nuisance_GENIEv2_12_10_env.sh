@@ -13,5 +13,5 @@ THIS_DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Set the NUISANCE base directory and source the setup.sh script within the
 # base directory.
-export NUISANCEBASE="$(dirname $THIS_DIRECTORY)"/Generators/nuisance_GENIEv3_00_06_nuwro_neut
+export NUISANCEBASE="$(dirname $THIS_DIRECTORY)"/Generators/nuisance_GENIEv2_12_10
 source $NUISANCEBASE/build/Linux/setup.sh
