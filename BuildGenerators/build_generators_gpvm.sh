@@ -39,12 +39,12 @@ fi
 
 if [[ $nuwro_opt == "ON" ]]
 then
-	source build_nuwro_gpvm.sh
+	source build_nuwro_gpvm.sh --VERSION $NuWro_version
 fi
 
 if [[ $neut_opt == "ON" ]]
 then
-	source build_neut_gpvm.sh --USERNAME $github_username --TOKEN $github_NEUT_access_token
+	source build_neut_gpvm.sh --USERNAME $github_username --TOKEN $github_NEUT_access_token --VERSION $NEUT_version
 fi
 
 if [[ $gibuu_opt == "ON" ]] 

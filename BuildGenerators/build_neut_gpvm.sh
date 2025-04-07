@@ -8,11 +8,13 @@
 # neut-devel organization on GitHub. I emailed Luke Pickering for access.
 
 # Command: source build_neut_gpvm.sh \
-#	[--USERNAME github_username] [--TOKEN github_NEUT_access_token]
+#	[--USERNAME github_username] [--TOKEN github_NEUT_access_token] \
+#	[--VERSION NEUT_version]
 
 # Parameters
 #	USERNAME: The GitHub username associated with neut_dev
 #	TOKEN: A personal access token associated with USERNAME
+#	VERSION: The NEUT version to checkout and build
 
 # Exports
 #	NEUT_DIR: The directory containing the source code for NEUT
@@ -48,14 +50,14 @@ export NEUT_DIR=$CONVENIENT_GEN_DIR/neut
 # this command is 
 # git clone https://username:PAT@github.com/neut-devel-neut.git 
 # <landing directory>
-git clone https://$2:$4@github.com/neut-devel/neut.git $NEUT_DIR --branch 5.7.0
+git clone https://$2:$4@github.com/neut-devel/neut.git $NEUT_DIR
 
 # Write the environment script above. This can then be used to setup the 
 # NEUT environment after building.
 write_neut_env_script
 
 # Cd into the NEUT directory
-cd $NEUT_DIR
+cd $NEUT_DIR; git checkout $6
 
 # Do some other stuff that prevents compiling errors. More info can be found 
 # in neut-devel/neut/README.md file
@@ -72,6 +74,9 @@ cd ../; mkdir build; cd build;
 # Make and install
 make -j 8
 make install
+
+# Transfer the version to NEUT/set_neut_variables.sh
+sed -i "s/^export NEUT_VERSION=.*/export NEUT_VERSION='"${6}"'/" $CONVENIENT_DIR/NEUT/set_neut_variables.sh
 
 # Cd back into this directory and source the NEUT environment.
 cd $CONVENIENT_GEN_BUILD_DIR

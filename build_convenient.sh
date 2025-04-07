@@ -15,10 +15,15 @@
 #	gibuu_opt: switch for building GiBUU. Must be one of {'ON', 'OFF'}.
 
 # Optional declares:
+
 #	Options activated if neut_opt == 'ON'
 #	github_username: 			the GitHub username associated with neut_dev
 #	github_NEUT_access_token: 	a github access token associated with the 
 #								given GitHub username
+#	NEUT_version:				The NEUT version to build
+
+# Options activated if nuwro_opt == 'ON'
+#	NuWro_version:				The NuWro version to build
 
 # Sources:
 #	global_vars.sh: 			various variables primarily labelling 
@@ -38,12 +43,16 @@ source global_vars.sh
 # Prompt the user to decide which generators to set up
 # NuWro?
 read -p "Enable NuWro? (ON/OFF): " nuwro_opt
+if [[ $nuwro_opt == "ON" ]]
+then
+	read -p "NuWro version: " NuWro_version
 # NEUT?
 read -p "Enable NEUT? (ON/OFF). If \"ON\", then also enter GitHub username that is associated with NEUT, and a valid access token: " neut_opt
 if [[ $neut_opt == "ON" ]]
 then
 	read -p "Github Username: " github_username
 	read -p "Github access token: " github_NEUT_access_token
+	read -p "NEUT version: " NEUT_version
 fi
 # GiBUU?
 read -p "Enable GiBUU? (ON/OFF): " gibuu_opt
