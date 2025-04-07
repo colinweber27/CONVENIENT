@@ -46,6 +46,7 @@ read -p "Enable NuWro? (ON/OFF): " nuwro_opt
 if [[ $nuwro_opt == "ON" ]]
 then
 	read -p "NuWro version: " NuWro_version
+fi
 # NEUT?
 read -p "Enable NEUT? (ON/OFF). If \"ON\", then also enter GitHub username that is associated with NEUT, and a valid access token: " neut_opt
 if [[ $neut_opt == "ON" ]]
