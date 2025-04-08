@@ -73,7 +73,7 @@ if [ ! -f "$gibuu_dat_flux_file" ];
 then
 	# Translate the original flux file to a .dat file in the appropriate 
 	# format
-	root -q "make_beam_energy_dat.C(\"$gibuu_original_flux_file\", \"$gibuu_original_flux_histo\", \"$gibuu_dat_flux_file\")"
+	root -q "make_beam_energy_dat.C(\"${2}\", \"$gibuu_original_flux_histo\", \"$gibuu_dat_flux_file\")"
 fi
 
 # Let us know we're done
