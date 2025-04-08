@@ -162,7 +162,7 @@ do
 			# --nova_switch 1=used ND element weights
 			echo "Adding run to data list..."
 			bash documentation_generation_scripts/add_to_data_list.sh \
-				-g GENIE -t $config \
+				-g GENIE -t ${generator_version}_${config} \
 				-f $filename_convenient \
 				--flux $flux --nova_switch $nova_switch
 			echo "Run added to data list."	
@@ -203,7 +203,7 @@ do
 			# --nova_switch 1=used ND element weights
 			echo "Adding run to data list..."
 			bash documentation_generation_scripts/add_to_data_list.sh \
-				-g NuWro -t $config \
+				-g NuWro -t ${generator_version}_${config} \
 				-f $filename_convenient \
 				--flux $flux --nova_switch $nova_switch
 			echo "Run added to data list."
@@ -244,7 +244,7 @@ do
 			# --nova_switch 1=used ND element weights
 			echo "Adding run to data list..."
 			bash documentation_generation_scripts/add_to_data_list.sh \
-				-g $generator -t $config \
+				-g $generator -t ${NEUT_VERSION}_${config} \
 				-f $filename_convenient \
 				--flux $flux --nova_switch $nova_switch
 			echo "Run added to data list."
@@ -285,7 +285,7 @@ do
 			# --nova_switch 1=used ND element weights
 			echo "Adding run to data list..."
 			bash documentation_generation_scripts/add_to_data_list.sh \
-				-g $generator -t $config \
+				-g $generator -t ${GiBUU_VERSION}_${config} \
 				-f $filename_convenient \
 				--flux $flux --nova_switch $nova_switch
 			echo "Run added to data list."

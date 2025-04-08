@@ -137,9 +137,9 @@ rm totals.txt
 # was used.
 if [ $nova_switch -eq 1 ];
 then
-	filepath=NuWro/${params%.txt}/"$HC$flux"/"$FLAVOR"_only
+	filepath=NuWro/${NUWRO_VERSION}_${params%.txt}/"$HC$flux"/"$FLAVOR"_only
 else
-	filepath=NuWro/${params%.txt}/"$HC$flux"/"$FLAVOR"_only/$target
+	filepath=NuWro/${NUWRO_VERSION}_${params%.txt}/"$HC$flux"/"$FLAVOR"_only/$target
 fi
 
 # mkdir format is straightforward. 

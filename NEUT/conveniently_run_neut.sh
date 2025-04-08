@@ -190,7 +190,7 @@ rm random.txt	# Takes care of the random number .txt file
 if [ $nova_switch -eq 1 ];
 then
 	# Take care of the Convenient file first
-	filepath=NEUT/${params%.card}/"$HC$flux"/"$FLAVOR"_only
+	filepath=NEUT/${NEUT_VERSION}_${params%.card}/"$HC$flux"/"$FLAVOR"_only
 	mkdir -p $convenient_output_dir/$filepath
 	mv $filename_convenient $convenient_output_dir/$filepath/$filename_convenient
 
@@ -205,7 +205,7 @@ then
 		target=$(awk -v key=${pdg_from_filename} '$1==key { print $2 }' $CONVENIENT_TAR_DIR/NOvA_ND/PDG_element_lookup_table.txt)
 
 		# Form the filepath
-		filepath=NEUT/${params%.card}/"$HC$flux"/"$FLAVOR"_only/$target
+		filepath=NEUT/${NEUT_VERSION}_${params%.card}/"$HC$flux"/"$FLAVOR"_only/$target
 		# Move the file
 		outdir=$CONVENIENT_NUISANCE_OUTPUT_DIR/$filepath
 		mkdir -p $outdir
@@ -227,19 +227,19 @@ then
 		fi
 
 		# Form the filepath
-		filepath=NEUT/${params%.card}/"$HC$flux"/"$FLAVOR"_only/$target
+		filepath=NEUT/${NEUT_VERSION}_${params%.card}/"$HC$flux"/"$FLAVOR"_only/$target
 		# Move the file
 		outdir=$CONVENIENT_OUTPUT_DIR/$filepath
 		mkdir -p $outdir
 		mv $unweighted_convenient_file $outdir/$unweighted_convenient_file
 		# Add to data list and write a .txt file
-		bash $CONVENIENT_DIR/documentation_generation_scripts/add_to_data_list.sh -g NEUT -t $neut_config -f $unweighted_convenient_file --flux $neut_flux --nova_switch 0
+		bash $CONVENIENT_DIR/documentation_generation_scripts/add_to_data_list.sh -g NEUT -t ${NEUT_VERSION}_$neut_config -f $unweighted_convenient_file --flux $neut_flux --nova_switch 0
 		bash $CONVENIENT_DIR/documentation_generation_scripts/create_output_txt_file.sh -l $outdir,$unweighted_convenient_file -n $N_EVENTS -h $HC -p $NEUTRINO_PDG -f $neut_flux_file,$neut_flux_histo -t $target -d $DATE -v $NEUT_VERSION --seed $neut_seed
 
 	done <<< $unweighted_convenient_outputs
 
 	# Reset the filepath
-	filepath=NEUT/${params%.card}/"$HC$flux"/"$FLAVOR"_only
+	filepath=NEUT/${NEUT_VERSION}_${params%.card}/"$HC$flux"/"$FLAVOR"_only
 
 	# Remove the weighted Convenient files
 	while IFS= read -r weighted_convenient_file
@@ -247,7 +247,7 @@ then
 		rm $weighted_convenient_file
 	done <<< $weighted_convenient_outputs
 else
-	filepath=NEUT/${params%.card}/"$HC$flux"/"$FLAVOR"_only/$target
+	filepath=NEUT/${NEUT_VERSION}_${params%.card}/"$HC$flux"/"$FLAVOR"_only/$target
 	# mkdir format is straightforward. 
 	# -p means make parent directories as well, if missing
 	mkdir -p $nuisance_output_dir/$filepath

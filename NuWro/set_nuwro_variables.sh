@@ -18,7 +18,7 @@ echo "Setting NuWro variables..."
 
 # Set global parameters. These are included here because they don't change, 
 # regardless of other run parameters.
-export NUWRO_VERSION=21.09
+export NUWRO_VERSION=v21.09
 
 export NUWRO_NUISANCE_SETUP_SHELL=$CONVENIENT_GEN_DIR/nuisance_GENIEv3_04_00_nuwro_neut/build/Linux/setup.sh
 

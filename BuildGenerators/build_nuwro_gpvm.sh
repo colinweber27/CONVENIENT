@@ -101,7 +101,7 @@ export LIBRARY_PATH=${LIBRARY_PATH}:${PYTHIA6}
 make
 
 # Transfer the version to NuWro/set_nuwro_variables.sh
-sed -i "s/^export NUWRO_VERSION=.*/export NUWRO_VERSION='"${2}"'/" $CONVENIENT_DIR/NuWro/set_nuwro_variables.sh
+sed -i "s/^export NUWRO_VERSION=v.*/export NUWRO_VERSION=v'"${2}"'/" $CONVENIENT_DIR/NuWro/set_nuwro_variables.sh
 
 # Cd back into this directory and source the NuWro environment.
 cd $CONVENIENT_GEN_BUILD_DIR
