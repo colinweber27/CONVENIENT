@@ -265,9 +265,9 @@ rm input-flux.root
 # was used.
 if [ $nova_switch -eq 1 ];
 then
-	filepath=GENIE/$genie_config/"$HC$flux"/"$FLAVOR"_only
+	filepath=GENIE/${generator_version}_${genie_config}/"$HC$flux"/"$FLAVOR"_only
 else
-	filepath=GENIE/$genie_config/"$HC$flux"/"$FLAVOR"_only/$target
+	filepath=GENIE/${generator_version}_${genie_config}/"$HC$flux"/"$FLAVOR"_only/$target
 fi
 
 # mkdir format is straightforward. 
