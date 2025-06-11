@@ -83,8 +83,7 @@ place_alphabetically() {
 					then
 						string_line=$((l1 - 1))
 						last_line=$l1
-					elif [[ $str_type == "gen_tune" ]]
-					then
+					else
 						string_line=$l1
 						last_line=$string_line
 					fi
