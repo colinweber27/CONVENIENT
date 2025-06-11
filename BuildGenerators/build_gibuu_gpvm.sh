@@ -80,6 +80,17 @@ make
 # Move the executable to Convenient/GiBUU
 mv testRun/GiBUU.x $CONVENIENT_DIR/GiBUU/GiBUU.x
 
+<<<<<<< HEAD
+=======
+# Export variables that are necessary for setting up GiBUU properly. These 
+# are not needed after GiBUU has been built.
+export GiBUU=$CONVENIENT_DIR/GiBUU/GiBUU.x
+
+export GiBUU_BUU_INPUT=$CONVENIENT_GENERATOR_DIR/GiBUU/buuinput
+
+export GiBUU_VERSION=R2023_P3
+
+>>>>>>> ca310f7 (Some documentation work, plus added command to set up correct version of ROOT upon setting up CONVENIENT.)
 # Cd back into this directory and source the GiBUU environment.
 cd $CONVENIENT_GEN_BUILD_DIR
 source gibuu_env.sh
