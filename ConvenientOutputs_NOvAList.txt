@@ -543,7 +543,7 @@ ____GiBUU:Defaultparams.job.9.FHC.250000.numuCC.convenient_output.root
 
 _Flux:RHCDeriveFlux50MeVwidth_ppfx
 __numubarCC_only
-___1.25e7
+___9.75e6
 ____GiBUU:Defaultparams.job.10.RHC.250000.numubarCC.convenient_output.root
 ____GiBUU:Defaultparams.job.11.RHC.250000.numubarCC.convenient_output.root
 ____GiBUU:Defaultparams.job.12.RHC.250000.numubarCC.convenient_output.root
@@ -557,8 +557,6 @@ ____GiBUU:Defaultparams.job.45678.RHC.2000000.numubarCC.convenient_output.3.root
 ____GiBUU:Defaultparams.job.45678.RHC.2000000.numubarCC.convenient_output.4.root
 ____GiBUU:Defaultparams.job.45678.RHC.2000000.numubarCC.convenient_output.5.root
 ____GiBUU:Defaultparams.job.45678.RHC.2000000.numubarCC.convenient_output.6.root
-____GiBUU:Defaultparams.job.7.RHC.250000.numubarCC.convenient_output.root
-____GiBUU:Defaultparams.job.8.RHC.250000.numubarCC.convenient_output.root
 
 __numuCC_only
 ___9.5e6
@@ -598,11 +596,9 @@ ____GiBUU:Defaultparams.job.9.RHC.250000.numuCC.convenient_output.root
 NEUT:v5.8.0_Defaultparams.card
 _Flux:FHCDeriveFlux50MeVwidth_ppfx
 __numubar_only
-___1.e7
-____NEUT:Defaultparams.card.10.FHC.1m.numubar.convenient_output.root
+___8.e6
 ____NEUT:Defaultparams.card.11.FHC.1m.numubar.convenient_output.root
 ____NEUT:Defaultparams.card.12.fHC.1m.numubar.convenient_output.root
-____NEUT:Defaultparams.card.2.FHC.1m.numubar.convenient_output.root
 ____NEUT:Defaultparams.card.3.FHC.1m.numubar.convenient_output.root
 ____NEUT:Defaultparams.card.4.FHC.1m.numubar.convenient_output.root
 ____NEUT:Defaultparams.card.5.FHC.1m.numubar.convenient_output.root
@@ -612,22 +608,16 @@ ____NEUT:Defaultparams.card.8.FHC.1m.numubar.convenient_output.root
 ____NEUT:Defaultparams.card.9.FHC.1m.numubar.convenient_output.root
 
 __numu_only
-___1.1e7
+___5.e6
 ____NEUT:Defaultparams.card.10.FHC.1m.numu.convenient_output.root
-____NEUT:Defaultparams.card.11.FHC.1m.numu.convenient_output.root
-____NEUT:Defaultparams.card.12.FHC.1m.numu.convenient_output.root
-____NEUT:Defaultparams.card.2.FHC.1m.numu.convenient_output.root
-____NEUT:Defaultparams.card.3.FHC.1m.numu.convenient_output.root
-____NEUT:Defaultparams.card.4.FHC.1m.numu.convenient_output.root
 ____NEUT:Defaultparams.card.5.FHC.1m.numu.convenient_output.root
 ____NEUT:Defaultparams.card.6.FHC.1m.numu.convenient_output.root
 ____NEUT:Defaultparams.card.7.FHC.1m.numu.convenient_output.root
-____NEUT:Defaultparams.card.8.FHC.1m.numu.convenient_output.root
 ____NEUT:Defaultparams.card.9.FHC.1m.numu.convenient_output.root
 
 _Flux:RHCDeriveFlux50MeVwidth_ppfx
 __numubar_only
-___1.e7
+___8.e6
 ____NEUT:Defaultparams.card.10.RHC.1m.numubar.convenient_output.root
 ____NEUT:Defaultparams.card.11.RHC.1m.numubar.convenient_output.root
 ____NEUT:Defaultparams.card.2.RHC.1m.numubar.convenient_output.root
@@ -635,12 +625,10 @@ ____NEUT:Defaultparams.card.3.RHC.1m.numubar.convenient_output.root
 ____NEUT:Defaultparams.card.4.RHC.1m.numubar.convenient_output.root
 ____NEUT:Defaultparams.card.5.RHC.1m.numubar.convenient_output.root
 ____NEUT:Defaultparams.card.6.RHC.1m.numubar.convenient_output.root
-____NEUT:Defaultparams.card.7.RHC.1m.numubar.convenient_output.root
 ____NEUT:Defaultparams.card.8.RHC.1m.numubar.convenient_output.root
-____NEUT:Defaultparams.card.9.RHC.1m.numubar.convenient_output.root
 
 __numu_only
-___1.1e7
+___1.e7
 ____NEUT:Defaultparams.card.10.FHC.1m.numu.convenient_output.root
 ____NEUT:Defaultparams.card.11.FHC.1m.numu.convenient_output.root
 ____NEUT:Defaultparams.card.12.FHC.1m.numu.convenient_output.root
@@ -650,7 +638,6 @@ ____NEUT:Defaultparams.card.4.FHC.1m.numu.convenient_output.root
 ____NEUT:Defaultparams.card.5.FHC.1m.numu.convenient_output.root
 ____NEUT:Defaultparams.card.6.FHC.1m.numu.convenient_output.root
 ____NEUT:Defaultparams.card.7.FHC.1m.numu.convenient_output.root
-____NEUT:Defaultparams.card.8.FHC.1m.numu.convenient_output.root
 ____NEUT:Defaultparams.card.9.FHC.1m.numu.convenient_output.root
 
 NuWro:v21.09_Defaultparams.txt

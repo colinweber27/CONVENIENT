@@ -53,7 +53,7 @@ export GiBUU=$CONVENIENT_DIR/GiBUU/GiBUU.x
 
 export GiBUU_BUU_INPUT=$CONVENIENT_GENERATOR_DIR/GiBUU/buuinput
 
-export GiBUU_VERSION=2023
+export GiBUU_VERSION=R2023_P3
 EOF
 }
 
@@ -87,7 +87,7 @@ export GiBUU=$CONVENIENT_DIR/GiBUU/GiBUU.x
 
 export GiBUU_BUU_INPUT=$CONVENIENT_GENERATOR_DIR/GiBUU/buuinput
 
-export GiBUU_VERSION=2023
+export GiBUU_VERSION=R2023_P3
 
 # Cd back into this directory and source the GiBUU environment.
 cd $CONVENIENT_GEN_BUILD_DIR
