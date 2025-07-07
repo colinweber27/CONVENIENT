@@ -152,8 +152,14 @@ do
 
 	### Generate NEUT events by inputting the card file that has just been 
 	### modified and specifying the name of the output file.
+    ### Only generate events if they haven't yet been generated 
 	neut_elemental_outputs=$4.${part%[*}.root
-	neutroot2 $2 $neut_elemental_outputs
+	if [ ! -f $neut_elemental_outputs ];
+	then
+		neutroot2 $2 $neut_elemental_outputs
+	else
+		continue
+	fi
 done
 
 # Return IFS to its original value
