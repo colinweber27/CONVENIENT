@@ -49,7 +49,6 @@ do
 	target_comp=$(echo $line)
 done < "$8"
 
-
 # Generate the GENIE events. See the GENIE user's manual for info on the 
 # gevgen command.
 echo "Running gevgen w/ tune ${14}"

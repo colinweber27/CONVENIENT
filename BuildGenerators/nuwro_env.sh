@@ -1,3 +1,22 @@
+# Purpose: to source the environment variables necessary for running NuWro
+# within CONVENIENT
+
+# Command: source nuwro_env.sh
+
+# Exports
+#	NUWROBASE: the directory containing the NuWro build
+#	PYTHIA6
+#		The directory containing the PYTHIA6 build, which NuWro uses for 
+#		hadronization
+#	NUWRO: Same, as NUWROBASE, except this is the variable NuWro looks for
+#	LD_LIBRARY_PATH
+#		Adds directory containing NuWro libraries to the library path
+#	PATH: Adds directory containing NuWro executable to PATH
+
+# Sources
+#	$CONVENIENT_DIR/global_vars.sh
+#		Environment variables that name different CONVENIENT directories
+
 #!/bin/bash
 
 # Set up the UPS products needed to build and use NuWro

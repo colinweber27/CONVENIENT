@@ -76,7 +76,7 @@ make -j 8
 make install
 
 # Transfer the version to NEUT/set_neut_variables.sh
-sed -i "s/^export NEUT_VERSION=v.*/export NEUT_VERSION=v'"${6}"'/" $CONVENIENT_DIR/NEUT/set_neut_variables.sh
+sed -i "s/^export NEUT_VERSION=v.*/export NEUT_VERSION=v"${6}"/" $CONVENIENT_DIR/NEUT/set_neut_variables.sh
 
 # Cd back into this directory and source the NEUT environment.
 cd $CONVENIENT_GEN_BUILD_DIR

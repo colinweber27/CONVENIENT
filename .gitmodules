@@ -1,15 +1,15 @@
 [submodule "Generators/neut"]
 	path = Generators/neut
 	url = https://github.com/neut-devel/neut.git
-[submodule "Generators/nuisance_GENIEv2_12_10"]
-	path = Generators/nuisance_GENIEv2_12_10
-	url = https://github.com/NUISANCEMC/nuisance.git
-[submodule "Generators/nuisance_GENIEv3_00_06_nuwro_neut"]
-	path = Generators/nuisance_GENIEv3_00_06_nuwro_neut
-	url = https://github.com/NUISANCEMC/nuisance.git
 [submodule "Generators/nuisance_GENIEv3_04_00_nuwro_neut"]
 	path = Generators/nuisance_GENIEv3_04_00_nuwro_neut
 	url = https://github.com/NUISANCEMC/nuisance.git
 [submodule "Generators/nuwro"]
 	path = Generators/nuwro
 	url = https://github.com/NuWro/nuwro.git
+[submodule "Generators/nuisance_GENIEv2_12_10"]
+	path = Generators/nuisance_GENIEv2_12_10
+	url = https://github.com/NUISANCEMC/nuisance.git
+[submodule "Generators/nuisance_GENIEv3_00_06_nuwro_neut"]
+	path = Generators/nuisance_GENIEv3_00_06_nuwro_neut
+	url = https://github.com/NUISANCEMC/nuisance.git

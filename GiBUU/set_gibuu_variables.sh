@@ -23,7 +23,8 @@
 #		should not be changed from 16.
 #	nuExp
 #		An integer determining which flux to use. If 99, use a user-inputted 
-#		flux histogram. Other integers refer to public fluxes from different #		experiments, with the mapping available in lines 59-76 in 
+#		flux histogram. Other integers refer to public fluxes from different 
+#		experiments, with the mapping available in lines 59-76 in 
 #		GiBUU/Defaultparams.job. Only relevant if nuXsectionMode=16. In 
 #		general, this should not be changed from 99.
 #	numEnsembles

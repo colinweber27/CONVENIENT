@@ -1,3 +1,16 @@
+# Purpose: to source the environment variables necessary for running 
+# NUISANCE within CONVENIENT
+
+# Command: source nuisance_GENIEv3_00_06_env.sh
+
+# Exports
+#	NUISANCEBASE: the directory within which NUISANCE is built
+
+# Sources
+#	$CONVENIENT_DIR/global_vars.sh
+#		Environment variables that name different CONVENIENT directories
+#	$NUISANCEBASE/build/Linux/setup.sh
+#		Environment variables necessary for running NUISANCE
 #!/bin/bash
 
 # Set up the UPS products needed to build and use Nuisance
