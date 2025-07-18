@@ -58,8 +58,11 @@ source $NUISANCEBASE/build/Linux/setup.sh
 EOF
 }
 
-# Ensure all generators are set up.
+# Ensure all generators are set up, including the right version of GENIE
 source $CONVENIENT_DIR/setup_generators.sh
+setup genie v3_00_06p -q e20:inclxx:prof
+setup genie_xsec v3_00_06 -q G1802a0211a:e1000:k250
+setup genie_phyopt v3_00_06 -q dkcharmtau:resfixfix
 
 # Set the NUISANCE directory variable.
 export NUISANCE_DIR=$CONVENIENT_GEN_DIR/nuisance_GENIEv3_00_06_nuwro_neut

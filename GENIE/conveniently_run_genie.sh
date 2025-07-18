@@ -245,7 +245,7 @@ bash $CONVENIENT_NUISANCE_DIR/run_genie_nuisance.sh \
 # Post-process the NUISANCE output to output the Convenient file.
 # If we just used an older GENIE tune, it won't work anymore due 
 # to a ROOT conflict, so switch back!
-if [ $genie_config == "G18_10j_00_000" ] || [ $genie_config == "N18_10j_02_11a-resfixfix" ] || [ $genie_config == "DefaultPlusMECWithNC" ];
+if [ $genie_config == "G18_10j_00_000" ] || [ $genie_config == "N18_10j_02_11a-resfixfix" ] || [ $genie_config == "DefaultPlusMECWithNC" ] || [ $genie_config == "G18_02a_02_11a" ] || [ $genie_config == "G18_01a_02_11a" ] || [ $genie_config == "G18_02a_02_11b" ];
 then
 	setup genie v3_04_00 -q e20:inclxx:prof
 fi
