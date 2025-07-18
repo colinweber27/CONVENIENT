@@ -36,7 +36,7 @@ echo "Setting NEUT variables..."
 
 # Set global parameters. These are included here because they don't change, 
 # regardless of other run parameters.
-export NEUT_VERSION=v5.8.0
+export NEUT_VERSION=v5.7.0
 
 export NEUT_NUISANCE_SETUP_SHELL=$CONVENIENT_GEN_DIR/nuisance_GENIEv3_04_00_nuwro_neut/build/Linux/setup.sh
 

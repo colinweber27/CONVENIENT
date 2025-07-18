@@ -61,7 +61,7 @@ source $NUISANCEBASE/build/Linux/setup.sh
 EOF
 }
 
-# Ensure all generators are set up.
+# Ensure all generators are set up, including the correct version of GENIE
 source $CONVENIENT_DIR/setup_generators.sh
 setup genie v2_12_10b -q e15:prof
 setup genie_xsec v2_12_10 -q DefaultPlusMECWithNC
