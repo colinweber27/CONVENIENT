@@ -63,6 +63,9 @@ EOF
 
 # Ensure all generators are set up.
 source $CONVENIENT_DIR/setup_generators.sh
+setup genie v2_12_10b -q e15:prof
+setup genie_xsec v2_12_10 -q DefaultPlusMECWithNC
+setup genie_phyopt v2_12_10 -q dkcharmtau
 
 # Set the NUISANCE directory variable.
 export NUISANCE_DIR=$CONVENIENT_GEN_DIR/nuisance_GENIEv2_12_10
