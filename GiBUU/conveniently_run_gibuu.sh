@@ -245,13 +245,6 @@ then
 		rm $weighted_convenient_file
 	done <<< $weighted_convenient_outputs
 else
-	filepath=GiBUU/${GiBUU_VERSION}_${params%.job}/"$HC$flux"/"$FLAVOR""$GIBUU_CC_NC"_only/$target
-	# mkdir format is straightforward. 
-	# -p means make parent directories as well, if missing
-	mkdir -p $convenient_output_dir/$filepath
-	# mv format is [file to move] [new directory and/or name]
-	mv $filename_convenient $convenient_output_dir/$filepath/$filename_convenient
-else
 	# We just need to move the final convenient file. Documentation will be 
 	# added at the end
 	# Form the filepath
