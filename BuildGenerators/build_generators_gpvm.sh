@@ -49,7 +49,7 @@ fi
 
 if [[ $gibuu_opt == "ON" ]] 
 then
-	source build_gibuu_gpvm.sh
+	source build_gibuu_gpvm.sh --VERSION $GiBUU_version
 fi
 
 source build_nuisance_GENIEv3_04_00_nuwro_neut_gpvm.sh --NuWro $nuwro_opt --NEUT $neut_opt

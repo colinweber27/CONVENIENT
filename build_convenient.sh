@@ -57,6 +57,10 @@ then
 fi
 # GiBUU?
 read -p "Enable GiBUU? (ON/OFF): " gibuu_opt
+if [[ $gibuu_opt == "ON" ]]
+then
+	read -p "GiBUU version: " GiBUU_version
+fi
 
 cd BuildGenerators
 
