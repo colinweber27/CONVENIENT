@@ -5,6 +5,9 @@
 
 # Command source build_gibuu_gpvm.sh
 
+# Parameters
+#	VERSION: The GiBUU version to build
+
 # Exports
 #	GiBUU_DIR
 #		The directory containing the GiBUU source code
@@ -51,9 +54,8 @@ echo "Setting GiBUU environment variables..."
 
 export GiBUU=$CONVENIENT_DIR/GiBUU/GiBUU.x
 
-export GiBUU_BUU_INPUT=$CONVENIENT_GENERATOR_DIR/GiBUU/buuinput
+export GiBUU_BUU_INPUT=$CONVENIENT_GEN_DIR/GiBUU/buuinput
 
-export GiBUU_VERSION=R2023_P3
 EOF
 }
 
@@ -66,12 +68,15 @@ export GiBUU_DIR=$CONVENIENT_GEN_DIR/GiBUU
 mkdir -p $GiBUU_DIR
 cd $GiBUU_DIR
 
-# Download and unpack GiBUU.
-wget --content-disposition https://gibuu.hepforge.org/downloads?f=archive/r2023_03/release2023.tar.gz
-wget --content-disposition https://gibuu.hepforge.org/downloads?f=archive/r2023_03/buuinput2023.tar.gz
+# Extract the year from the GiBUU version
+year=${2%_*}
 
-tar -xzvf buuinput2023.tar.gz
-tar -xzvf release2023.tar.gz
+# Download and unpack GiBUU.
+wget --content-disposition https://gibuu.hepforge.org/downloads?f=archive/r${2}/release${year}.tar.gz
+wget --content-disposition https://gibuu.hepforge.org/downloads?f=archive/r${2}/buuinput${year}.tar.gz
+
+tar -xzvf buuinput${year}.tar.gz
+tar -xzvf release${year}.tar.gz
 
 # Cd into the release directory to build, then run make
 cd release
@@ -87,7 +92,8 @@ export GiBUU=$CONVENIENT_DIR/GiBUU/GiBUU.x
 
 export GiBUU_BUU_INPUT=$CONVENIENT_GENERATOR_DIR/GiBUU/buuinput
 
-export GiBUU_VERSION=R2023_P3
+# Transfer the version to GiBUU/set_gibuu_variables.sh
+sed -i "s/^export GiBUU_VERSION=R*/export GiBUU_VERSION=R"${6}"/" $CONVENIENT_DIR/GiBUU/set_gibuu_variables.sh
 
 # Cd back into this directory and source the GiBUU environment.
 cd $CONVENIENT_GEN_BUILD_DIR

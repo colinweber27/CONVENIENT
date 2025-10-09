@@ -127,9 +127,6 @@
 # Set the path to the BUU input and version. These variables are declared 
 # when setting up Convenient
 	sed -i "s@^\tpath_to_input=.*@\tpath_to_input='"${GiBUU_BUU_INPUT}"'  ! for local run cluster@" $2
-	gibuu_year=${GiBUU_VERSION%_*}
-	gibuu_year=${gibuu_year/R/}
-	sed -i "s/^\tversion=.*/\tversion=${gibuu_year}/" $2
 
 # Set the seed
 	# Read in from the inputs
