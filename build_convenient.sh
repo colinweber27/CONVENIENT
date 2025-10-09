@@ -45,21 +45,23 @@ source global_vars.sh
 read -p "Enable NuWro? (ON/OFF): " nuwro_opt
 if [[ $nuwro_opt == "ON" ]]
 then
-	read -p "NuWro version: " NuWro_version
+	read -p "NuWro version: \nAvailable versions found on https://github.com/NuWro/nuwro/tags" NuWro_version
 fi
+
 # NEUT?
 read -p "Enable NEUT? (ON/OFF). If \"ON\", then also enter GitHub username that is associated with NEUT, and a valid access token: " neut_opt
 if [[ $neut_opt == "ON" ]]
 then
 	read -p "Github Username: " github_username
 	read -p "Github access token: " github_NEUT_access_token
-	read -p "NEUT version: " NEUT_version
+	read -p "NEUT version: \nUse form X.X.X., e.g. 5.9.0\nAvailable versions found on https://github.com/neut-devel/neut/tags" NEUT_version
 fi
+
 # GiBUU?
 read -p "Enable GiBUU? (ON/OFF): " gibuu_opt
 if [[ $gibuu_opt == "ON" ]]
 then
-	read -p "GiBUU version: " GiBUU_version
+	read -p "GiBUU version: \nUse form YEAR_PATCH, e.g. 2023_03\nAvailable versions found on https://gibuu.hepforge.org/downloads?f=archive" GiBUU_version
 fi
 
 cd BuildGenerators
