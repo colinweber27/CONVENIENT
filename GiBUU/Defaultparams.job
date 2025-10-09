@@ -454,5 +454,5 @@ $nl_specificEvent
 
 ! file: code/numerics/random.f90
 &initRandom
-      Seed = 27             ! seed for the random number
+      Seed = 62             ! seed for the random number
 /
