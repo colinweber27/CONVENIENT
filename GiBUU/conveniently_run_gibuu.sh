@@ -198,7 +198,7 @@ do
 	# Move the file
 	outdir=$OUTPUT_DIR/RawGiBUU/$filepath
 	mkdir -p $outdir
-	mv $raw_gibuu_file $outdir/$raw_gibuu_file
+ 	mv $raw_gibuu_file $outdir/$raw_gibuu_file
 done <<< $(ls $filename_raw.*)
 
 # We want to save the files to either the NOvA specific 
@@ -232,8 +232,8 @@ then
 		mkdir -p $outdir
 		mv $unweighted_convenient_file $outdir/$unweighted_convenient_file
 		# Add to data list and write a .txt file
-		bash $CONVENIENT_DIR/documentation_generation_scripts/add_to_data_list.sh -g GiBUU -t ${GiBUU_VERSION}_${gibuu_config} -f $unweighted_convenient_file --flux $gibuu_flux --nova_switch 0
-		bash $CONVENIENT_DIR/documentation_generation_scripts/create_output_txt_file.sh -l $outdir,$unweighted_convenient_file -n $N_EVENTS -h $HC -p $NEUTRINO_PDG -f $gibuu_flux_file,$gibuu_flux_histo -t $target -d $DATE -v $GiBUU_VERSION --seed $gibuu_seed	
+ 		bash $CONVENIENT_DIR/documentation_generation_scripts/add_to_data_list.sh -g GiBUU -t ${GiBUU_VERSION}_${gibuu_config} -f $unweighted_convenient_file --flux $gibuu_flux --nova_switch 0
+ 		bash $CONVENIENT_DIR/documentation_generation_scripts/create_output_txt_file.sh -l $outdir,$unweighted_convenient_file -n $N_EVENTS -h $HC -p $NEUTRINO_PDG -f $gibuu_flux_file,$gibuu_flux_histo -t $target -d $DATE -v $GiBUU_VERSION --seed $gibuu_seed	
 	done <<< $unweighted_convenient_outputs
 
 	# Reset the filepath
