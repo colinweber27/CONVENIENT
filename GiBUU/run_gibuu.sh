@@ -90,13 +90,13 @@
 
 	# Modify the line holding the process_ID and flavor_ID by replacing the 
 	# current value with the new one
-	sed -i 's/^       process_ID .*/       process_ID       = '"${process_ID}"' ! 2:CC, 3:NC, -2:antiCC, -3:antiNC/' $2
-	sed -i 's/^       flavor_ID .*/       flavor_ID        = '"${flavor_ID}"' ! 1:electron, 2:muon, 3:tau/' $2
+	sed -i '/^[ \t]*process_ID/s/\-\{0,1\}[0-9]\{1,\}/'"${process_ID}"'/' $2
+	sed -i '/^[ \t]*flavor_ID/s/[0-9]/'"${flavor_ID}"'/' $2
 
 # Ensure that GiBUU looks for a flux histogram. The variables nuXsectionMode 
 # and nuExp are set in set_gibuu_variables.sh
-	sed -i 's/^       nuXsectionMode .*/       nuXsectionMode   = '"${nuXsectionMode}"' ! 16: EXP_dSigmaMC/' $2
-	sed -i 's/^        nuExp .*/        nuExp           = '"${nuExp}"'  ! new, own flux. Must be in buuinput as .dat file/' $2
+	sed -i '/^[ \t]*nuXsectionMode/s/[0-9]\+/'"${nuXsectionMode}"'/' $2
+	sed -i '/^[ \t]*nuExp/s/[0-9]\+/'"${nuExp}"'/' $2
 
 # Set the flux file. 
 	# Read in from the input
@@ -108,7 +108,7 @@
 	# use @ to be the delimiter (sed can work with any delimiter). We also 
 	# enclose the sed argument in double quotes, allowing us to include 
 	# single quotes in the replacement string.
-	sed -i "s@^        FileNameFlux = .*@        FileNameFlux = '"${gibuu_flux_file}"'@" $2
+	sed -i "/^[ \t]*FileNameFlux/s@=.*@= '"${gibuu_flux_file}"'@" $2
 
 # Set the variable numEnsembles. This is related to the amount of memory 
 # needed at runtime, and the number of events generated. For debugging 
@@ -122,18 +122,17 @@
 		numEnsembles_job="$numEnsembles"
 	fi
 
-	sed -i "s/^\tnumEnsembles=.*/\tnumEnsembles=${numEnsembles_job}              ! for C12 you can use 4000, for heavier nuclei should be lower; decrease it if there are problems with memory,/" $2
+	sed -i "/^[ \t]*numEnsembles=/s/[0-9]\+/${numEnsembles_job}/" $2
 
 # Set the path to the BUU input and version. These variables are declared 
 # when setting up Convenient
-	sed -i "s@^\tpath_to_input=.*@\tpath_to_input='"${GiBUU_BUU_INPUT}"'  ! for local run cluster@" $2
-
+	sed -i "/^[ \t]*path_to_input=.*/s@=.*@='"${GiBUU_BUU_INPUT}"'  ! for local run cluster@" $2
 # Set the seed
 	# Read in from the inputs
 	gibuu_seed=${16}
 
 	# Modify the appropriate line
-	sed -i 's/^      Seed = .*/      Seed = '"${gibuu_seed}"'             ! seed for the random number/' $2
+	sed -i "/^[ \t]*Seed *=.*/Is/[0-9]\+/${gibuu_seed}/" $2
 
 # Read in the target. We will run GiBUU once for each element in the target
 while read line;
@@ -154,14 +153,14 @@ do
 	# Strip leading 0's
 	protons=$((10#$protons))	
 	# Alter the line in the card file
-	sed -i "s/^\tZ=.*/\tZ=${protons}\t\t\t\t\!/" $2
+	sed -i "/^[ \t]*Z=.*/s/[0-9]\+/${protons}/" $2
 
 	# Extract the number of nucleons from the PDG code
 	nucleons=${part:6:3} 
 	# Strip leading 0's
 	nucleons=$((10#$nucleons))
 	# Alter the line in the card file
-	sed -i "s/^\tA=.*/\tA=${nucleons}\t\t\t\t\!/" $2
+	sed -i "/^[ \t]*A=.*/s/[0-9]\+/${nucleons}/" $2
 
 	# The parameter densitySwitch_Static determines the nuclear density 
 	# model to use. By default, it is set to 2, corresponding to the NPA 554 
@@ -179,7 +178,7 @@ do
 	else
    		densitySwitch_Static=1
 	fi
-	sed -i "s/^\tdensitySwitch_Static=.*/\tdensitySwitch_Static=${densitySwitch_Static}          ! 0: density=0.0, 1: Wood-Saxon by Lenske, 2 : NPA 554, 3: Wood-Saxon by Lenske, different neutron and proton radii,/" $2
+	sed -i "/^[ \t]*densitySwitch_Static=.*/s/[0-9]\+/${densitySwitch_Static}/" $2
 
 	# Set the number of events using the formula n_events ~ target A * 
 	# numEnsembles * num_runs_SameEnergy. The last constant is the one to 
@@ -187,7 +186,7 @@ do
 	# and numEnsembles.
 	gibuu_n_events=$6
 	num_runs_SameEnergy=`echo "$gibuu_n_events / $nucleons / $numEnsembles" | bc`
-	sed -i "s/^\tnum_runs_SameEnergy=.*/\tnum_runs_SameEnergy=${num_runs_SameEnergy}       ! (100) increase these if you want to increase statistics (= number of generated events)/" $2
+	sed -i "/^[ \t]*num_runs_SameEnergy=.*/s/[0-9]\+/${num_runs_SameEnergy}/" $2
 
 	### Generate GiBUU events by inputting the job card that has just been 
 	### modified and specifying the name of the output file.

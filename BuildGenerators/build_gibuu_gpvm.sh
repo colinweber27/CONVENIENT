@@ -90,10 +90,10 @@ mv testRun/GiBUU.x $CONVENIENT_DIR/GiBUU/GiBUU.x
 # are not needed after GiBUU has been built.
 export GiBUU=$CONVENIENT_DIR/GiBUU/GiBUU.x
 
-export GiBUU_BUU_INPUT=$CONVENIENT_GENERATOR_DIR/GiBUU/buuinput
+export GiBUU_BUU_INPUT=$CONVENIENT_GEN_DIR/GiBUU/buuinput
 
 # Transfer the version to GiBUU/set_gibuu_variables.sh
-sed -i "s/^export GiBUU_VERSION=R*/export GiBUU_VERSION=R"${6}"/" $CONVENIENT_DIR/GiBUU/set_gibuu_variables.sh
+sed -i "s/^export GiBUU_VERSION=R.*/export GiBUU_VERSION=R"${2}"/" $CONVENIENT_DIR/GiBUU/set_gibuu_variables.sh
 
 # Cd back into this directory and source the GiBUU environment.
 cd $CONVENIENT_GEN_BUILD_DIR
