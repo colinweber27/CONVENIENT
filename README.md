@@ -9,20 +9,27 @@ To overcome these difficulties, I have developed Convenient. Convenient is best 
 
 # Setup
 ### Only needs to be done if you want to generate events
-CONVENIENT can be set up with the following commands:
+CONVENIENT is designed to work on the NOvA GPVMs with novasoft release `S25-01-06`. This ensures that the various dependencies are properly set up. The first step is therefore to set up novaosft:
+```
+source /cvmfs/nova.opensciencegrid.org/novasoft/setup/setup_nova.sh "$@"
+cd /exp/nova/app/users/$USER
+spack load nova-grid-utils
+sl7-nova -r S25-01-06
+export BEARER_TOKEN_FILE=/tmp/bt_token_nova_Analysis_$(id -u)
+```
+CONVENIENT can then be built with the following commands:
 ```
 git clone -b unbuilt https://github.com/colinweber27/CONVENIENT.git
-```
-This command will ask you for your GitHub username that is associated with the Convenient repository. It will then prompt you to enter a personal access token.
-```
 cd CONVENIENT
+```
+This command will ask you a series of questions about which generators you want to enable. Each prompt should be answered with either "ON" or "OFF". GENIE is enabled by default. If you want to enable NEUT, you will also be prompted to enter your GitHub username that is associated with NEUT, in addition to another personal access token. You may also select which generator version to build. NUISANCE is set up automatically based on the generators enabled.
+```
 source build_convenient.sh
 ```
-This command will ask you a series of questions about which generators you want to enable. Each prompt should be answered with either "ON" or "OFF". GENIE is enabled by default. If you want to enable NEUT, you will also be prompted to enter your GitHub username that is associated with NEUT, in addition to another personal access token. NUISANCE is set up automatically based on the generators enabled.
+This last command should be run each time Convenient is used from a new shell.
 ```
 source setup_convenient.sh
 ```
-This last command should be run each time Convenient is used from a new shell.
 
 # Step-by-step guide for generating events
 So you want to generate some neutrino nucleus interactions using a bunch of different tunes and configurations from a bunch of different generators? You've come to the right place.
