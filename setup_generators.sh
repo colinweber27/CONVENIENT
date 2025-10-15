@@ -65,15 +65,7 @@ then
 fi
 
 # NuWro
-<<<<<<< HEAD
-source $CONVENIENT_GEN_BUILD_DIR/nuwro_env.sh
 
-# NEUT
-source $CONVENIENT_GEN_BUILD_DIR/neut_env.sh
-
-# GiBUU
-source $CONVENIENT_GEN_BUILD_DIR/gibuu_env.sh
-=======
 if [[ $NUWRO_SETUP == "ON" ]]
 then
 	source $CONVENIENT_GEN_BUILD_DIR/nuwro_env.sh
@@ -90,7 +82,6 @@ if [[ $GIBUU_SETUP == "ON" ]]
 then
 	source $CONVENIENT_GEN_BUILD_DIR/gibuu_env.sh
 fi
->>>>>>> 852bee4 (Streamlined setup convenient script to use the environment scripts.)
 
 # NUISANCE
 source $CONVENIENT_GEN_BUILD_DIR/nuisance_GENIEv3_04_00_nuwro_neut_env.sh
