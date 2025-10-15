@@ -28,10 +28,10 @@ echo "Setting up Convenient environment, including exporting environment variabl
 
 export CONVENIENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-export GENIE_SETUP="ON"
-export NUWRO_SETUP="ON"
-export NEUT_SETUP="ON"
-export GIBUU_SETUP="ON"
+export GENIE_SETUP="OFF"
+export NUWRO_SETUP="OFF"
+export NEUT_SETUP="OFF"
+export GIBUU_SETUP="OFF"
 
 source $CONVENIENT_DIR/global_vars.sh
 
