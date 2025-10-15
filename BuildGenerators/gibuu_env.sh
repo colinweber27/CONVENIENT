@@ -25,6 +25,6 @@ echo "Setting GiBUU environment variables..."
 
 export GiBUU=$CONVENIENT_DIR/GiBUU/GiBUU.x
 
-export GiBUU_BUU_INPUT=$CONVENIENT_GENERATOR_DIR/GiBUU/buuinput
+export GiBUU_BUU_INPUT=$CONVENIENT_GEN_DIR/GiBUU/buuinput
 
 export GiBUU_VERSION=R2023_P3

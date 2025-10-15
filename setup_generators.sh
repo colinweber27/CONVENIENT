@@ -65,19 +65,22 @@ then
 fi
 
 # NuWro
-export PYTHIA6=$PYTHIA6_LIBRARY
-export NUWRO=$CONVENIENT_GEN_DIR/nuwro
-export LD_LIBRARY_PATH=$CONVENIENT_GEN_BUILD_DIR/pythia6:$NUWRO/lib:$NUWRO/bin:$LD_LIBRARY_PATH
-export PATH=$NUWRO/bin:$PATH
+if [[ $NUWRO_SETUP == "ON" ]]
+then
+	source $CONVENIENT_GEN_BUILD_DIR/nuwro_env.sh
+fi
 
 # NEUT
-source $CONVENIENT_GEN_DIR/neut/build/Linux/setup.sh
+if [[ $NEUT_SETUP == "ON" ]]
+then
+	source $CONVENIENT_GEN_BUILD_DIR/neut_env.sh
+fi
 
 # GiBUU
-export GiBUU=$CONVENIENT_DIR/GiBUU/GiBUU.x
-export GiBUU_BUU_INPUT=$CONVENIENT_GEN_DIR/GiBUU/buuinput
-export GiBUU_VERSION=2023
+if [[ $GIBUU_SETUP == "ON" ]]
+then
+	source $CONVENIENT_GEN_BUILD_DIR/gibuu_env.sh
+fi
 
 # NUISANCE
-source $CONVENIENT_GEN_DIR/nuisance_GENIEv3_04_00_nuwro_neut/build/Linux/setup.sh
-
+source $CONVENIENT_GEN_BUILD_DIR/nuisance_GENIEv3_04_00_nuwro_neut_env.sh
