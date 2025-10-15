@@ -48,6 +48,7 @@ then
 	echo -e "Please enter the NuWro version to build. \nAvailable versions found on https://github.com/NuWro/nuwro/tags"
 	read -p "NuWro version: " NuWro_version
 	sed -i "/export NUWRO_SETUP=/s/OFF/ON/" setup_convenient.sh
+	export NUWRO_SETUP="ON"
 fi
 
 # NEUT?
@@ -59,6 +60,7 @@ then
 	echo -e "Please enter the NEUT version to build. \nUse form X.X.X., e.g. 5.9.0\nAvailable versions found on https://github.com/neut-devel/neut/tags"
 	read -p "NEUT version: " NEUT_version
 	sed -i "/export NEUT_SETUP=/s/OFF/ON/" setup_convenient.sh
+	export NEUT_SETUP="ON"
 fi
 
 # GiBUU?
@@ -68,6 +70,7 @@ then
 	echo -e "Please enter the GiBUU version to build. \nUse form YEAR_PATCH, e.g. 2023_03\nAvailable versions found on https://gibuu.hepforge.org/downloads?f=archive"
 	read -p "GiBUU version: " GiBUU_version
 	sed -i "/export GIBUU_SETUP=/s/OFF/ON/" setup_convenient.sh
+	export GIBUU_SETUP="ON"
 fi
 
 cd BuildGenerators
