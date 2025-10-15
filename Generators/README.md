@@ -2,23 +2,23 @@
 Date: 26 March 2024
 Purpose: Describe the contents of the directory Convenient/Generators**
 
-# Summary
+## Summary
 This directory contains the sources for all the generators available in Convenient, except GENIE, which has its source stored in novasoft.
 
-## `GiBUU`
+### `GiBUU`
 Stores the source code for GiBUU.
 
-## `neut`
+### `neut`
 Stores the source code for NEUT.
 
-## `nuisance_GENIEv2_12_10`
+### `nuisance_GENIEv2_12_10`
 Stores the source code for a version of NUISANCE compatible with `GENIE v2_12_10`.
 
-## `nuisance_GENIEv3_00_06_nuwro_neut`
+### `nuisance_GENIEv3_00_06_nuwro_neut`
 Stores the source code for a version of NUISANCE compatible with `GENIE v3_00_06`, NuWro, and NEUT.
 
-## `nuisance_GENIEv3_04_00_nuwro_neut`
+### `nuisance_GENIEv3_04_00_nuwro_neut`
 Stores the source code for a version of NUISANCE compatible with `GENIE v3_04_00`, NuWro, and NEUT.
 
-## `nuwro`
+### `nuwro`
 Stores the source code for NuWro.
