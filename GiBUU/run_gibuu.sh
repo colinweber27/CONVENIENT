@@ -122,7 +122,7 @@
 		numEnsembles_job="$numEnsembles"
 	fi
 
-	sed -i "/^[ \t]*numEnsembles=/s/[0-9]\+/${numEnsembles_job}/" $2
+	sed -i "/^[ \t]*numEnsembles=/s/\-\{0,1\}[0-9]\{1,\}/${numEnsembles_job}/" $2
 
 # Set the path to the BUU input and version. These variables are declared 
 # when setting up Convenient
