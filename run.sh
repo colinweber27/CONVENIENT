@@ -203,7 +203,7 @@ do
 			# --nova_switch 1=used ND element weights
 			echo "Adding run to data list..."
 			bash documentation_generation_scripts/add_to_data_list.sh \
-				-g NuWro -t ${generator_version}_${config} \
+				-g NuWro -t ${NUWRO_VERSION}_${config} \
 				-f $filename_convenient \
 				--flux $flux --nova_switch $nova_switch
 			echo "Run added to data list."

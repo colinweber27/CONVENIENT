@@ -51,7 +51,13 @@ beam_particle = 14
 #nucleus_n = 6
 
 # Set target_content if target_type == 1 #
-target_content = 6 6 10 x 
+target_content = 6 6 66 x 
+target_content += 6 7 1 x 
+target_content += 17 18 12 x 
+target_content += 17 20 4 x 
+target_content += 1 0 11 x 
+target_content += 22 26 3 x 
+target_content += 8 8 3 x 
 
 # Models for the description of nucleus as a target:
 #nucleus_target = 0 // free target; 
