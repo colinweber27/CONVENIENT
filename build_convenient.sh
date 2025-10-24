@@ -21,9 +21,18 @@
 #	github_NEUT_access_token: 	a github access token associated with the 
 #								given GitHub username
 #	NEUT_version:				The NEUT version to build
+#	NEUT_SETUP:					If 'ON', source the NEUT environment when 
+#								setting up CONVENIENT
 
 # Options activated if nuwro_opt == 'ON'
 #	NuWro_version:				The NuWro version to build
+#	NUWRO_SETUP:				If 'ON', source the NuWro environment when 
+#								setting up CONVENIENT
+
+# Options activated if gibuu_opt == 'ON'
+#	GiBUU_version:				The GiBUU version to build
+#	GIBUU_SETUP:				If 'ON', source the GiBUU environment when 
+#								setting up CONVENIENT
 
 # Sources:
 #	global_vars.sh: 			various variables primarily labelling 
