@@ -196,7 +196,7 @@ void xsec_analysis_macro() {
 		{"GENIE", 	genie_file_2, genie_scale}
 	}
 	std::vector<std::tuple<const std::string, TFile*, double>> file_list_unscaled_nuwro = {
-		{"NuWro",	nuwro_file, nuwro_file}	
+		{"NuWro",	nuwro_file, nuwro_scale}	
 	}
 	std::vector<std::tuple<const std::string, TFile*, double>> file_list_genie = set_file_list_scales(file_list_unscaled_genie);
 	std::vector<std::tuple<const std::string, TFile*, double>> file_list_nuwro = set_file_list_scales(file_list_unscaled_nuwro);
@@ -303,8 +303,8 @@ void xsec_analysis_macro() {
 		// altered depending on what data is desired.
 			// Grab info on CC/NC and neutrino type
 			TTreeReaderValue<bool> flagCC(reader, "flagCC");
-			TTreeReaderValue<int> nu_in_flavor(reader, "NuIn.Flavor");
-			TTreeReaderValue<float> nu_in_e(reader, "NuIn.E_in");
+			TTreeReaderValue<int> nu_in_flavor(reader, "Enu");
+			TTreeReaderValue<float> nu_in_e(reader, "PDG_nu");
 
 			// Grab leaves for final state particles that make up our 
 			// topology of interest. It is from these values that we can 
