@@ -86,7 +86,7 @@ If you want many events, or events for an unsupported tune or novel generator co
     - `RUNS` determines the tunes/generators/configurations to use. It may be a comma-separated list, where each item is a tune/generator/configuration string to use in consecutive Convenient runs.
     - `SEED` detemines the MC seed to use. It may be a comma-separated list, where each item is a seed to use in consecutive Convenient runs.
 4. Set the run variables by running `source set_run_variables.sh` from within the root Convenient directory.
-5. Run Convenient with the command `source run.sh	.
+5. Run Convenient with the command `source run.sh`.
 6. Outputs will be found in `/exp/nova/data/users/$USER/ConvenientOutputs[_NOvA]`.
 
 ## What info does CONVENIENT keep?

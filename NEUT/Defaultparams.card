@@ -4,7 +4,7 @@ C========================================================================
 C
 C Number of events ; EVCT-NEVT
 C
-EVCT-NEVT  20
+EVCT-NEVT  1000000
 C
 C--------------------------------
 C
@@ -50,6 +50,7 @@ CEVCT-MPV 2
 CEVCT-PV  0. 200.
 C
 EVCT-MPV 3
+<<<<<<< HEAD
 EVCT-FILENM 'beam_energies/flux_NuMI_RHC_DeriveFlux50MeVwidth_ppfx_numubar.root.numubar.root'
 EVCT-HISTNM 'numubar'
 EVCT-INMEV 0
@@ -60,12 +61,12 @@ C
 C NUMBNDN : total number of neutron
 C           (e.g. CH => 6, H2O => 8, Ar => 22, Fe => 30)
 C
-NEUT-NUMBNDN 18
+NEUT-NUMBNDN 6
 C
 C NUMBNDP : total number of bound proton
 C           (e.g. CH => 6, H2O => 8, Ar => 18, Fe => 26)
 C
-NEUT-NUMBNDP 17
+NEUT-NUMBNDP 6
 C
 C NUMFREP : total number of free proton
 C           (e.g. CH => 1, H2O => 2, Ar => 0, Fe => 0)
@@ -75,7 +76,7 @@ C
 C NUMATOM : atomic number of atom heavier than hydrogen
 C           (e.g. CH => 12, H2O =>16, Ar => 40, Fe => 56)
 C
-NEUT-NUMATOM 35
+NEUT-NUMATOM 12
 C
 CNEUT-PFSURF 0.225
 CNEUT-PFMAX  0.225
