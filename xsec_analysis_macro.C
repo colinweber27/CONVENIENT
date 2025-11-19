@@ -303,8 +303,8 @@ void xsec_analysis_macro() {
 		// altered depending on what data is desired.
 			// Grab info on CC/NC and neutrino type
 			TTreeReaderValue<bool> flagCC(reader, "flagCC");
-			TTreeReaderValue<int> nu_in_flavor(reader, "Enu");
-			TTreeReaderValue<float> nu_in_e(reader, "PDG_nu");
+			TTreeReaderValue<float> nu_in_flavor(reader, "Enu");
+			TTreeReaderValue<int> nu_in_e(reader, "PDG_nu");
 
 			// Grab leaves for final state particles that make up our 
 			// topology of interest. It is from these values that we can 
