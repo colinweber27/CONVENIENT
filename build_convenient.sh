@@ -82,6 +82,10 @@ then
 	export GIBUU_SETUP="ON"
 fi
 
+# NUISANCE
+echo -e "Please enter the NUISANCE commit to build. \nAvailable commits found on https://github.com/NUISANCEMC/nuisance/commits/main/ \nNot all commits are stable. \nA list of stable commits are: \n9b2a42d \n"
+read -p "NUISANCE commit: " NUISANCE_commit
+
 cd BuildGenerators
 
 source build_generators_gpvm.sh

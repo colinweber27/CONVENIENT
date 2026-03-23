@@ -49,8 +49,8 @@ then
 	source build_gibuu_gpvm.sh --VERSION $GiBUU_version
 fi
 
-source build_nuisance_GENIEv3_04_00_nuwro_neut_gpvm.sh --NuWro $nuwro_opt --NEUT $neut_opt
+source build_nuisance_GENIEv3_04_00_nuwro_neut_gpvm.sh --NuWro $nuwro_opt --NEUT $neut_opt --VERSION $NUISANCE_commit
 
-source build_nuisance_GENIEv3_00_06_nuwro_neut_gpvm.sh --NuWro $nuwro_opt --NEUT $neut_opt
+source build_nuisance_GENIEv3_00_06_nuwro_neut_gpvm.sh --NuWro $nuwro_opt --NEUT $neut_opt --VERSION $NUISANCE_commit
 
 source add_to_root_macropath.sh
