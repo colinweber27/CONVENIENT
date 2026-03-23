@@ -2156,3 +2156,11 @@ ____NEUT:Defaultparams.card.5.RHC.1m.numu.convenient_output.root.1000220480.root
 ____NEUT:Defaultparams.card.6.RHC.1m.numu.convenient_output.root.1000220480.root
 ____NEUT:Defaultparams.card.7.RHC.1m.numu.convenient_output.root.1000220480.root
 ____NEUT:Defaultparams.card.9.RHC.1m.numu.convenient_output.root.1000220480.root
+
+NEUT:5.7.0_Defaultparams_MK.card
+_Flux:FHCDeriveFlux50MeVwidth_ppfx
+__numu_only
+
+
+
+
