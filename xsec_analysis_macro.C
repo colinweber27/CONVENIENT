@@ -44,7 +44,7 @@ const float MUON_MASS = TDatabasePDG::Instance()->GetParticle(13)->Mass(); // Ge
 const float PIP_MASS = TDatabasePDG::Instance()->GetParticle(211)->Mass(); // GeV
 const float PROTON_MASS = TDatabasePDG::Instance()->GetParticle(2212)->Mass(); // GeV
 const float PIP_THRESHOLD_P = 0.2; // GeV
-const float PIP_THRESHOLD_E = sqrt(pow(pip_threshold_p, 2) + \
+const float PIP_THRESHOLD_E = sqrt(pow(PIP_THRESHOLD_P, 2) + \
 	pow(PIP_MASS, 2)); // GeV
 
 // Define colors to use for plotting. For a list of valid colors, see 
@@ -194,14 +194,14 @@ void xsec_analysis_macro() {
 	std::vector<std::tuple<const std::string, TFile*, double>> file_list_unscaled_genie = {
 		{"GENIE",	genie_file_1, genie_scale},
 		{"GENIE", 	genie_file_2, genie_scale}
-	}
+	};
 	std::vector<std::tuple<const std::string, TFile*, double>> file_list_unscaled_nuwro = {
 		{"NuWro",	nuwro_file, nuwro_scale}	
-	}
-	std::vector<std::tuple<const std::string, TFile*, double>> file_list_genie = set_file_list_scales(file_list_unscaled_genie);
-	std::vector<std::tuple<const std::string, TFile*, double>> file_list_nuwro = set_file_list_scales(file_list_unscaled_nuwro);
+	};
+	std::vector<std::tuple<std::string, TFile*, double>> file_list_genie = set_file_list_scales(file_list_unscaled_genie);
+	std::vector<std::tuple<std::string, TFile*, double>> file_list_nuwro = set_file_list_scales(file_list_unscaled_nuwro);
 	// Finally, create a vector of these vectors
-	std::vector<std::vector<std::tuple<const std::string, TFile*, double>>> file_list = {file_list_genie, file_list_nuwro};	
+	std::vector<std::vector<std::tuple<std::string, TFile*, double>>> file_list = {file_list_genie, file_list_nuwro};	
 
 	// The following line does not need to be changed.
 	int n_gens = sizeof(file_list) / sizeof(file_list[0]);
@@ -213,10 +213,10 @@ void xsec_analysis_macro() {
 	// We also set the Add Directory option to be false so that each new 
 	// pointer points to a unique histogram.
 	TH1::AddDirectory(kFALSE);
-	std::vector<std::tuple<TH1D*, std::string>> 1D_PiTheta_histo_vec;
-	std::vector<std::tuple<TH1D*, std::string>> 1D_Enu_histo_vec;
-	std::vector<std::tuple<TH2D*, std::string>> 2D_histo_vec;
-	std::vector<std::tuple<TH3D*, std::string>> 3D_histo_vec;
+	std::vector<std::tuple<TH1D*, std::string>> PiTheta_histo_vec;
+	std::vector<std::tuple<TH1D*, std::string>> Enu_histo_vec;
+	std::vector<std::tuple<TH2D*, std::string>> histo_vec_2D;
+	std::vector<std::tuple<TH3D*, std::string>> histo_vec_3D;
 
 	// This section, Set Binning, is very analysis-dependent and may have 
 	// to be heavily modified.
@@ -244,9 +244,9 @@ void xsec_analysis_macro() {
 		1.50, 1.75, 2.0, 2.50, 3.0, 4.0, 120.0};
 	std::vector<float> Eavail_binning = {0.0, 0.10, 0.30, 0.60, 1.0, 2.0, \
 		120.0};
-	int PiTheta_nbins = PiTheta_binning.size();
-	int Enu_nbins = Enu_binning.size();
-	int Eavail_nbins = Eavail_binning.size();
+	int PiTheta_nbins = PiTheta_binning.size() - 1;
+	int Enu_nbins = Enu_binning.size() - 1;
+	int Eavail_nbins = Eavail_binning.size() - 1;
 	// It is also often useful to have the ranges we will plot within, since 
 	// we will often not plot the overflow bins.
 	float PiTheta_range[2] = {0.5, 1.0};
@@ -254,7 +254,7 @@ void xsec_analysis_macro() {
 	float Eavail_range[2] = {0.0, 2.0};
 
 	// Loop over the MC files and fill the histograms.
-	for(int gen_index = 0; gen_index < n_gen; gen_index++) {
+	for(int gen_index = 0; gen_index < n_gens; gen_index++) {
 		// Get the vector of files for a generator
 		std::vector<std::tuple<std::string, TFile*, double>> gen_file_list = file_list[gen_index];
 		// Get the generator
@@ -296,7 +296,7 @@ void xsec_analysis_macro() {
 
 		// Declare a TTreeReader to help read the tree. We get the file from 
 		// the pair using the .second function. Don't change this.
-		TTreeReader reader("generator_data", file);
+		TTreeReader reader("generator_data", files[file_index]);
 
 		// Declare TTreeReader arrays and values to hold the desired data 
 		// from the trees. Format is (reader, leaf). This will have to be 
@@ -470,7 +470,7 @@ void xsec_analysis_macro() {
 	}
 
 	// Append histogram to the vector
-	1D_PiTheta_histo_vec.push_back(std::make_tuple(h1_PiTheta, alias));
+	PiTheta_histo_vec.push_back(std::make_tuple(h1_PiTheta, alias));
 	} // Brace for generator loop */
 
 		// Single differential, flux-averaged cross section in Enu //
@@ -478,7 +478,7 @@ void xsec_analysis_macro() {
 		// Assumes we are filling a histogram h1
 
 /*		// Grab the scale factor due to combining files
-		double file_scale_factor = std::get<2>(file_list[file_index]);
+		double file_scale_factor = std::get<2>(gen_file_list[file_index]);
 		
 		// Loop over events and fill the histogram
 		while (reader.Next()) {
@@ -534,7 +534,7 @@ void xsec_analysis_macro() {
 
 	// 3. Get the "signal flux". This is the generator flux rebinned 
 	// according to the Enu binning.
-	TH1D* sig_flux = new TH1D("sig_flux_" + alias, "sig_flux", \
+	TH1D* sig_flux = new TH1D("sig_flux_", "sig_flux", \
 		Enu_nbins, &Enu_binning[0]);
 	for(int i = 1; i <= gen_flux_nbins; i++) {
 		sig_flux->Fill(gen_flux->GetBinCenter(i), \
@@ -552,14 +552,14 @@ void xsec_analysis_macro() {
 	}
 
 	// Append histogram to the vector
-	1D_Enu_histo_vec.push_back(std::make_tuple(h1_Enu, alias));
+	Enu_histo_vec.push_back(std::make_tuple(h1_Enu, alias));
 	} // Move on to the next generator */
 		
 		// Double-differential, flux-averaged cross sections //
 	
  		// Assumes we have declared a histogram h2
 /*		// Grab the scale factor due to combining files
-		double file_scale_factor = std::get<2>(file_list[file_index]);
+		double file_scale_factor = std::get<2>(gen_file_list[file_index]);
 
 		// Loop over events and fill histograms
 		while(reader.Next()) {
@@ -661,7 +661,7 @@ void xsec_analysis_macro() {
 		// Assumes we have delcared a histogram h3
 
 /*		// Grab the scale factor due to combining files
-		double file_scale_factor = std::get<2>(file_list[file_index]);
+		double file_scale_factor = std::get<2>(gen_file_list[file_index]);
 
 		// Loop over events and fill histograms
 		while(reader.Next()) {
@@ -832,7 +832,7 @@ void xsec_analysis_macro() {
 	auto legend = new TLegend(0.25, 0.70, 0.45, 0.85);
 
 	// Loop over the histograms in the histo_vec and draw
-	for(int i = 0; i < n_files; i++) {
+	for(int i = 0; i < n_gens; i++) {
 		// Extrac the histo from the list, set color, and don't display stats
 		TH1* h = histo_vec[i];
 		h->SetLineColor(myColors[i]);
