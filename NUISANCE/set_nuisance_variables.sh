@@ -12,6 +12,9 @@
 
 echo "Setting variables for nuisance..." # Remind us what's going on
 
+## Set the NUISANCE version for reference ##
+export NUISSANCE_COMMIT=9b2a42d
+
 ## Set relevant NUISANCE global parameters ##
 export NUISFLAT_FORMAT=GenericVectors 
 	# The NUISANCE output format. Can be either GenericFlux or GenericVectors

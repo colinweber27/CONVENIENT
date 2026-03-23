@@ -73,7 +73,7 @@ git clone https://github.com/NUISANCEMC/nuisance.git $NUISANCE_DIR
 
 # Write the environment script above, and cd into the NUISANCE directory.
 write_nuisance_GENIEv3_04_00_nuwro_neut_env_script
-cd $NUISANCE_DIR
+cd $NUISANCE_DIR; git checkout $6
 
 # Make the build directory, cd into it, and use cmake to write the install 
 # script.
@@ -83,6 +83,9 @@ cmake -DUSE_MINIMIZER=1 -DNuWro_ENABLED=ON -DGENIE_ENABLED=ON -DEXPERIMENTS_ENAB
 
 # Make (build) NUISANCE.
 make install
+
+# Transfer the version to NUISANCE/set_nuisance_variables.sh
+sed -i "s/^export NUISANCE_COMMIT=.*/export NUISANCE_COMMIT="${6}"/" $CONVENIENT_DIR/NUISANCE/set_nuisance_variables.sh
 
 # Cd back to this directory and source the NUISANCE environment for use.
 cd $CONVENIENT_GEN_BUILD_DIR
