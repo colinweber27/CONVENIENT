@@ -82,7 +82,7 @@ If you want many events, or events for an unsupported tune or novel generator co
     - `FLUX_HISTOS` is a comma-separated list of histograms containing the actual neutrino fluxes to use as input. The *i*th `FLUX_HISTO` entry must be within the ith flux file name in `FLUX_FILE_NAMES`.
     - `NEUTRINO_PDG` is the PDG code for the neutrino flavor you'd like to be incident on the target.
     - `GIBUU_CC_NC` is either "CC" or "NC" and is only used when generating GiBUU events.
-    - `TARGETS` is the path to the text file containing the desired target composition. For more info on Convenient target compositions, please see `Convenient/targets/README.md`.
+    - `TARGETS` is the path to the text file containing the desired target composition. For more info on Convenient target compositions, please see `Convenient/targets/README.md`. This may be a comma-separated list.
     - `RUNS` determines the tunes/generators/configurations to use. It may be a comma-separated list, where each item is a tune/generator/configuration string to use in consecutive Convenient runs.
     - `SEED` detemines the MC seed to use. It may be a comma-separated list, where each item is a seed to use in consecutive Convenient runs.
 4. Set the run variables by running `source set_run_variables.sh` from within the root Convenient directory.
