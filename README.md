@@ -69,7 +69,7 @@ NuWro has several different models that can be swapped in and out by modifying t
 ## Other models
 - If you want events with other models or generators, please message me.
 
-If you only want a few events for one of the supported tunes, chances are these events already exist in the `/exp/nova/data/users/colweber/ConvenientOutputs_NOvA` directory. If you can't find the events in there, double check with me to see if they exist elsewhere.
+If you only want a few events for one of the supported tunes, chances are these events already exist in the `/exp/nova/data/groups/nd/convenient/ConvenientOutputs_NOvA` directory. If you can't find the events in there, double check with me to see if they exist elsewhere.
 
 If you want many events, or events for an unsupported tune or novel generator configuration, please message me. For now, it's easiest if I generate those events and direct you to the output. If, however, you want more control over the process, or your task is too large for my bandwidth, it is not too hard to generate the events yourself.
 1. I assume if you've gotten this far, you've checked to see if your desired tune/generator configuration exists. If it does, move on. If not, please reread this guide from the top of this section.

@@ -173,7 +173,7 @@ void xsec_analysis_macro() {
 	// The file ConvenientOutputs_NOvA.txt lists the Convenient outputs 
 	// available for use, organized by generator configuration, flux, and 
 	// neutrino flavor. These outputs are located in 
-	// /exp/nova/data/users/colweber/ConvenientOutputs_NOvA
+	// /exp/nova/data/groups/nd/convenient/ConvenientOutputs_NOvA
 	TFile* genie_file_1 = TFile::Open("GENIE:N18_10j_02_11a.2.FHC.numu.convenient_output.root");
 	TFile* genie_file_2 = TFile::Open("GENIE:N18_10j_02_11a.3.FHC.numu.convenient_output.root");
 	TFile* nuwro_file = TFile::Open("NuWro:Defaultparams.txt.2.FHC.numu.convenient_output.root");

@@ -6,7 +6,7 @@
 # Command: source global_vars.sh
 
 # Exports
-#	OUTPUT_DIR: the path to the user's data directory
+#	OUTPUT_DIR: the path to the ND group's CONVENIENT directory
 #	CONVENIENT_GEN_DIR
 #		The path to the directory in which all the generators will be built.
 #	CONVENIENT_GEN_BUILD_DIR
@@ -39,7 +39,7 @@
 #!/bin/bash
 
 # Global variables
-export OUTPUT_DIR=/exp/${HOSTNAME:0:4}/data/users/$USER
+export OUTPUT_DIR=/exp/${HOSTNAME:0:4}/data/groups/nd/convenient
 export CONVENIENT_GEN_DIR=$CONVENIENT_DIR/Generators
 export CONVENIENT_GEN_BUILD_DIR=$CONVENIENT_DIR/BuildGenerators
 export CONVENIENT_FLUX_DIR=$CONVENIENT_DIR/flux
