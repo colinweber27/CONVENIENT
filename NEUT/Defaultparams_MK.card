@@ -10,7 +10,7 @@ C--------------------------------
 C
 C Particle Code ; EVCT-IDPT
 C
-EVCT-IDPT 12
+EVCT-IDPT 14
 C
 C--------------------------------
 C
@@ -51,8 +51,8 @@ CEVCT-PV  0. 200.
 C
 EVCT-MPV 3
 <<<<<<< HEAD
-EVCT-FILENM  'beam_energies/flux_NuMI_RHC_DeriveFlux50MeVwidth_ppfx_nue.root.nue.root'
-EVCT-HISTNM  'nue'
+EVCT-FILENM  'beam_energies/flux_NuMI_FHC_DeriveFlux50MeVwidth_ppfx_numu.root.numu.root'
+EVCT-HISTNM  'numu'
 EVCT-INMEV 0
 C
 C
@@ -61,12 +61,12 @@ C
 C NUMBNDN : total number of neutron
 C           (e.g. CH => 6, H2O => 8, Ar => 22, Fe => 30)
 C
-NEUT-NUMBNDN 8
+NEUT-NUMBNDN 7
 C
 C NUMBNDP : total number of bound proton
 C           (e.g. CH => 6, H2O => 8, Ar => 18, Fe => 26)
 C
-NEUT-NUMBNDP 8
+NEUT-NUMBNDP 6
 C
 C NUMFREP : total number of free proton
 C           (e.g. CH => 1, H2O => 2, Ar => 0, Fe => 0)
@@ -76,7 +76,7 @@ C
 C NUMATOM : atomic number of atom heavier than hydrogen
 C           (e.g. CH => 12, H2O =>16, Ar => 40, Fe => 56)
 C
-NEUT-NUMATOM 16
+NEUT-NUMATOM 13
 C
 CNEUT-PFSURF 0.225
 CNEUT-PFMAX  0.225
