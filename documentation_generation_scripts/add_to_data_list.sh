@@ -181,9 +181,9 @@ file_string="____$datalist_filename"
 # applied.
 if [ $ND_switch -eq 1 ];
 then
-	output_file=$CONVENIENT_DIR/ConvenientOutputs_NOvAList.txt
+	output_file=$OUTPUT_DIR/ConvenientOutputs_NOvAList.txt
 else
-	output_file=$CONVENIENT_DIR/ConvenientOutputsList.txt
+	output_file=$OUTPUT_DIR/ConvenientOutputsList.txt
 	# In this case, also get the element from the filename
 	pdg_from_filename=${datalist_filename##*\.root\.}
 	pdg_from_filename=${pdg_from_filename/\.root/}
