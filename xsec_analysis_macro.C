@@ -173,7 +173,7 @@ void xsec_analysis_macro() {
 	// The file ConvenientOutputs_NOvA.txt lists the Convenient outputs 
 	// available for use, organized by generator configuration, flux, and 
 	// neutrino flavor. These outputs are located in 
-	// /exp/nova/data/users/colweber/ConvenientOutputs_NOvA
+	// /exp/nova/data/groups/nd/convenient/ConvenientOutputs_NOvA
 	TFile* genie_file_1 = TFile::Open("GENIE:N18_10j_02_11a.2.FHC.numu.convenient_output.root");
 	TFile* genie_file_2 = TFile::Open("GENIE:N18_10j_02_11a.3.FHC.numu.convenient_output.root");
 	TFile* nuwro_file = TFile::Open("NuWro:Defaultparams.txt.2.FHC.numu.convenient_output.root");
@@ -191,11 +191,11 @@ void xsec_analysis_macro() {
 	// function 'set_file_list_scales'.
 	double genie_scale;
 	double nuwro_scale;
-	std::vector<std::tuple<const std::string, TFile*, double>> file_list_unscaled_genie = {
+	std::vector<std::tuple<std::string, TFile*, double>> file_list_unscaled_genie = {
 		{"GENIE",	genie_file_1, genie_scale},
 		{"GENIE", 	genie_file_2, genie_scale}
 	};
-	std::vector<std::tuple<const std::string, TFile*, double>> file_list_unscaled_nuwro = {
+	std::vector<std::tuple<std::string, TFile*, double>> file_list_unscaled_nuwro = {
 		{"NuWro",	nuwro_file, nuwro_scale}	
 	};
 	std::vector<std::tuple<std::string, TFile*, double>> file_list_genie = set_file_list_scales(file_list_unscaled_genie);
@@ -238,20 +238,20 @@ void xsec_analysis_macro() {
 	// This example demonstrates how to set the data binning for a triple-
 	// differential analysis in which we want variable binning and the bin 
 	// edges are known from a previous analysis.
-	std::vector<float> PiTheta_binning = {-1.0, 0.5, 0.74, 0.80, 0.85, \
+	std::vector<double> PiTheta_binning = {-1.0, 0.5, 0.74, 0.80, 0.85, \
 		0.88, 0.91, 0.94, 0.96, 0.98, 0.99, 1.0};
 	std::vector<double> Enu_binning = {-10.0, 0.0, 0.50, 0.75, 1.0, 1.25, \
 		1.50, 1.75, 2.0, 2.50, 3.0, 4.0, 120.0};
-	std::vector<float> Eavail_binning = {0.0, 0.10, 0.30, 0.60, 1.0, 2.0, \
+	std::vector<double> Eavail_binning = {0.0, 0.10, 0.30, 0.60, 1.0, 2.0, \
 		120.0};
 	int PiTheta_nbins = PiTheta_binning.size() - 1;
 	int Enu_nbins = Enu_binning.size() - 1;
 	int Eavail_nbins = Eavail_binning.size() - 1;
 	// It is also often useful to have the ranges we will plot within, since 
 	// we will often not plot the overflow bins.
-	float PiTheta_range[2] = {0.5, 1.0};
+	double PiTheta_range[2] = {0.5, 1.0};
 	double Enu_range[2] = {0.0, 4.0};
-	float Eavail_range[2] = {0.0, 2.0};
+	double Eavail_range[2] = {0.0, 2.0};
 
 	// Loop over the MC files and fill the histograms.
 	for(int gen_index = 0; gen_index < n_gens; gen_index++) {
@@ -303,8 +303,8 @@ void xsec_analysis_macro() {
 		// altered depending on what data is desired.
 			// Grab info on CC/NC and neutrino type
 			TTreeReaderValue<bool> flagCC(reader, "flagCC");
-			TTreeReaderValue<float> nu_in_flavor(reader, "Enu");
-			TTreeReaderValue<int> nu_in_e(reader, "PDG_nu");
+			TTreeReaderValue<float> nu_in_flavor(reader, "Enu_true");
+			TTreeReaderValue<int> nu_in_e(reader, "PDGnu");
 
 			// Grab leaves for final state particles that make up our 
 			// topology of interest. It is from these values that we can 
