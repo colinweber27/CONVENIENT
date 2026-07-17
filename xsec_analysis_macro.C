@@ -157,7 +157,7 @@ float addtoEavail(std::vector<float> particle, int PID) {
 	else if (PID <= -2000) {
 		return particle[0] + PROTON_MASS;
 	}
-	else if (PID != 2112 && (abs(PID) < 11 || abs(PID) > 16)) {
+	else if (PID != 2112 && PID != 0 && (abs(PID) < 11 || abs(PID) > 16)) {
 		return particle[0];
 	}
 	else return 0.0;
